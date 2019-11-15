@@ -1,0 +1,17 @@
+﻿  test.cpp
+f:\c++\stack\stack\stack.h(71): error C2440: “return”: 无法从“Type *”转换为“Type &”
+          with
+          [
+              Type=int
+          ]
+  f:\c++\stack\stack\stack.h(70): note: 编译 类 模板 成员函数 "Type &Stack<Type>::get_top(void)" 时
+          with
+          [
+              Type=int
+          ]
+  f:\c++\stack\stack\test.cpp(13): note: 参见对正在编译的函数 模板 实例化“Type &Stack<Type>::get_top(void)”的引用
+          with
+          [
+              Type=int
+          ]
+  f:\c++\stack\stack\test.cpp(7): note: 参见对正在编译的 类 模板 实例化 "Stack<int>" 的引用
