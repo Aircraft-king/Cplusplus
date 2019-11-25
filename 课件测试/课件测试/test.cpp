@@ -60,6 +60,8 @@ void Copy(T *dst, const T *src, size_t sz, bool IsPOD)
 		}
 	}
 }
+
+
 bool IsPODType(const char *type)
 {
 	const char* type_ar[] = {
