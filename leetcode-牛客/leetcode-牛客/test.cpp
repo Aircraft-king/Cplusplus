@@ -6,45 +6,115 @@
 #include <algorithm> //sort
 using namespace std;
 
+
+
+
+////https://www.nowcoder.com/practice/51dcb4eef6004f6f
+////8f44d927463ad5e8?tpId=98&tqId=32825&tPage=1&rp=1
+////&ru=%2Fta%2F2019test&qru=%2Fta%2F2019test%2Fquestion-ranking
+//
+//int main() {
+//	int l, r;
+//	while (cin >> l >> r) {
+//		int count = 0;
+//		for (int i = l; i <= r; ++i) {
+//			if (i % 3 == 2 || i % 3 == 0) {
+//				count++;
+//			}
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
+
+//
+//int main() {
+//	vector<int> arr;
+//	int count = 0;
+//	int l = 0;
+//	int r = 0;
+//	arr.push_back(0);
+//	for (int i = 1; i < 1000; ++i) {
+//		arr.push_back(i*(1 + i) / 2);
+//	}
+//	cin >> l >> r;
+//	for (int j = l; j <= r; ++j) {
+//		if (arr[j] % 3 == 0) {
+//			count++;
+//		}
+//	}
+//	cout << count << endl;
+//	return 0;
+//}
+
+
+
+//https://leetcode-cn.com/problems/invert-binary-tree/submissions/
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+//class Solution {
+//public:
+//	TreeNode* invertTree(TreeNode* root) {
+//		if (root == NULL) {
+//			return root;
+//		}
+//		TreeNode* tmp = root;
+//		tmp = root->left;
+//		root->left = root->right;
+//		root->right = tmp;
+//		invertTree(root->left);
+//		invertTree(root->right);
+//		return root;
+//	}
+//};
+
+
 //https://leetcode-cn.com/problems/implement-stack-using-queues/
-class MyStack {
-public:
-	/** Initialize your data structure here. */
-	deque<int> q1;
-	MyStack() {
-
-	}
-
-	/** Push element x onto stack. */
-	void push(int x) {
-		q1.push_back(x);
-
-	}
-
-	/** Removes the element on top of the stack and returns that element. */
-	int pop() {
-		if (!q1.empty()) {
-			int a = top();
-			q1.pop_back();
-			return a;
-		}
-		return -1;
-	}
-
-	/** Get the top element. */
-	int top() {
-		if (!q1.empty())
-			return q1[q1.size() - 1];
-		return -1;
-	}
-
-	/** Returns whether the stack is empty. */
-	bool empty() {
-		if (q1.empty())
-			return true;
-		return false;
-	}
-};
+//class MyStack {
+//public:
+//	/** Initialize your data structure here. */
+//	deque<int> q1;
+//	MyStack() {
+//
+//	}
+//
+//	/** Push element x onto stack. */
+//	void push(int x) {
+//		q1.push_back(x);
+//
+//	}
+//
+//	/** Removes the element on top of the stack and returns that element. */
+//	int pop() {
+//		if (!q1.empty()) {
+//			int a = top();
+//			q1.pop_back();
+//			return a;
+//		}
+//		return -1;
+//	}
+//
+//	/** Get the top element. */
+//	int top() {
+//		if (!q1.empty())
+//			return q1[q1.size() - 1];
+//		return -1;
+//	}
+//
+//	/** Returns whether the stack is empty. */
+//	bool empty() {
+//		if (q1.empty())
+//			return true;
+//		return false;
+//	}
+//};
 
 /**
  * Your MyStack object will be instantiated and called as such:
