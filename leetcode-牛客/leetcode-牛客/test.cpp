@@ -2,39 +2,91 @@
 #include<string>
 #include<vector>
 #include<list>
+#include<deque>
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/contains-duplicate-ii/submissions/
-class Solution {
+//https://leetcode-cn.com/problems/implement-stack-using-queues/
+class MyStack {
 public:
-	bool static containsNearbyDuplicate(vector<int>& nums, int k) {
-		for (int i = 0; i < nums.size(); ++i) {
-			int l = 0;
-			vector<int>::iterator it = find(nums.begin() + i + 1, nums.end(), nums[i]);
-			if (it != nums.end()) {
-				l = it - (nums.begin() + i);
-				if (l <= k) {
-					return true;
-				}
-			}
+	/** Initialize your data structure here. */
+	deque<int> q1;
+	MyStack() {
+
+	}
+
+	/** Push element x onto stack. */
+	void push(int x) {
+		q1.push_back(x);
+
+	}
+
+	/** Removes the element on top of the stack and returns that element. */
+	int pop() {
+		if (!q1.empty()) {
+			int a = top();
+			q1.pop_back();
+			return a;
 		}
+		return -1;
+	}
+
+	/** Get the top element. */
+	int top() {
+		if (!q1.empty())
+			return q1[q1.size() - 1];
+		return -1;
+	}
+
+	/** Returns whether the stack is empty. */
+	bool empty() {
+		if (q1.empty())
+			return true;
 		return false;
 	}
 };
-int main() {
 
-	vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	v.push_back(1);
-	bool a = Solution::containsNearbyDuplicate(v, 3);
-	cout << a;
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->top();
+ * bool param_4 = obj->empty();
+ */
 
 
-	return 0;
-}
+
+////https://leetcode-cn.com/problems/contains-duplicate-ii/submissions/
+//class Solution {
+//public:
+//	bool static containsNearbyDuplicate(vector<int>& nums, int k) {
+//		for (int i = 0; i < nums.size(); ++i) {
+//			int l = 0;
+//			vector<int>::iterator it = find(nums.begin() + i + 1, nums.end(), nums[i]);
+//			if (it != nums.end()) {
+//				l = it - (nums.begin() + i);
+//				if (l <= k) {
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
+//};
+//int main() {
+//
+//	vector<int> v;
+//	v.push_back(1);
+//	v.push_back(2);
+//	v.push_back(3);
+//	v.push_back(1);
+//	bool a = Solution::containsNearbyDuplicate(v, 3);
+//	cout << a;
+//
+//
+//	return 0;
+//}
 
 ////https://leetcode-cn.com/problems/contains-duplicate/
 //class Solution {
