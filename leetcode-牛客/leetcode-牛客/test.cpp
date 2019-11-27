@@ -5,20 +5,51 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/contains-duplicate/
+//https://leetcode-cn.com/problems/contains-duplicate-ii/submissions/
 class Solution {
 public:
-	bool containsDuplicate(vector<int>& nums) {
-		int end = nums.size();
-		sort(nums.begin(), nums.end());
-		for (int i = 0; i < end - 1; ++i) {
-			if (nums[i] == nums[i + 1]) {
-				return true;
+	bool static containsNearbyDuplicate(vector<int>& nums, int k) {
+		for (int i = 0; i < nums.size(); ++i) {
+			int l = 0;
+			vector<int>::iterator it = find(nums.begin() + i + 1, nums.end(), nums[i]);
+			if (it != nums.end()) {
+				l = it - (nums.begin() + i);
+				if (l <= k) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 };
+int main() {
+
+	vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(1);
+	bool a = Solution::containsNearbyDuplicate(v, 3);
+	cout << a;
+
+
+	return 0;
+}
+
+////https://leetcode-cn.com/problems/contains-duplicate/
+//class Solution {
+//public:
+//	bool containsDuplicate(vector<int>& nums) {
+//		int end = nums.size();
+//		sort(nums.begin(), nums.end());
+//		for (int i = 0; i < end - 1; ++i) {
+//			if (nums[i] == nums[i + 1]) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//};
 
 //
 ////https://leetcode-cn.com/problems/reverse-vowels-of-a-string/submissions/
