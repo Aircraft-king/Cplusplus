@@ -8,7 +8,31 @@
 using namespace std;
 
 
+//https://www.nowcoder.com/practice/
+//1221ec77125d4370833fd3ad5ba72395?
+//tpId=37&&tqId=21260&rp=1&ru=/act
+//ivity/oj&qru=/ta/huawei/question-ranking
 
+#include<iostream>
+using namespace std;
+
+
+int main() {
+
+	int month = 0;
+	while (cin >> month) {
+		int num1 = 1;
+		int num2 = 1;
+		int tmp;
+		for (int i = 3; i <= month; ++i) {
+			tmp = num1 + num2;
+			num1 = num2;
+			num2 = tmp;
+		}
+		cout << tmp << endl;
+	}
+	return 0;
+}
 
 
 //
