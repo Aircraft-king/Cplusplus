@@ -2,11 +2,64 @@
 #include<string>
 #include<vector>
 #include<list>
+#include<stack>
 #include<deque>
 #include <algorithm> //sort
 using namespace std;
 
 
+//https://leetcode-cn.com/problems/implement-queue-using-stacks/submissions/
+class MyQueue {
+public:
+	stack<int> old_stack;
+	stack<int> new_stack;
+	/** Initialize your data structure here. */
+	MyQueue() {
+
+	}
+
+	/** Push element x to the back of queue. */
+	void push(int x) {
+		new_stack.push(x);
+	}
+
+	/** Removes the element from in front of queue and returns that element. */
+	int pop() {
+		swap_stack();
+		int a = old_stack.top();
+		old_stack.pop();
+		return a;
+	}
+
+	/** Get the front element. */
+	int peek() {
+		swap_stack();
+		return old_stack.top();
+	}
+	void swap_stack() {
+		if (!old_stack.empty()) return;
+		while (!new_stack.empty()) {
+			old_stack.push(new_stack.top());
+			new_stack.pop();
+		}
+	}
+	/** Returns whether the queue is empty. */
+	bool empty() {
+		if (old_stack.empty() && new_stack.empty()) {
+			return true;
+		}
+		return false;
+	}
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
 
 
 ////https://www.nowcoder.com/practice/51dcb4eef6004f6f
