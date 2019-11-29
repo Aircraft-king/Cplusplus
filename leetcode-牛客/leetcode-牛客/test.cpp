@@ -12,27 +12,46 @@ using namespace std;
 //1221ec77125d4370833fd3ad5ba72395?
 //tpId=37&&tqId=21260&rp=1&ru=/act
 //ivity/oj&qru=/ta/huawei/question-ranking
+//µÝ¹é
+int get_total_val(int month) {
+	if (month < 3) {
+		return 1;
+	}
+	else {
+		return get_total_val(month - 2) + get_total_val(month - 1);
+	}
 
-#include<iostream>
-using namespace std;
-
+}
 
 int main() {
-
 	int month = 0;
 	while (cin >> month) {
-		int num1 = 1;
-		int num2 = 1;
-		int tmp;
-		for (int i = 3; i <= month; ++i) {
-			tmp = num1 + num2;
-			num1 = num2;
-			num2 = tmp;
-		}
-		cout << tmp << endl;
+		int sum = 0;
+
+		sum = get_total_val(month);
+		cout << sum << endl;
 	}
+
 	return 0;
 }
+
+//·ÇµÝ¹é
+//int main() {
+//
+//	int month = 0;
+//	while (cin >> month) {
+//		int num1 = 1;
+//		int num2 = 1;
+//		int tmp;
+//		for (int i = 3; i <= month; ++i) {
+//			tmp = num1 + num2;
+//			num1 = num2;
+//			num2 = tmp;
+//		}
+//		cout << tmp << endl;
+//	}
+//	return 0;
+//}
 
 
 //
