@@ -7,26 +7,55 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/reverse-integer/submissions/
+//https://leetcode-cn.com/problems/palindrome-number/submissions/
+
 class Solution {
 public:
-	int reverse(int x) {
-		if (x >= -9 && x <= 9) {
-			return x;
+	bool isPalindrome(int x) {
+		vector<int> v;
+		if (x < 0) {
+			return false;
 		}
-		long p = 0;
+		if (x >= 0 && x <= 9) {
+			return true;
+		}
 		while (x) {
-			p *= 10;
-			if (p > INT_MAX || p < INT_MIN)
-			{
-				return 0;
-			}
-			p += x % 10;
+			v.push_back(x % 10);
 			x /= 10;
 		}
-		return p;
+		int begin = 0;
+		int end = v.size() - 1;
+		while (begin < end) {
+			if (v[begin] != v[end]) {
+				return false;
+			}
+			begin++;
+			end--;
+		}
+		return true;
 	}
 };
+
+////https://leetcode-cn.com/problems/reverse-integer/submissions/
+//class Solution {
+//public:
+//	int reverse(int x) {
+//		if (x >= -9 && x <= 9) {
+//			return x;
+//		}
+//		long p = 0;
+//		while (x) {
+//			p *= 10;
+//			if (p > INT_MAX || p < INT_MIN)
+//			{
+//				return 0;
+//			}
+//			p += x % 10;
+//			x /= 10;
+//		}
+//		return p;
+//	}
+//};
 
 
 //https://leetcode-cn.com/problems/two-sum/submissions/
