@@ -7,24 +7,46 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/two-sum/submissions/
+//https://leetcode-cn.com/problems/reverse-integer/submissions/
 class Solution {
 public:
-	vector<int> twoSum(vector<int>& nums, int target) {
-		vector<int> v;
-		for (int i = 0; i < nums.size() - 1; ++i) {
-			for (int j = i + 1; j < nums.size(); ++j) {
-				if (nums[i] + nums[j] == target) {
-					v.push_back(i);
-					v.push_back(j);
-					return v;
-				}
-
-			}
+	int reverse(int x) {
+		if (x >= -9 && x <= 9) {
+			return x;
 		}
-		return v;
+		long p = 0;
+		while (x) {
+			p *= 10;
+			if (p > INT_MAX || p < INT_MIN)
+			{
+				return 0;
+			}
+			p += x % 10;
+			x /= 10;
+		}
+		return p;
 	}
 };
+
+
+//https://leetcode-cn.com/problems/two-sum/submissions/
+//class Solution {
+//public:
+//	vector<int> twoSum(vector<int>& nums, int target) {
+//		vector<int> v;
+//		for (int i = 0; i < nums.size() - 1; ++i) {
+//			for (int j = i + 1; j < nums.size(); ++j) {
+//				if (nums[i] + nums[j] == target) {
+//					v.push_back(i);
+//					v.push_back(j);
+//					return v;
+//				}
+//
+//			}
+//		}
+//		return v;
+//	}
+//};
 
 //https://www.nowcoder.com/practice/
 //1221ec77125d4370833fd3ad5ba72395?
