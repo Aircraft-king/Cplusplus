@@ -7,34 +7,59 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/palindrome-number/submissions/
+//https://leetcode-cn.com/problems/reverse-linked-list/
 
-class Solution {
-public:
-	bool isPalindrome(int x) {
-		vector<int> v;
-		if (x < 0) {
-			return false;
-		}
-		if (x >= 0 && x <= 9) {
-			return true;
-		}
-		while (x) {
-			v.push_back(x % 10);
-			x /= 10;
-		}
-		int begin = 0;
-		int end = v.size() - 1;
-		while (begin < end) {
-			if (v[begin] != v[end]) {
-				return false;
-			}
-			begin++;
-			end--;
-		}
-		return true;
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+typedef struct ListNode node;
+
+struct ListNode* reverseList(struct ListNode* head) {
+	node* pre = NULL;
+	node* cur = head;
+	node* next = NULL;
+	while (cur) {
+		next = cur->next;
+		cur->next = pre;
+		pre = cur;
+		cur = next;
 	}
-};
+	return pre;
+}
+
+////https://leetcode-cn.com/problems/palindrome-number/submissions/
+//
+//class Solution {
+//public:
+//	bool isPalindrome(int x) {
+//		vector<int> v;
+//		if (x < 0) {
+//			return false;
+//		}
+//		if (x >= 0 && x <= 9) {
+//			return true;
+//		}
+//		while (x) {
+//			v.push_back(x % 10);
+//			x /= 10;
+//		}
+//		int begin = 0;
+//		int end = v.size() - 1;
+//		while (begin < end) {
+//			if (v[begin] != v[end]) {
+//				return false;
+//			}
+//			begin++;
+//			end--;
+//		}
+//		return true;
+//	}
+//};
 
 ////https://leetcode-cn.com/problems/reverse-integer/submissions/
 //class Solution {
