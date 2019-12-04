@@ -7,39 +7,49 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/count-primes/submissions/
+//https://leetcode-cn.com/problems/add-digits/
 
 class Solution {
 public:
-	int countPrimes(int n) {
-		if (n <= 0) {
-			return 0;
-		}
-		int num[n];
-		int count = 0;
-		for (int i = 0; i < n; i++)
-		{
-			num[i] = i;
-		}
-
-		for (int j = 2; j < n; j++)
-		{
-			if (0 != num[j])
-			{
-				for (int k = 2; k*j < n; k++)
-				{
-					num[k*j] = 0;
-				}
-			}
-		}
-		for (int z = 2; z < n; ++z) {
-			if (num[z] != 0) {
-				count++;
-			}
-		}
-		return count;
+	int addDigits(int num) {
+		return (num - 1) % 9 + 1;
 	}
 };
+
+
+////https://leetcode-cn.com/problems/count-primes/submissions/
+//
+//class Solution {
+//public:
+//	int countPrimes(int n) {
+//		if (n <= 0) {
+//			return 0;
+//		}
+//		int num[n];
+//		int count = 0;
+//		for (int i = 0; i < n; i++)
+//		{
+//			num[i] = i;
+//		}
+//
+//		for (int j = 2; j < n; j++)
+//		{
+//			if (0 != num[j])
+//			{
+//				for (int k = 2; k*j < n; k++)
+//				{
+//					num[k*j] = 0;
+//				}
+//			}
+//		}
+//		for (int z = 2; z < n; ++z) {
+//			if (num[z] != 0) {
+//				count++;
+//			}
+//		}
+//		return count;
+//	}
+//};
 
 
 //https://leetcode-cn.com/problems/power-of-two/submissions/
