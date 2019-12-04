@@ -7,25 +7,60 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/power-of-two/submissions/
+//https://leetcode-cn.com/problems/count-primes/submissions/
+
 class Solution {
 public:
-	bool isPowerOfTwo(int n) {
+	int countPrimes(int n) {
 		if (n <= 0) {
-			return false;
+			return 0;
 		}
-		for (int i = 0; i < 32; ++i) {
-			if (n == 1) {
-				return true;
-			}
-			if (n % 2 == 1) {
-				return false;
-			}
-			n /= 2;
+		int num[n];
+		int count = 0;
+		for (int i = 0; i < n; i++)
+		{
+			num[i] = i;
 		}
-		return true;
+
+		for (int j = 2; j < n; j++)
+		{
+			if (0 != num[j])
+			{
+				for (int k = 2; k*j < n; k++)
+				{
+					num[k*j] = 0;
+				}
+			}
+		}
+		for (int z = 2; z < n; ++z) {
+			if (num[z] != 0) {
+				count++;
+			}
+		}
+		return count;
 	}
 };
+
+
+//https://leetcode-cn.com/problems/power-of-two/submissions/
+//class Solution {
+//public:
+//	bool isPowerOfTwo(int n) {
+//		if (n <= 0) {
+//			return false;
+//		}
+//		for (int i = 0; i < 32; ++i) {
+//			if (n == 1) {
+//				return true;
+//			}
+//			if (n % 2 == 1) {
+//				return false;
+//			}
+//			n /= 2;
+//		}
+//		return true;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/delete-node-in-a-linked-list/submissions/
 /**
