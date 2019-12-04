@@ -7,30 +7,50 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/reverse-linked-list/
-
-
+//https://leetcode-cn.com/problems/delete-node-in-a-linked-list/submissions/
 /**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
- *     struct ListNode *next;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-typedef struct ListNode node;
-
-struct ListNode* reverseList(struct ListNode* head) {
-	node* pre = NULL;
-	node* cur = head;
-	node* next = NULL;
-	while (cur) {
-		next = cur->next;
-		cur->next = pre;
-		pre = cur;
-		cur = next;
+class Solution {
+public:
+	void deleteNode(ListNode* node) {
+		ListNode* t = node->next;
+		node->val = node->next->val;
+		node->next = node->next->next;
+		delete t;
+		t = NULL;
 	}
-	return pre;
-}
+};
+
+//https://leetcode-cn.com/problems/reverse-linked-list/
+
+//
+///**
+// * Definition for singly-linked list.
+// * struct ListNode {
+// *     int val;
+// *     struct ListNode *next;
+// * };
+// */
+//typedef struct ListNode node;
+//
+//struct ListNode* reverseList(struct ListNode* head) {
+//	node* pre = NULL;
+//	node* cur = head;
+//	node* next = NULL;
+//	while (cur) {
+//		next = cur->next;
+//		cur->next = pre;
+//		pre = cur;
+//		cur = next;
+//	}
+//	return pre;
+//}
 
 ////https://leetcode-cn.com/problems/palindrome-number/submissions/
 //
