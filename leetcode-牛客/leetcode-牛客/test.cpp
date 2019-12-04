@@ -7,6 +7,26 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/power-of-two/submissions/
+class Solution {
+public:
+	bool isPowerOfTwo(int n) {
+		if (n <= 0) {
+			return false;
+		}
+		for (int i = 0; i < 32; ++i) {
+			if (n == 1) {
+				return true;
+			}
+			if (n % 2 == 1) {
+				return false;
+			}
+			n /= 2;
+		}
+		return true;
+	}
+};
+
 //https://leetcode-cn.com/problems/delete-node-in-a-linked-list/submissions/
 /**
  * Definition for singly-linked list.
@@ -16,16 +36,16 @@ using namespace std;
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
-	void deleteNode(ListNode* node) {
-		ListNode* t = node->next;
-		node->val = node->next->val;
-		node->next = node->next->next;
-		delete t;
-		t = NULL;
-	}
-};
+//class Solution {
+//public:
+//	void deleteNode(ListNode* node) {
+//		ListNode* t = node->next;
+//		node->val = node->next->val;
+//		node->next = node->next->next;
+//		delete t;
+//		t = NULL;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/reverse-linked-list/
 
