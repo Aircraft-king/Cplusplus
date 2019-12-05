@@ -7,14 +7,78 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/add-digits/
+//https://leetcode-cn.com/problems/palindrome-linked-list/submissions/
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-	int addDigits(int num) {
-		return (num - 1) % 9 + 1;
+	bool isPalindrome(ListNode* head) {
+		if (head == NULL || head->next == NULL) {
+			return true;
+		}
+		ListNode* fast = head;
+		ListNode* slow = head;
+		stack<int> s;
+		while (fast->next != NULL && fast->next->next != NULL) {
+			fast = fast->next->next;
+			slow = slow->next;
+		}
+		if (fast->next) {
+			slow = slow->next;
+		}
+		while (slow) {
+			s.push(slow->val);
+			slow = slow->next;
+		}
+		while (!s.empty()) {
+			if (s.top() != head->val) {
+				return false;
+			}
+			s.pop();
+			head = head->next;
+		}
+		return true;
+
+		//这个方法有问题  但是现在仍然没有解决 
+		/*
+		vector<int> s;
+		if(head==NULL){
+			return true;
+		}
+		while(!head){
+			s.push_back(head->val);
+			head=head->next;
+		}
+		int begin = 0;
+		int end = s.size()-1;
+		while(begin<end){
+			if(s[begin]!=s[end]){
+			return false;
+			}
+			begin++;
+			end--;
+		}
+		return true;
+		*/
 	}
 };
+
+
+////https://leetcode-cn.com/problems/add-digits/
+//
+//class Solution {
+//public:
+//	int addDigits(int num) {
+//		return (num - 1) % 9 + 1;
+//	}
+//};
 
 
 ////https://leetcode-cn.com/problems/count-primes/submissions/
