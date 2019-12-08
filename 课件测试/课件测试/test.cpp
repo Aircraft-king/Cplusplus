@@ -6,90 +6,112 @@
 #include<stdio.h>
 #include<string>
 using namespace std;
-
-
-
-
-
-class String
-{
-public:
-	String(const char *str = "")
-	{
-		m_data = new char[strlen(str) + 1];
-		strcpy(m_data, str);
-	}
-	String(const String &s) :m_data(nullptr)
-	{
-		String tmp(s.m_data);
-		swap(m_data, tmp.m_data);
-	}
-	String& operator=(const String &s)
-	{
-		if (this != &s)
-		{
-			String tmp(s);
-			swap(m_data, tmp.m_data);
-		}
-		return *this;
-	}
-	~String()
-	{
-		if (m_data)
-		{
-			delete[]m_data;
-			m_data = NULL;
-		}
-	}
-private:
-	char *m_data;
+//友元关系不能继承
+class Student; 
+class Person {
+public:    
+      friend void Display(const Person& p, const Student& s); 
+protected:   
+	string _name; // 姓名 
+}; 
+class Student : public Person
+{ 
+protected:    
+	int _stuNum; // 学号 
 };
-
-template<typename T>
-void Copy(T *dst, const T *src, size_t sz, bool IsPOD)
-{
-	//cout<<typeid(T).name()<<endl;
-	//bool IsPOD = IsPODType(typeid(T).name());
-	if (IsPOD)
-		memcpy(dst, src, sizeof(T)*sz);
-	else
-	{
-		for (int i = 0; i < sz; ++i)
-		{
-			dst[i] = src[i];
-		}
-	}
+void Display(const Person& p, const Student& s) 
+{ 
+     cout << p._name << endl;    cout << s._stuNum << endl; 
 }
-
-
-bool IsPODType(const char *type)
-{
-	const char* type_ar[] = {
-								"bool",
-								"short",
-								"int",
-								"float",
-								"long",
-								"double"
-	};
-	int n = sizeof(type_ar) / sizeof(const char*);
-	for (int i = 0; i < n; ++i)
-	{
-		if (strcmp(type, type_ar[i]) == 0)
-			return true;
-	}
-	return false;
-}
-int main()
-{
-	int ar1[5] = { 11,22,33,44,55 };
-	int ar2[5];
-	Copy(ar2, ar1, 5, IsPODType("int"));
-	String sa1[3] = { "aa", "bb", "cc" };
-	String sa2[3];
-	Copy(sa2, sa1, 3, IsPODType("String"));
+int main() { 
+	Person p;    
+	Student s;    
+	Display(p, s); 
 	return 0;
 }
+
+
+
+//
+//class String
+//{
+//public:
+//	String(const char *str = "")
+//	{
+//		m_data = new char[strlen(str) + 1];
+//		strcpy(m_data, str);
+//	}
+//	String(const String &s) :m_data(nullptr)
+//	{
+//		String tmp(s.m_data);
+//		swap(m_data, tmp.m_data);
+//	}
+//	String& operator=(const String &s)
+//	{
+//		if (this != &s)
+//		{
+//			String tmp(s);
+//			swap(m_data, tmp.m_data);
+//		}
+//		return *this;
+//	}
+//	~String()
+//	{
+//		if (m_data)
+//		{
+//			delete[]m_data;
+//			m_data = NULL;
+//		}
+//	}
+//private:
+//	char *m_data;
+//};
+//
+//template<typename T>
+//void Copy(T *dst, const T *src, size_t sz, bool IsPOD)
+//{
+//	//cout<<typeid(T).name()<<endl;
+//	//bool IsPOD = IsPODType(typeid(T).name());
+//	if (IsPOD)
+//		memcpy(dst, src, sizeof(T)*sz);
+//	else
+//	{
+//		for (int i = 0; i < sz; ++i)
+//		{
+//			dst[i] = src[i];
+//		}
+//	}
+//}
+//
+//
+//bool IsPODType(const char *type)
+//{
+//	const char* type_ar[] = {
+//								"bool",
+//								"short",
+//								"int",
+//								"float",
+//								"long",
+//								"double"
+//	};
+//	int n = sizeof(type_ar) / sizeof(const char*);
+//	for (int i = 0; i < n; ++i)
+//	{
+//		if (strcmp(type, type_ar[i]) == 0)
+//			return true;
+//	}
+//	return false;
+//}
+//int main()
+//{
+//	int ar1[5] = { 11,22,33,44,55 };
+//	int ar2[5];
+//	Copy(ar2, ar1, 5, IsPODType("int"));
+//	String sa1[3] = { "aa", "bb", "cc" };
+//	String sa2[3];
+//	Copy(sa2, sa1, 3, IsPODType("String"));
+//	return 0;
+//}
 //int main() {
 //
 //	vector<int> ar(10, 2);
@@ -1064,3 +1086,7 @@ int main()
 //	TestFunc(10);   // 传参时，使用指定的实参
 //}
 */
+
+void Display(const Person & p, const Student & s)
+{
+}
