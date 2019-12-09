@@ -7,6 +7,47 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/guess-number-higher-or-lower/submissions/
+
+// Forward declaration of guess API.
+// @param num, your guess
+// @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+int guess(int num);
+
+class Solution {
+public:
+	int guessNumber(int n) {
+		if (n == 1) {
+			return 1;
+		}
+		int l = 0;
+		int r = n;
+		while (l <= r) {
+			int mid = l + (r - l) / 2;
+			if (guess(mid) == 0) {
+				return mid;
+			}
+			if (guess(mid) == -1) {
+				r = mid - 1;
+			}
+			if (guess(mid) == 1) {
+				l = mid + 1;
+			}
+		}
+		return -1;
+		/*  递归算法有问题，无法处理大数
+		if(guess(n)==-1){
+			return guessNumber(n-1);
+		}
+		if(guess(n)==1){
+			return guessNumber(n+1);
+		}
+		return n;
+		*/
+	}
+};
+
+
 //https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/
 /**
  * Definition for a binary tree node.
