@@ -7,6 +7,38 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/find-the-difference/
+
+
+class Solution {
+public:
+	char findTheDifference(string s, string t) {
+		//方法一
+		/*
+		sort(s.begin(),s.end());
+		sort(t.begin(),t.end());
+		for(int i=0; i<s.size(); ++i){
+			if(s[i]!=t[i]){
+				return t[i];
+			}
+		}
+		return t[s.size()];
+		*/
+		//方法二
+		if (s.size() == 0) {
+			return t[0];
+		}
+		for (int i = 0; i < t.size(); ++i) {
+			s.push_back(t[i]);
+		}
+		char a = s[0];
+		for (int j = 1; j < s.size(); ++j) {
+			a ^= s[j];
+		}
+		return a;
+	}
+};
+
 //https://leetcode-cn.com/problems/guess-number-higher-or-lower/submissions/
 
 // Forward declaration of guess API.
