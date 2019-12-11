@@ -1,261 +1,293 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<list>
-#include<stack>
-#include<deque>
-#include <algorithm> //sort
+//#include<iostream>
+//#include<string>
+//#include<vector>
+//#include<list>
+//#include<stack>
+//#include<deque>
+//#include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/ugly-number/submissions/
+
+class Solution {
+public:
+	bool isUgly(int num) {
+		if (num == 0) {
+			return false;
+		}
+		while (num != 1) {
+			if (num % 2 == 0) {
+				num /= 2;
+			}
+			else if (num % 3 == 0) {
+				num /= 3;
+			}
+			else if (num % 5 == 0) {
+				num /= 5;
+			}
+			else {
+				return false;
+			}
+		}
+		return true;
+	}
+};
+
+//
 //https://leetcode-cn.com/problems/valid-perfect-square/submissions/
-
-class Solution {
-public:
-	bool isPerfectSquare(int num) {
-		if (num == 1) {
-			return true;
-		}
-		for (long i = 0; i <= num / 2; ++i) {
-			if (i*i == num) {
-				return true;
-			}
-		}
-		return false;
-	}
-};
-
+//
+//class Solution {
+//public:
+//	bool isPerfectSquare(int num) {
+//		if (num == 1) {
+//			return true;
+//		}
+//		for (long i = 0; i <= num / 2; ++i) {
+//			if (i*i == num) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//};
+//
 //https://leetcode-cn.com/problems/find-the-difference/
-
-
-class Solution {
-public:
-	char findTheDifference(string s, string t) {
-		//方法一
-		/*
-		sort(s.begin(),s.end());
-		sort(t.begin(),t.end());
-		for(int i=0; i<s.size(); ++i){
-			if(s[i]!=t[i]){
-				return t[i];
-			}
-		}
-		return t[s.size()];
-		*/
-		//方法二
-		if (s.size() == 0) {
-			return t[0];
-		}
-		for (int i = 0; i < t.size(); ++i) {
-			s.push_back(t[i]);
-		}
-		char a = s[0];
-		for (int j = 1; j < s.size(); ++j) {
-			a ^= s[j];
-		}
-		return a;
-	}
-};
-
+//
+//
+//class Solution {
+//public:
+//	char findTheDifference(string s, string t) {
+//		方法一
+//		/*
+//		sort(s.begin(),s.end());
+//		sort(t.begin(),t.end());
+//		for(int i=0; i<s.size(); ++i){
+//			if(s[i]!=t[i]){
+//				return t[i];
+//			}
+//		}
+//		return t[s.size()];
+//		*/
+///*
+//		方法二
+//		if (s.size() == 0) {
+//			return t[0];
+//		}
+//		for (int i = 0; i < t.size(); ++i) {
+//			s.push_back(t[i]);
+//		}
+//		char a = s[0];
+//		for (int j = 1; j < s.size(); ++j) {
+//			a ^= s[j];
+//		}
+//		return a;
+//	}
+//};
+//
 //https://leetcode-cn.com/problems/guess-number-higher-or-lower/submissions/
-
+//
 // Forward declaration of guess API.
 // @param num, your guess
 // @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
-int guess(int num);
-
-class Solution {
-public:
-	int guessNumber(int n) {
-		if (n == 1) {
-			return 1;
-		}
-		int l = 0;
-		int r = n;
-		while (l <= r) {
-			int mid = l + (r - l) / 2;
-			if (guess(mid) == 0) {
-				return mid;
-			}
-			if (guess(mid) == -1) {
-				r = mid - 1;
-			}
-			if (guess(mid) == 1) {
-				l = mid + 1;
-			}
-		}
-		return -1;
-		/*  递归算法有问题，无法处理大数
-		if(guess(n)==-1){
-			return guessNumber(n-1);
-		}
-		if(guess(n)==1){
-			return guessNumber(n+1);
-		}
-		return n;
-		*/
-	}
-};
-
-
+//int guess(int num);
+//
+//class Solution {
+//public:
+//	int guessNumber(int n) {
+//		if (n == 1) {
+//			return 1;
+//		}
+//		int l = 0;
+//		int r = n;
+//		while (l <= r) {
+//			int mid = l + (r - l) / 2;
+//			if (guess(mid) == 0) {
+//				return mid;
+//			}
+//			if (guess(mid) == -1) {
+//				r = mid - 1;
+//			}
+//			if (guess(mid) == 1) {
+//				l = mid + 1;
+//			}
+//		}
+//		return -1;
+//		/*  递归算法有问题，无法处理大数
+//		if(guess(n)==-1){
+//			return guessNumber(n-1);
+//		}
+//		if(guess(n)==1){
+//			return guessNumber(n+1);
+//		}
+//		return n;
+//		*/
+///*
+//	}
+//};
+//
+//
 //https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/submissions/
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-		if (root == NULL || root == p || root == q
-			|| (root != NULL && root->val > p->val&&root->val < q->val)
-			|| (root != NULL && root->val<p->val&&root->val>q->val)) {
-			return root;
-		}
-
-		if (p->val < root->val&&q->val < root->val&&root != NULL) {
-			return lowestCommonAncestor(root->left, p, q);
-		}
-		if (p->val > root->val&&q->val > root->val&&root != NULL) {
-			return lowestCommonAncestor(root->right, p, q);
-		}
-		return root;
-	}
-};
-
+///**
+// * Definition for a binary tree node.
+// * struct TreeNode {
+// *     int val;
+// *     TreeNode *left;
+// *     TreeNode *right;
+// *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+// * };
+// */
+///*
+//class Solution {
+//public:
+//	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//		if (root == NULL || root == p || root == q
+//			|| (root != NULL && root->val > p->val&&root->val < q->val)
+//			|| (root != NULL && root->val<p->val&&root->val>q->val)) {
+//			return root;
+//		}
+//
+//		if (p->val < root->val&&q->val < root->val&&root != NULL) {
+//			return lowestCommonAncestor(root->left, p, q);
+//		}
+//		if (p->val > root->val&&q->val > root->val&&root != NULL) {
+//			return lowestCommonAncestor(root->right, p, q);
+//		}
+//		return root;
+//	}
+//};
+//
 //https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-		if (root == NULL || root == p || root == q) {
-			return root;
-		}
-		TreeNode* left = lowestCommonAncestor(root->left, p, q);
-		TreeNode* right = lowestCommonAncestor(root->right, p, q);
-		if (left&&right) {
-			return root;
-		}
-		return left ? left : right;
-	}
-};
-
-
-
-
-
+//
+///**
+// * Definition for a binary tree node.
+// * struct TreeNode {
+// *     int val;
+// *     TreeNode *left;
+// *     TreeNode *right;
+// *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+// * };
+// */
+///*
+//class Solution {
+//public:
+//	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+//		if (root == NULL || root == p || root == q) {
+//			return root;
+//		}
+//		TreeNode* left = lowestCommonAncestor(root->left, p, q);
+//		TreeNode* right = lowestCommonAncestor(root->right, p, q);
+//		if (left&&right) {
+//			return root;
+//		}
+//		return left ? left : right;
+//	}
+//};
+//
+//
+//
+//
+//
 //https://leetcode-cn.com/problems/valid-anagram/
-class Solution {
-public:
-	bool isAnagram(string s, string t) {
-		sort(s.begin(), s.end());
-		sort(t.begin(), t.end());
-		if (s.size() != t.size()) {
-			return false;
-		}
-		for (int i = 0; i < s.size(); ++i) {
-			if (s[i] != t[i]) {
-				return false;
-			}
-		}
-		return true;
-	}
-};
-
+//class Solution {
+//public:
+//	bool isAnagram(string s, string t) {
+//		sort(s.begin(), s.end());
+//		sort(t.begin(), t.end());
+//		if (s.size() != t.size()) {
+//			return false;
+//		}
+//		for (int i = 0; i < s.size(); ++i) {
+//			if (s[i] != t[i]) {
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+//};
+//
 //https://leetcode-cn.com/problems/isomorphic-strings/submissions/
-
-class Solution {
-public:
-	bool isIsomorphic(string s, string t) {
-		if (s.size() == 0) return true;
-		for (int i = 0; i < s.size(); ++i) {
-			if (s.find(s[i]) != t.find(t[i])) {
-				return false;
-			}
-		}
-		return true;
-	}
-};
-
-
-
+//
+//class Solution {
+//public:
+//	bool isIsomorphic(string s, string t) {
+//		if (s.size() == 0) return true;
+//		for (int i = 0; i < s.size(); ++i) {
+//			if (s.find(s[i]) != t.find(t[i])) {
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+//};
+//
+//
+//
 //https://leetcode-cn.com/problems/palindrome-linked-list/submissions/
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-	bool isPalindrome(ListNode* head) {
-		if (head == NULL || head->next == NULL) {
-			return true;
-		}
-		ListNode* fast = head;
-		ListNode* slow = head;
-		stack<int> s;
-		while (fast->next != NULL && fast->next->next != NULL) {
-			fast = fast->next->next;
-			slow = slow->next;
-		}
-		if (fast->next) {
-			slow = slow->next;
-		}
-		while (slow) {
-			s.push(slow->val);
-			slow = slow->next;
-		}
-		while (!s.empty()) {
-			if (s.top() != head->val) {
-				return false;
-			}
-			s.pop();
-			head = head->next;
-		}
-		return true;
-
-		//这个方法有问题  但是现在仍然没有解决 
-		/*
-		vector<int> s;
-		if(head==NULL){
-			return true;
-		}
-		while(!head){
-			s.push_back(head->val);
-			head=head->next;
-		}
-		int begin = 0;
-		int end = s.size()-1;
-		while(begin<end){
-			if(s[begin]!=s[end]){
-			return false;
-			}
-			begin++;
-			end--;
-		}
-		return true;
-		*/
-	}
-};
-
-
-////https://leetcode-cn.com/problems/add-digits/
+//
+///**
+// * Definition for singly-linked list.
+// * struct ListNode {
+// *     int val;
+// *     ListNode *next;
+// *     ListNode(int x) : val(x), next(NULL) {}
+// * };
+// */
+///*
+//class Solution {
+//public:
+//	bool isPalindrome(ListNode* head) {
+//		if (head == NULL || head->next == NULL) {
+//			return true;
+//		}
+//		ListNode* fast = head;
+//		ListNode* slow = head;
+//		stack<int> s;
+//		while (fast->next != NULL && fast->next->next != NULL) {
+//			fast = fast->next->next;
+//			slow = slow->next;
+//		}
+//		if (fast->next) {
+//			slow = slow->next;
+//		}
+//		while (slow) {
+//			s.push(slow->val);
+//			slow = slow->next;
+//		}
+//		while (!s.empty()) {
+//			if (s.top() != head->val) {
+//				return false;
+//			}
+//			s.pop();
+//			head = head->next;
+//		}
+//		return true;
+//
+//		这个方法有问题  但是现在仍然没有解决 
+//		/*
+//		vector<int> s;
+//		if(head==NULL){
+//			return true;
+//		}
+//		while(!head){
+//			s.push_back(head->val);
+//			head=head->next;
+//		}
+//		int begin = 0;
+//		int end = s.size()-1;
+//		while(begin<end){
+//			if(s[begin]!=s[end]){
+//			return false;
+//			}
+//			begin++;
+//			end--;
+//		}
+//		return true;
+//		*/
+//	}
+//};
+//
+//
+//https://leetcode-cn.com/problems/add-digits/
 //
 //class Solution {
 //public:
@@ -263,9 +295,9 @@ public:
 //		return (num - 1) % 9 + 1;
 //	}
 //};
-
-
-////https://leetcode-cn.com/problems/count-primes/submissions/
+//
+//
+//https://leetcode-cn.com/problems/count-primes/submissions/
 //
 //class Solution {
 //public:
@@ -298,8 +330,8 @@ public:
 //		return count;
 //	}
 //};
-
-
+//
+//
 //https://leetcode-cn.com/problems/power-of-two/submissions/
 //class Solution {
 //public:
@@ -319,16 +351,16 @@ public:
 //		return true;
 //	}
 //};
-
+//
 //https://leetcode-cn.com/problems/delete-node-in-a-linked-list/submissions/
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+///**
+// * Definition for singly-linked list.
+// * struct ListNode {
+// *     int val;
+// *     ListNode *next;
+// *     ListNode(int x) : val(x), next(NULL) {}
+// * };
+// */
 //class Solution {
 //public:
 //	void deleteNode(ListNode* node) {
@@ -339,9 +371,9 @@ public:
 //		t = NULL;
 //	}
 //};
-
+//
 //https://leetcode-cn.com/problems/reverse-linked-list/
-
+//
 //
 ///**
 // * Definition for singly-linked list.
@@ -364,8 +396,8 @@ public:
 //	}
 //	return pre;
 //}
-
-////https://leetcode-cn.com/problems/palindrome-number/submissions/
+//
+//https://leetcode-cn.com/problems/palindrome-number/submissions/
 //
 //class Solution {
 //public:
@@ -393,8 +425,8 @@ public:
 //		return true;
 //	}
 //};
-
-////https://leetcode-cn.com/problems/reverse-integer/submissions/
+//
+//https://leetcode-cn.com/problems/reverse-integer/submissions/
 //class Solution {
 //public:
 //	int reverse(int x) {
@@ -414,8 +446,8 @@ public:
 //		return p;
 //	}
 //};
-
-
+//
+//
 //https://leetcode-cn.com/problems/two-sum/submissions/
 //class Solution {
 //public:
@@ -434,7 +466,7 @@ public:
 //		return v;
 //	}
 //};
-
+//
 //https://www.nowcoder.com/practice/
 //1221ec77125d4370833fd3ad5ba72395?
 //tpId=37&&tqId=21260&rp=1&ru=/act
@@ -461,7 +493,7 @@ public:
 //
 //	return 0;
 //}
-
+//
 //非递归
 //int main() {
 //
@@ -479,10 +511,10 @@ public:
 //	}
 //	return 0;
 //}
-
-
 //
-////https://leetcode-cn.com/problems/implement-queue-using-stacks/submissions/
+//
+//
+//https://leetcode-cn.com/problems/implement-queue-using-stacks/submissions/
 //class MyQueue {
 //public:
 //	stack<int> old_stack;
@@ -534,11 +566,11 @@ public:
 // * int param_3 = obj->peek();
 // * bool param_4 = obj->empty();
 // */
-
-
-////https://www.nowcoder.com/practice/51dcb4eef6004f6f
-////8f44d927463ad5e8?tpId=98&tqId=32825&tPage=1&rp=1
-////&ru=%2Fta%2F2019test&qru=%2Fta%2F2019test%2Fquestion-ranking
+//
+//
+//https://www.nowcoder.com/practice/51dcb4eef6004f6f
+//8f44d927463ad5e8?tpId=98&tqId=32825&tPage=1&rp=1
+//&ru=%2Fta%2F2019test&qru=%2Fta%2F2019test%2Fquestion-ranking
 //
 //int main() {
 //	int l, r;
@@ -553,7 +585,7 @@ public:
 //	}
 //	return 0;
 //}
-
+//
 //
 //int main() {
 //	vector<int> arr;
@@ -573,19 +605,19 @@ public:
 //	cout << count << endl;
 //	return 0;
 //}
-
-
-
+//
+//
+//
 //https://leetcode-cn.com/problems/invert-binary-tree/submissions/
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+///**
+// * Definition for a binary tree node.
+// * struct TreeNode {
+// *     int val;
+// *     TreeNode *left;
+// *     TreeNode *right;
+// *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+// * };
+// */
 //class Solution {
 //public:
 //	TreeNode* invertTree(TreeNode* root) {
@@ -601,8 +633,8 @@ public:
 //		return root;
 //	}
 //};
-
-
+//
+//
 //https://leetcode-cn.com/problems/implement-stack-using-queues/
 //class MyStack {
 //public:
@@ -642,19 +674,19 @@ public:
 //		return false;
 //	}
 //};
-
-/**
- * Your MyStack object will be instantiated and called as such:
- * MyStack* obj = new MyStack();
- * obj->push(x);
- * int param_2 = obj->pop();
- * int param_3 = obj->top();
- * bool param_4 = obj->empty();
- */
-
-
-
-////https://leetcode-cn.com/problems/contains-duplicate-ii/submissions/
+//
+///**
+// * Your MyStack object will be instantiated and called as such:
+// * MyStack* obj = new MyStack();
+// * obj->push(x);
+// * int param_2 = obj->pop();
+// * int param_3 = obj->top();
+// * bool param_4 = obj->empty();
+// */
+//
+//
+//
+//https://leetcode-cn.com/problems/contains-duplicate-ii/submissions/
 //class Solution {
 //public:
 //	bool static containsNearbyDuplicate(vector<int>& nums, int k) {
@@ -684,8 +716,8 @@ public:
 //
 //	return 0;
 //}
-
-////https://leetcode-cn.com/problems/contains-duplicate/
+//
+//https://leetcode-cn.com/problems/contains-duplicate/
 //class Solution {
 //public:
 //	bool containsDuplicate(vector<int>& nums) {
@@ -699,9 +731,9 @@ public:
 //		return false;
 //	}
 //};
-
 //
-////https://leetcode-cn.com/problems/reverse-vowels-of-a-string/submissions/
+//
+//https://leetcode-cn.com/problems/reverse-vowels-of-a-string/submissions/
 //class Solution {
 //public:
 //	string  static reverseVowels(string s) {
@@ -743,8 +775,8 @@ public:
 //
 //	return 0;
 //}
-
-////https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions///
+//
+//https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions///
 //class Solution {
 //public:
 //	int removeDuplicates(vector<int>& nums) {
@@ -763,12 +795,12 @@ public:
 //		return nums.size();
 //	}
 //};
-
-
-
-
-
-////https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
+//
+//
+//
+//
+//
+//https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
 //
 //
 //class Solution {
