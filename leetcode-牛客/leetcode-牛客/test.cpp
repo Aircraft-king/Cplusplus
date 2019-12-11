@@ -1,37 +1,51 @@
-//#include<iostream>
-//#include<string>
-//#include<vector>
-//#include<list>
-//#include<stack>
-//#include<deque>
-//#include <algorithm> //sort
+#include<iostream>
+#include<string>
+#include<vector>
+#include<list>
+#include<stack>
+#include<deque>
+#include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/ugly-number/submissions/
-
+//https://leetcode-cn.com/problems/missing-number/submissions/
 class Solution {
 public:
-	bool isUgly(int num) {
-		if (num == 0) {
-			return false;
-		}
-		while (num != 1) {
-			if (num % 2 == 0) {
-				num /= 2;
-			}
-			else if (num % 3 == 0) {
-				num /= 3;
-			}
-			else if (num % 5 == 0) {
-				num /= 5;
-			}
-			else {
-				return false;
+	int missingNumber(vector<int>& nums) {
+		sort(nums.begin(), nums.end());
+		for (int i = 0; i < nums.size(); ++i) {
+			if (i != nums[i]) {
+				return i;
 			}
 		}
-		return true;
+		return nums.size();
 	}
 };
+
+////https://leetcode-cn.com/problems/ugly-number/submissions/
+//
+//class Solution {
+//public:
+//	bool isUgly(int num) {
+//		if (num == 0) {
+//			return false;
+//		}
+//		while (num != 1) {
+//			if (num % 2 == 0) {
+//				num /= 2;
+//			}
+//			else if (num % 3 == 0) {
+//				num /= 3;
+//			}
+//			else if (num % 5 == 0) {
+//				num /= 5;
+//			}
+//			else {
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+//};
 
 //
 //https://leetcode-cn.com/problems/valid-perfect-square/submissions/
