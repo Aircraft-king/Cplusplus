@@ -7,19 +7,78 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/missing-number/submissions/
+//https://leetcode-cn.com/problems/move-zeroes/submissions/
+
 class Solution {
 public:
-	int missingNumber(vector<int>& nums) {
-		sort(nums.begin(), nums.end());
-		for (int i = 0; i < nums.size(); ++i) {
-			if (i != nums[i]) {
-				return i;
+	void moveZeroes(vector<int>& nums) {
+		int count = 0;
+		vector<int>::iterator it = nums.begin();
+		while (it != nums.end()) {
+			if (*it == 0) {
+				it = nums.erase(it);
+				count++;
+				it--;
 			}
+			if (it != nums.end())
+				it++;
 		}
-		return nums.size();
+		while (count) {
+			nums.push_back(0);
+			count--;
+		}
 	}
 };
+
+// Forward declaration of isBadVersion API.
+//bool isBadVersion(int version) {
+//	if (version < 2) {
+//		return false;
+//	}
+//	else {
+//		return true;
+//	}
+//}
+//
+//class Solution {
+//public:
+//	int static firstBadVersion(int n) {
+//		if (n == 1) {
+//			return 1;
+//		}
+//		int l = 0;
+//		int r = n - 1;
+//		while (l < r) {
+//			int mid = l + (r - l) / 2;
+//			if (!isBadVersion(mid)) {
+//				l = mid + 1;
+//			}
+//			else {
+//				r = mid - 1;
+//			}
+//		}
+//		return r;
+//	}
+//};
+//int main() {
+//	int a=Solution::firstBadVersion(2);
+//	return 0;
+//}
+
+
+////https://leetcode-cn.com/problems/missing-number/submissions/
+//class Solution {
+//public:
+//	int missingNumber(vector<int>& nums) {
+//		sort(nums.begin(), nums.end());
+//		for (int i = 0; i < nums.size(); ++i) {
+//			if (i != nums[i]) {
+//				return i;
+//			}
+//		}
+//		return nums.size();
+//	}
+//};
 
 ////https://leetcode-cn.com/problems/ugly-number/submissions/
 //
