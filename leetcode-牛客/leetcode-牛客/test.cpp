@@ -7,28 +7,47 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/move-zeroes/submissions/
-
+//https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/submissions/
 class Solution {
 public:
-	void moveZeroes(vector<int>& nums) {
-		int count = 0;
-		vector<int>::iterator it = nums.begin();
-		while (it != nums.end()) {
-			if (*it == 0) {
-				it = nums.erase(it);
-				count++;
-				it--;
-			}
-			if (it != nums.end())
-				it++;
+	string toHex(int num) {
+		if (num == 0) {
+			return "0";
 		}
-		while (count) {
-			nums.push_back(0);
-			count--;
+		string str = "";
+		string s[16] = { "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f" };
+		unsigned int num1 = num;
+		while (num1 != 0) {
+			str = s[num1 % 16] + str;
+			num1 /= 16;
 		}
+		return str;
 	}
 };
+
+
+//https://leetcode-cn.com/problems/move-zeroes/submissions/
+
+//class Solution {
+//public:
+//	void moveZeroes(vector<int>& nums) {
+//		int count = 0;
+//		vector<int>::iterator it = nums.begin();
+//		while (it != nums.end()) {
+//			if (*it == 0) {
+//				it = nums.erase(it);
+//				count++;
+//				it--;
+//			}
+//			if (it != nums.end())
+//				it++;
+//		}
+//		while (count) {
+//			nums.push_back(0);
+//			count--;
+//		}
+//	}
+//};
 
 // Forward declaration of isBadVersion API.
 //bool isBadVersion(int version) {
