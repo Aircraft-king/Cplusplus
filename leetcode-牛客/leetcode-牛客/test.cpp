@@ -7,23 +7,39 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/submissions/
+//https://leetcode-cn.com/problems/hamming-distance/submissions/
+
 class Solution {
 public:
-	string toHex(int num) {
-		if (num == 0) {
-			return "0";
+	int hammingDistance(int x, int y) {
+		int num = x ^ y;
+		int count = 0;
+		while (num)
+		{
+			if (num & 1) count++;
+			num >>= 1;
 		}
-		string str = "";
-		string s[16] = { "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f" };
-		unsigned int num1 = num;
-		while (num1 != 0) {
-			str = s[num1 % 16] + str;
-			num1 /= 16;
-		}
-		return str;
+		return count;
 	}
 };
+
+//https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/submissions/
+//class Solution {
+//public:
+//	string toHex(int num) {
+//		if (num == 0) {
+//			return "0";
+//		}
+//		string str = "";
+//		string s[16] = { "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f" };
+//		unsigned int num1 = num;
+//		while (num1 != 0) {
+//			str = s[num1 % 16] + str;
+//			num1 /= 16;
+//		}
+//		return str;
+//	}
+//};
 
 
 //https://leetcode-cn.com/problems/move-zeroes/submissions/
