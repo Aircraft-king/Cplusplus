@@ -67,6 +67,13 @@ protected:
 			t = t->rightChild;
 		return t->data;
 	}
+	Type Min(BSTNode<Type> *t)const
+	{
+		assert(t != nullptr);
+		while (t->leftChild != nullptr)
+			t = t->leftChild;
+		return t->data;
+	}
 	void Order(BSTNode<Type> *t)const
 	{
 		if (t != nullptr)
@@ -105,7 +112,26 @@ protected:
 			return Remove(t->rightChild, key);
 		else
 		{
-			//
+			if (t->leftChild != nullptr && t->rightChild != nullptr) 
+			{
+				BSTNode<Type> *p = t->leftChild;
+				while (p->rightChild != nullptr)
+					p = p->rightChild;
+				t->data = p->data;
+				Remove(t->leftChild, p->data);
+			}
+			else
+			{
+					BSTNode<Type> *p = t;
+					t->leftChild == nullptr ? t = p->rightChild : t = p->leftChild;
+					delete p;
+					if (t == nullptr)
+					{
+						delete t;
+						t = nullptr;
+					}
+			}
+			/*
 			if (t->leftChild == nullptr &&t->rightChild == nullptr)
 			{
 				delete t;
@@ -131,6 +157,7 @@ protected:
 				t->data = p->data;
 				Remove(t->leftChild, p->data);
 			}
+			*/
 
 			return true;
 		}
@@ -148,6 +175,11 @@ template<typename Type>
 Type BSTree<Type>::Max()const
 {
 	return Max(root);
+}
+template<typename Type>
+Type BSTree<Type>::Min()const
+{
+	return Min(root);
 }
 template<typename Type>
 void BSTree<Type>::Order()const
