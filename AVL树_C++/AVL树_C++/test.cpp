@@ -51,7 +51,9 @@ protected:
 	}
 	void RotateRL(AVLNode<Type> *&ptr)
 	{
-		//???
+		//
+		RotateR(ptr->rightChild);
+		RotateL(ptr);
 	}
 	void RotateLR(AVLNode<Type> *&ptr)
 	{
@@ -146,8 +148,8 @@ bool AVLTree<Type>::Insert(AVLNode<Type> *&t, const Type &x)
 				}
 				else             //      >
 				{
-					cout << "RotateRL" << endl;
-					//RotateRL(pr);
+					//cout << "RotateRL" << endl;
+					RotateRL(pr);
 				}
 			}
 			else
