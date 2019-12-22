@@ -7,76 +7,100 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://www.nowcoder.com/practice/78f83c3f12d2464591ebc5a7 \
-3183db35?tpId=101&&tqId=33207&rp=1&ru=/activity/oj&qru=/ta \
-/programmer-code-interview-guide/question-ranking
+//https://leetcode-cn.com/problems/fibonacci-number/submissions/
 
-struct list_node {
-	int val;
-	struct list_node * next;
+class Solution {
+public:
+	int fib(int N) {
+		if (N == 0) {
+			return 0;
+		}
+		if (N < 3) {
+			return 1;
+		}
+		int a = 1;
+		int b = 1;
+		int c = 0;
+		while (N > 2) {
+			c = a + b;
+			a = b;
+			b = c;
+			N--;
+		}
+		return c;
+	}
 };
 
+//https://www.nowcoder.com/practice/78f83c3f12d2464591ebc5a7
+//3183db35?tpId=101&&tqId=33207&rp=1&ru=/activity/oj&qru=/ta
+///programmer-code-interview-guide/question-ranking
 
-list_node * input_list(void)
-{
-	int n, val;
-	list_node * phead = new list_node();
-	list_node * cur_pnode = phead;
-	scanf("%d", &n);
-	for (int i = 1; i <= n; ++i) {
-		scanf("%d", &val);
-		if (i == 1) {
-			cur_pnode->val = val;
-			cur_pnode->next = NULL;
-		}
-		else {
-			list_node * new_pnode = new list_node();
-			new_pnode->val = val;
-			new_pnode->next = NULL;
-			cur_pnode->next = new_pnode;
-			cur_pnode = new_pnode;
-		}
-	}
-	return phead;
-}
-
-
-list_node * selection_sort(list_node * head)
-{
-	//////在下面完成代码
-	vector<int> v;
-	list_node * p = head;
-	while (p) {
-		v.push_back(p->val);
-		p = p->next;
-	}
-	sort(v.begin(), v.end());
-	p = head;
-	for (int i = 0; i < v.size(); ++i) {
-		p->val = v[i];
-		p = p->next;
-	}
-	return head;
-}
-
-
-void print_list(list_node * head)
-{
-	while (head != NULL) {
-		printf("%d ", head->val);
-		head = head->next;
-	}
-	puts("");
-}
-
-
-int main()
-{
-	list_node * head = input_list();
-	list_node * new_head = selection_sort(head);
-	print_list(new_head);
-	return 0;
-}
+//struct list_node {
+//	int val;
+//	struct list_node * next;
+//};
+//
+//
+//list_node * input_list(void)
+//{
+//	int n, val;
+//	list_node * phead = new list_node();
+//	list_node * cur_pnode = phead;
+//	scanf("%d", &n);
+//	for (int i = 1; i <= n; ++i) {
+//		scanf("%d", &val);
+//		if (i == 1) {
+//			cur_pnode->val = val;
+//			cur_pnode->next = NULL;
+//		}
+//		else {
+//			list_node * new_pnode = new list_node();
+//			new_pnode->val = val;
+//			new_pnode->next = NULL;
+//			cur_pnode->next = new_pnode;
+//			cur_pnode = new_pnode;
+//		}
+//	}
+//	return phead;
+//}
+//
+//
+//list_node * selection_sort(list_node * head)
+//{
+//	//////在下面完成代码
+//	vector<int> v;
+//	list_node * p = head;
+//	while (p) {
+//		v.push_back(p->val);
+//		p = p->next;
+//	}
+//	sort(v.begin(), v.end());
+//	p = head;
+//	for (int i = 0; i < v.size(); ++i) {
+//		p->val = v[i];
+//		p = p->next;
+//	}
+//	return head;
+//}
+//
+//
+//void print_list(list_node * head)
+//{
+//	while (head != NULL) {
+//		printf("%d ", head->val);
+//		head = head->next;
+//	}
+//	puts("");
+//}
+//
+//
+//int main()
+//{
+//	list_node * head = input_list();
+//	list_node * new_head = selection_sort(head);
+//	print_list(new_head);
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/hamming-distance/submissions/
 //
