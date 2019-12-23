@@ -7,29 +7,48 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://www.nowcoder.com/practice/1664fe871878496aa600b6e09557982b?tpId=98&&tqId=33045&rp=1&ru=/activity/oj&qru=/ta/2019test/question-ranking
+
+
+int main() {
+	int num = 0;
+	vector<int> v;
+	while (cin >> num) {
+		v.push_back(num);
+	}
+	sort(v.begin(), v.end());
+	for (int i = 0; i < v.size() - 1; ++i) {
+		if (v[i] == v[i + 1]) {
+			cout << v[i] << endl;
+			break;
+		}
+	}
+	return 0;
+}
+
 //https://leetcode-cn.com/problems/fibonacci-number/submissions/
 
-class Solution {
-public:
-	int fib(int N) {
-		if (N == 0) {
-			return 0;
-		}
-		if (N < 3) {
-			return 1;
-		}
-		int a = 1;
-		int b = 1;
-		int c = 0;
-		while (N > 2) {
-			c = a + b;
-			a = b;
-			b = c;
-			N--;
-		}
-		return c;
-	}
-};
+//class Solution {
+//public:
+//	int fib(int N) {
+//		if (N == 0) {
+//			return 0;
+//		}
+//		if (N < 3) {
+//			return 1;
+//		}
+//		int a = 1;
+//		int b = 1;
+//		int c = 0;
+//		while (N > 2) {
+//			c = a + b;
+//			a = b;
+//			b = c;
+//			N--;
+//		}
+//		return c;
+//	}
+//};
 
 //https://www.nowcoder.com/practice/78f83c3f12d2464591ebc5a7
 //3183db35?tpId=101&&tqId=33207&rp=1&ru=/activity/oj&qru=/ta
