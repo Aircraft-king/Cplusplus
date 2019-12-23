@@ -7,24 +7,43 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://www.nowcoder.com/practice/1664fe871878496aa600b6e09557982b?tpId=98&&tqId=33045&rp=1&ru=/activity/oj&qru=/ta/2019test/question-ranking
-
-
 int main() {
-	int num = 0;
-	vector<int> v;
-	while (cin >> num) {
-		v.push_back(num);
-	}
-	sort(v.begin(), v.end());
-	for (int i = 0; i < v.size() - 1; ++i) {
-		if (v[i] == v[i + 1]) {
-			cout << v[i] << endl;
-			break;
+	int n = 0;
+	while (cin >> n) {
+		vector<int> v(n);
+		for (int i = 0; i < n; ++i) {
+			cin >> v[i];
 		}
+		int count = n - 1;
+		for (int i = n - 1; i > 0; i--) {
+			if (v[i] > v[i - 1]) {
+				count--;
+			}
+			else break;
+		}
+		cout << count << endl;
 	}
 	return 0;
 }
+
+//https://www.nowcoder.com/practice/1664fe871878496aa600b6e09557982b?tpId=98&&tqId=33045&rp=1&ru=/activity/oj&qru=/ta/2019test/question-ranking
+
+//
+//int main() {
+//	int num = 0;
+//	vector<int> v;
+//	while (cin >> num) {
+//		v.push_back(num);
+//	}
+//	sort(v.begin(), v.end());
+//	for (int i = 0; i < v.size() - 1; ++i) {
+//		if (v[i] == v[i + 1]) {
+//			cout << v[i] << endl;
+//			break;
+//		}
+//	}
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/fibonacci-number/submissions/
 
