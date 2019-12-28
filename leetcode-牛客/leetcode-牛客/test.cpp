@@ -7,24 +7,65 @@
 #include <algorithm> //sort
 using namespace std;
 
-int main() {
-	int n = 0;
-	while (cin >> n) {
-		vector<int> v(n);
-		for (int i = 0; i < n; ++i) {
-			cin >> v[i];
-		}
-		int count = n - 1;
-		for (int i = n - 1; i > 0; i--) {
-			if (v[i] > v[i - 1]) {
-				count--;
+class Solution {
+public:
+	string convertToBase7(int num) {
+		int base = num;
+		string s;
+		while (base) {
+			
+			if (base % 7 == 0) {
+				s.insert(s.begin(), '0');
 			}
-			else break;
+			else
+			s.insert(s.begin(), base%7 + '0');
+			base /= 7;
+			
 		}
-		cout << count << endl;
+		if (num < 0) {
+			s.insert(s.begin(), '-');
+		}
+		return s;
+	}
+};
+
+int stringToInteger(string input) {
+	return stoi(input);
+}
+
+int main() {
+	string line;
+	while (getline(cin, line)) {
+		int num = stringToInteger(line);
+
+		string ret = Solution().convertToBase7(num);
+
+		string out = (ret);
+		cout << out << endl;
 	}
 	return 0;
 }
+
+
+
+//int main() {
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<int> v(n);
+//		for (int i = 0; i < n; ++i) {
+//			cin >> v[i];
+//		}
+//		int count = n - 1;
+//		for (int i = n - 1; i > 0; i--) {
+//			if (v[i] > v[i - 1]) {
+//				count--;
+//			}
+//			else break;
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 //https://www.nowcoder.com/practice/1664fe871878496aa600b6e09557982b?tpId=98&&tqId=33045&rp=1&ru=/activity/oj&qru=/ta/2019test/question-ranking
 
