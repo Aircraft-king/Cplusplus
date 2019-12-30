@@ -7,44 +7,74 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/intersection-of-two-arrays/submissions/
+
 class Solution {
 public:
-	string convertToBase7(int num) {
-		int base = num;
-		string s;
-		while (base) {
-			
-			if (base % 7 == 0) {
-				s.insert(s.begin(), '0');
+	vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+		vector<int> v;
+		if (!nums1.size() || !nums2.size())
+			return v;
+
+		for (int i = 0; i < nums1.size(); ++i) {
+			for (int j = 0; j < nums2.size(); ++j) {
+				if (nums1[i] == nums2[j]) {
+					v.push_back(nums1[i]);
+				}
 			}
-			else
-			s.insert(s.begin(), base%7 + '0');
-			base /= 7;
-			
 		}
-		if (num < 0) {
-			s.insert(s.begin(), '-');
+		if (!v.size())
+			return v;
+		sort(v.begin(), v.end());
+		for (int i = 0; i < v.size() - 1; ++i) {
+			if (v[i] == v[i + 1]) {
+				v.erase(v.begin() + i + 1);
+				--i;
+			}
 		}
-		return s;
+		return v;
 	}
 };
 
-int stringToInteger(string input) {
-	return stoi(input);
-}
-
-int main() {
-	string line;
-	while (getline(cin, line)) {
-		int num = stringToInteger(line);
-
-		string ret = Solution().convertToBase7(num);
-
-		string out = (ret);
-		cout << out << endl;
-	}
-	return 0;
-}
+//https://leetcode-cn.com/problems/base-7/
+//class Solution {
+//public:
+//	string convertToBase7(int num) {
+//		int base = num;
+//		string s;
+//		while (base) {
+//			
+//			if (base % 7 == 0) {
+//				s.insert(s.begin(), '0');
+//			}
+//			else
+//			s.insert(s.begin(), base%7 + '0');
+//			base /= 7;
+//			
+//		}
+//		if (num < 0) {
+//			s.insert(s.begin(), '-');
+//		}
+//		return s;
+//	}
+//};
+//
+//int stringToInteger(string input) {
+//	return stoi(input);
+//}
+//
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		int num = stringToInteger(line);
+//
+//		string ret = Solution().convertToBase7(num);
+//
+//		string out = (ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 
 
