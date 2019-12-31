@@ -7,34 +7,49 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/intersection-of-two-arrays/submissions/
+//https://leetcode-cn.com/problems/remove-element/submissions/
 
 class Solution {
 public:
-	vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-		vector<int> v;
-		if (!nums1.size() || !nums2.size())
-			return v;
-
-		for (int i = 0; i < nums1.size(); ++i) {
-			for (int j = 0; j < nums2.size(); ++j) {
-				if (nums1[i] == nums2[j]) {
-					v.push_back(nums1[i]);
-				}
-			}
-		}
-		if (!v.size())
-			return v;
-		sort(v.begin(), v.end());
-		for (int i = 0; i < v.size() - 1; ++i) {
-			if (v[i] == v[i + 1]) {
-				v.erase(v.begin() + i + 1);
+	int removeElement(vector<int>& nums, int val) {
+		for (int i = 0; i < nums.size(); i++) {
+			if (nums[i] == val) {
+				nums.erase(nums.begin() + i);
 				--i;
 			}
 		}
-		return v;
+		return nums.size();
 	}
 };
+
+//https://leetcode-cn.com/problems/intersection-of-two-arrays/submissions/
+
+//class Solution {
+//public:
+//	vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+//		vector<int> v;
+//		if (!nums1.size() || !nums2.size())
+//			return v;
+//
+//		for (int i = 0; i < nums1.size(); ++i) {
+//			for (int j = 0; j < nums2.size(); ++j) {
+//				if (nums1[i] == nums2[j]) {
+//					v.push_back(nums1[i]);
+//				}
+//			}
+//		}
+//		if (!v.size())
+//			return v;
+//		sort(v.begin(), v.end());
+//		for (int i = 0; i < v.size() - 1; ++i) {
+//			if (v[i] == v[i + 1]) {
+//				v.erase(v.begin() + i + 1);
+//				--i;
+//			}
+//		}
+//		return v;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/base-7/
 //class Solution {
