@@ -7,20 +7,43 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/remove-element/submissions/
-
+//https://leetcode-cn.com/problems/plus-one/submissions/
 class Solution {
 public:
-	int removeElement(vector<int>& nums, int val) {
-		for (int i = 0; i < nums.size(); i++) {
-			if (nums[i] == val) {
-				nums.erase(nums.begin() + i);
-				--i;
+	vector<int> plusOne(vector<int>& digits) {
+		int i = digits.size() - 1;
+		for (; i >= 0; --i) {
+			if (digits[i] == 9) {
+				digits[i] = 0;
+				if (i - 1 < 0) {
+					digits[i] = 1;
+					digits.push_back(0);
+				}
 			}
+			else {
+				digits[i]++;
+				break;
+			}
+
 		}
-		return nums.size();
+		return digits;
 	}
 };
+
+//https://leetcode-cn.com/problems/remove-element/submissions/
+
+//class Solution {
+//public:
+//	int removeElement(vector<int>& nums, int val) {
+//		for (int i = 0; i < nums.size(); i++) {
+//			if (nums[i] == val) {
+//				nums.erase(nums.begin() + i);
+//				--i;
+//			}
+//		}
+//		return nums.size();
+//	}
+//};
 
 //https://leetcode-cn.com/problems/intersection-of-two-arrays/submissions/
 
