@@ -8,79 +8,111 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/add-binary/submissions/
+//https://leetcode-cn.com/problems/sqrtx/
 
 class Solution {
 public:
-	string addBinary(string a, string b) {
-
-		int a_len = a.size();
-		int b_len = b.size();
-		while (a_len < b_len) {
-			a = '0' + a;
-			a_len++;
-		}
-		while (b_len < a_len) {
-			b = '0' + b;
-			b_len++;
-		}
-		for (int i = a_len - 1; i > 0; --i) {
-			a[i] = a[i] - '0' + b[i];
-			if (a[i] >= '2') {
-				a[i] = (a[i] - '0') % 2 + '0';
-				a[i - 1] = a[i - 1] + 1;
+	int mySqrt(int x) {
+		long long num = x / 2 + 1;
+		for (long long i = 0; i <= num; ++i) {
+			if ((i*i <= x) && ((i + 1)*(i + 1) > x)) {
+				return i;
 			}
 		}
-		a[0] = a[0] - '0' + b[0];
-		if (a[0] >= '2') {
-			a[0] = (a[0] - '0') % 2 + '0';
-			a = '1' + a;
-		}
-		return a;
+		return -1;
 	}
 };
 
-string stringToString(string input) {
-	assert(input.length() >= 2);
-	string result;
-	for (int i = 1; i < input.length() - 1; i++) {
-		char currentChar = input[i];
-		if (input[i] == '\\') {
-			char nextChar = input[i + 1];
-			switch (nextChar) {
-			case '\"': result.push_back('\"'); break;
-			case '/': result.push_back('/'); break;
-			case '\\': result.push_back('\\'); break;
-			case 'b': result.push_back('\b'); break;
-			case 'f': result.push_back('\f'); break;
-			case 'r': result.push_back('\r'); break;
-			case 'n': result.push_back('\n'); break;
-			case 't': result.push_back('\t'); break;
-			default: break;
-			}
-			i++;
-		}
-		else {
-			result.push_back(currentChar);
-		}
-	}
-	return result;
+int stringToInteger(string input) {
+	return stoi(input);
 }
 
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		string a = stringToString(line);
-		getline(cin, line);
-		string b = stringToString(line);
+		int x = stringToInteger(line);
 
-		string ret = Solution().addBinary(a, b);
+		int ret = Solution().mySqrt(x);
 
-		string out = (ret);
+		string out = to_string(ret);
 		cout << out << endl;
 	}
 	return 0;
 }
+
+//https://leetcode-cn.com/problems/add-binary/submissions/
+
+//class Solution {
+//public:
+//	string addBinary(string a, string b) {
+//
+//		int a_len = a.size();
+//		int b_len = b.size();
+//		while (a_len < b_len) {
+//			a = '0' + a;
+//			a_len++;
+//		}
+//		while (b_len < a_len) {
+//			b = '0' + b;
+//			b_len++;
+//		}
+//		for (int i = a_len - 1; i > 0; --i) {
+//			a[i] = a[i] - '0' + b[i];
+//			if (a[i] >= '2') {
+//				a[i] = (a[i] - '0') % 2 + '0';
+//				a[i - 1] = a[i - 1] + 1;
+//			}
+//		}
+//		a[0] = a[0] - '0' + b[0];
+//		if (a[0] >= '2') {
+//			a[0] = (a[0] - '0') % 2 + '0';
+//			a = '1' + a;
+//		}
+//		return a;
+//	}
+//};
+//
+//string stringToString(string input) {
+//	assert(input.length() >= 2);
+//	string result;
+//	for (int i = 1; i < input.length() - 1; i++) {
+//		char currentChar = input[i];
+//		if (input[i] == '\\') {
+//			char nextChar = input[i + 1];
+//			switch (nextChar) {
+//			case '\"': result.push_back('\"'); break;
+//			case '/': result.push_back('/'); break;
+//			case '\\': result.push_back('\\'); break;
+//			case 'b': result.push_back('\b'); break;
+//			case 'f': result.push_back('\f'); break;
+//			case 'r': result.push_back('\r'); break;
+//			case 'n': result.push_back('\n'); break;
+//			case 't': result.push_back('\t'); break;
+//			default: break;
+//			}
+//			i++;
+//		}
+//		else {
+//			result.push_back(currentChar);
+//		}
+//	}
+//	return result;
+//}
+//
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		string a = stringToString(line);
+//		getline(cin, line);
+//		string b = stringToString(line);
+//
+//		string ret = Solution().addBinary(a, b);
+//
+//		string out = (ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/plus-one/submissions/
 //class Solution {
