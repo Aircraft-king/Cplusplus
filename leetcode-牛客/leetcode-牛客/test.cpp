@@ -8,37 +8,59 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/sqrtx/
+//https://leetcode-cn.com/problems/majority-element/submissions/
 
 class Solution {
 public:
-	int mySqrt(int x) {
-		long long num = x / 2 + 1;
-		for (long long i = 0; i <= num; ++i) {
-			if ((i*i <= x) && ((i + 1)*(i + 1) > x)) {
-				return i;
+	int majorityElement(vector<int>& nums) {
+		int target = nums[0];
+		int count = 1;
+		for (int i = 1; i < nums.size(); i++)
+			if (nums[i] != target)
+			{
+				count--;
+				if (count == 0)
+				{
+					target = nums[i];
+					count = 1;
+				}
 			}
-		}
-		return -1;
+			else count++;
+		return target;
 	}
 };
 
-int stringToInteger(string input) {
-	return stoi(input);
-}
+//https://leetcode-cn.com/problems/sqrtx/
 
-int main() {
-	string line;
-	while (getline(cin, line)) {
-		int x = stringToInteger(line);
-
-		int ret = Solution().mySqrt(x);
-
-		string out = to_string(ret);
-		cout << out << endl;
-	}
-	return 0;
-}
+//class Solution {
+//public:
+//	int mySqrt(int x) {
+//		long long num = x / 2 + 1;
+//		for (long long i = 0; i <= num; ++i) {
+//			if ((i*i <= x) && ((i + 1)*(i + 1) > x)) {
+//				return i;
+//			}
+//		}
+//		return -1;
+//	}
+//};
+//
+//int stringToInteger(string input) {
+//	return stoi(input);
+//}
+//
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		int x = stringToInteger(line);
+//
+//		int ret = Solution().mySqrt(x);
+//
+//		string out = to_string(ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/add-binary/submissions/
 
