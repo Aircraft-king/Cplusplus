@@ -8,14 +8,18 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/nim-game/submissions/
+//https://leetcode-cn.com/problems/number-of-1-bits/submissions/
+
 class Solution {
 public:
-	bool canWinNim(int n) {
-		if (n % 4 == 0) {
-			return false;
+	int hammingWeight(uint32_t n) {
+		int count = 0;
+		while (n) {
+			if (n % 2 == 1)
+				count++;
+			n /= 2;
 		}
-		return true;
+		return count;
 	}
 };
 
@@ -23,22 +27,50 @@ int stringToInteger(string input) {
 	return stoi(input);
 }
 
-string boolToString(bool input) {
-	return input ? "True" : "False";
-}
-
 int main() {
 	string line;
 	while (getline(cin, line)) {
 		int n = stringToInteger(line);
 
-		bool ret = Solution().canWinNim(n);
+		int ret = Solution().hammingWeight(n);
 
-		string out = boolToString(ret);
+		string out = to_string(ret);
 		cout << out << endl;
 	}
 	return 0;
 }
+
+//https://leetcode-cn.com/problems/nim-game/submissions/
+//class Solution {
+//public:
+//	bool canWinNim(int n) {
+//		if (n % 4 == 0) {
+//			return false;
+//		}
+//		return true;
+//	}
+//};
+//
+//int stringToInteger(string input) {
+//	return stoi(input);
+//}
+//
+//string boolToString(bool input) {
+//	return input ? "True" : "False";
+//}
+//
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		int n = stringToInteger(line);
+//
+//		bool ret = Solution().canWinNim(n);
+//
+//		string out = boolToString(ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/merge-sorted-array/
 
