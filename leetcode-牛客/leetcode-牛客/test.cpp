@@ -8,37 +8,113 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/number-of-1-bits/submissions/
-
+//https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
 class Solution {
 public:
-	int hammingWeight(uint32_t n) {
-		int count = 0;
-		while (n) {
-			if (n % 2 == 1)
-				count++;
-			n /= 2;
+	vector<int> findDisappearedNumbers(vector<int>& nums) {
+		vector<int> v;
+		sort(nums.begin(), nums.end());
+		for (int i = 0; i < nums.size(); ++i) {
+			int j = (nums[i] - 1) % nums.size();
+			nums[j] += nums.size();
 		}
-		return count;
+		for (int i = 0; i < nums.size(); ++i) {
+			if (nums[i] <= nums.size()) {
+				v.push_back(i + 1);
+			}
+		}
+		return v;
 	}
 };
 
-int stringToInteger(string input) {
-	return stoi(input);
+void trimLeftTrailingSpaces(string &input) {
+	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
+		return !isspace(ch);
+	}));
+}
+
+void trimRightTrailingSpaces(string &input) {
+	input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
+		return !isspace(ch);
+	}).base(), input.end());
+}
+
+vector<int> stringToIntegerVector(string input) {
+	vector<int> output;
+	trimLeftTrailingSpaces(input);
+	trimRightTrailingSpaces(input);
+	input = input.substr(1, input.length() - 2);
+	stringstream ss;
+	ss.str(input);
+	string item;
+	char delim = ',';
+	while (getline(ss, item, delim)) {
+		output.push_back(stoi(item));
+	}
+	return output;
+}
+
+string integerVectorToString(vector<int> list, int length = -1) {
+	if (length == -1) {
+		length = list.size();
+	}
+
+	if (length == 0) {
+		return "[]";
+	}
+
+	string result;
+	for (int index = 0; index < length; index++) {
+		int number = list[index];
+		result += to_string(number) + ", ";
+	}
+	return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
 int main() {
 	string line;
 	while (getline(cin, line)) {
-		int n = stringToInteger(line);
+		vector<int> nums = stringToIntegerVector(line);
 
-		int ret = Solution().hammingWeight(n);
+		vector<int> ret = Solution().findDisappearedNumbers(nums);
 
-		string out = to_string(ret);
+		string out = integerVectorToString(ret);
 		cout << out << endl;
 	}
 	return 0;
 }
+
+//https://leetcode-cn.com/problems/number-of-1-bits/submissions/
+
+//class Solution {
+//public:
+//	int hammingWeight(uint32_t n) {
+//		int count = 0;
+//		while (n) {
+//			if (n % 2 == 1)
+//				count++;
+//			n /= 2;
+//		}
+//		return count;
+//	}
+//};
+//
+//int stringToInteger(string input) {
+//	return stoi(input);
+//}
+//
+//int main() {
+//	string line;
+//	while (getline(cin, line)) {
+//		int n = stringToInteger(line);
+//
+//		int ret = Solution().hammingWeight(n);
+//
+//		string out = to_string(ret);
+//		cout << out << endl;
+//	}
+//	return 0;
+//}
 
 //https://leetcode-cn.com/problems/nim-game/submissions/
 //class Solution {
