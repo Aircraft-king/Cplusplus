@@ -16,7 +16,9 @@ public:
 		int count = 0;
 		for (int i = 0; i < s.size(); ++i) {
 			if (s[i] == 'A') {
+
 				count++;
+
 			}
 			if (i < s.size() - 2 && s[i] == 'L' && s[i] == s[i + 1] && s[i] == s[i + 2]) {
 				return false;
