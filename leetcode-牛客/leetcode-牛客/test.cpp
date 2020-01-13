@@ -8,28 +8,46 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/student-attendance-record-i/submissions/
+//https://leetcode-cn.com/problems/search-insert-position/submissions/
 
 class Solution {
 public:
-	bool checkRecord(string s) {
-		int count = 0;
-		for (int i = 0; i < s.size(); ++i) {
-			if (s[i] == 'A') {
+	int searchInsert(vector<int>& nums, int target) {
+		if (target <= nums[0] || nums.size() == 0) {
 
-				count++;
-
-			}
-			if (i < s.size() - 2 && s[i] == 'L' && s[i] == s[i + 1] && s[i] == s[i + 2]) {
-				return false;
+			return 0;
+		}
+		for (int i = 0; i < nums.size() - 1; ++i) {
+			if (target > nums[i] && target <= nums[i + 1]) {
+				return i + 1;
 			}
 		}
-		if (count > 1) {
-			return false;
-		}
-		return true;
+		return nums.size();
 	}
 };
+
+//https://leetcode-cn.com/problems/student-attendance-record-i/submissions/
+
+//class Solution {
+//public:
+//	bool checkRecord(string s) {
+//		int count = 0;
+//		for (int i = 0; i < s.size(); ++i) {
+//			if (s[i] == 'A') {
+//
+//				count++;
+//
+//			}
+//			if (i < s.size() - 2 && s[i] == 'L' && s[i] == s[i + 1] && s[i] == s[i + 2]) {
+//				return false;
+//			}
+//		}
+//		if (count > 1) {
+//			return false;
+//		}
+//		return true;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
 //class Solution {
