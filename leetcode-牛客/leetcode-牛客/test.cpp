@@ -8,23 +8,46 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/search-insert-position/submissions/
+//https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/submissions/
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-	int searchInsert(vector<int>& nums, int target) {
-		if (target <= nums[0] || nums.size() == 0) {
-
-			return 0;
-		}
-		for (int i = 0; i < nums.size() - 1; ++i) {
-			if (target > nums[i] && target <= nums[i + 1]) {
-				return i + 1;
-			}
-		}
-		return nums.size();
+	int minDepth(TreeNode* root) {
+		if (!root) return 0;
+		int l = 0;
+		int r = 0;
+		l = minDepth(root->left);
+		r = minDepth(root->right);
+		return (l != 0 && r != 0) ? (l < r ? l : r) + 1 : l + r + 1;
 	}
 };
+
+//https://leetcode-cn.com/problems/search-insert-position/submissions/
+//
+//class Solution {
+//public:
+//	int searchInsert(vector<int>& nums, int target) {
+//		if (target <= nums[0] || nums.size() == 0) {
+//
+//			return 0;
+//		}
+//		for (int i = 0; i < nums.size() - 1; ++i) {
+//			if (target > nums[i] && target <= nums[i + 1]) {
+//				return i + 1;
+//			}
+//		}
+//		return nums.size();
+//	}
+//};
 
 //https://leetcode-cn.com/problems/student-attendance-record-i/submissions/
 
