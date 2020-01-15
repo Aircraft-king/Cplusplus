@@ -83,6 +83,7 @@ protected:
 
 		subL->rightChild = ptr->leftChild;
 		ptr->leftChild = subL;
+
 		//subL->bf;
 		if (ptr->bf <= 0)
 			subL->bf = 0;
