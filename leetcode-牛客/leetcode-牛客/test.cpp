@@ -8,6 +8,25 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/third-maximum-number/
+
+class Solution {
+public:
+	int thirdMax(vector<int>& nums) {
+		sort(nums.begin(), nums.end());
+		for (int i = 0; i < nums.size() - 1; ++i) {
+			if (nums[i] == nums[i + 1]) {
+				nums.erase(nums.begin() + i + 1);
+				i--;
+			}
+		}
+		if (nums.size() < 3)
+			return nums[nums.size() - 1];
+		return nums[nums.size() - 3];
+	}
+};
+
+
 //https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/submissions/
 
 /**
@@ -19,17 +38,17 @@ using namespace std;
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
-public:
-	int minDepth(TreeNode* root) {
-		if (!root) return 0;
-		int l = 0;
-		int r = 0;
-		l = minDepth(root->left);
-		r = minDepth(root->right);
-		return (l != 0 && r != 0) ? (l < r ? l : r) + 1 : l + r + 1;
-	}
-};
+//class Solution {
+//public:
+//	int minDepth(TreeNode* root) {
+//		if (!root) return 0;
+//		int l = 0;
+//		int r = 0;
+//		l = minDepth(root->left);
+//		r = minDepth(root->right);
+//		return (l != 0 && r != 0) ? (l < r ? l : r) + 1 : l + r + 1;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/search-insert-position/submissions/
 //
