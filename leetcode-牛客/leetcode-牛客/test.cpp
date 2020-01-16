@@ -8,23 +8,44 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/third-maximum-number/
+//https://leetcode-cn.com/problems/max-consecutive-ones/submissions/
 
 class Solution {
 public:
-	int thirdMax(vector<int>& nums) {
-		sort(nums.begin(), nums.end());
-		for (int i = 0; i < nums.size() - 1; ++i) {
-			if (nums[i] == nums[i + 1]) {
-				nums.erase(nums.begin() + i + 1);
-				i--;
+	int findMaxConsecutiveOnes(vector<int>& nums) {
+		int max = 0;
+		int sum = 0;
+		for (int i = 0; i < nums.size(); ++i) {
+			if (nums[i] == 1) {
+				sum++;
+			}
+			else
+				sum = 0;
+			if (sum > max) {
+				max = sum;
 			}
 		}
-		if (nums.size() < 3)
-			return nums[nums.size() - 1];
-		return nums[nums.size() - 3];
+		return max;
 	}
 };
+
+//https://leetcode-cn.com/problems/third-maximum-number/
+
+//class Solution {
+//public:
+//	int thirdMax(vector<int>& nums) {
+//		sort(nums.begin(), nums.end());
+//		for (int i = 0; i < nums.size() - 1; ++i) {
+//			if (nums[i] == nums[i + 1]) {
+//				nums.erase(nums.begin() + i + 1);
+//				i--;
+//			}
+//		}
+//		if (nums.size() < 3)
+//			return nums[nums.size() - 1];
+//		return nums[nums.size() - 3];
+//	}
+//};
 
 
 //https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/submissions/
