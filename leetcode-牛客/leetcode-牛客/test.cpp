@@ -8,26 +8,52 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/max-consecutive-ones/submissions/
+//https://leetcode-cn.com/problems/linked-list-cycle/submissions/
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-	int findMaxConsecutiveOnes(vector<int>& nums) {
-		int max = 0;
-		int sum = 0;
-		for (int i = 0; i < nums.size(); ++i) {
-			if (nums[i] == 1) {
-				sum++;
-			}
-			else
-				sum = 0;
-			if (sum > max) {
-				max = sum;
-			}
+	bool hasCycle(ListNode *head) {
+		ListNode* fast = head;
+		ListNode* slow = head;
+
+		while (fast&&fast->next) {
+			fast = fast->next->next;
+			slow = slow->next;
+			if (fast == slow)
+				return true;
 		}
-		return max;
+		return false;
 	}
 };
+
+//https://leetcode-cn.com/problems/max-consecutive-ones/submissions/
+//
+//class Solution {
+//public:
+//	int findMaxConsecutiveOnes(vector<int>& nums) {
+//		int max = 0;
+//		int sum = 0;
+//		for (int i = 0; i < nums.size(); ++i) {
+//			if (nums[i] == 1) {
+//				sum++;
+//			}
+//			else
+//				sum = 0;
+//			if (sum > max) {
+//				max = sum;
+//			}
+//		}
+//		return max;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/third-maximum-number/
 
