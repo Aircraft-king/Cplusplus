@@ -8,6 +8,24 @@
 #include <algorithm> //sort
 using namespace std;
 
+//https://leetcode-cn.com/problems/power-of-three/submissions/
+
+class Solution {
+public:
+	bool isPowerOfThree(int n) {
+		if (n == 0) return false;
+		if (n == 1) return true;
+		long m = 1;
+		while (m < n) {
+			m *= 3;
+			if (m == n)
+				return true;
+		}
+		return false;
+	}
+};
+
+
 //https://leetcode-cn.com/problems/linked-list-cycle/submissions/
 
 /**
@@ -18,21 +36,21 @@ using namespace std;
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
-	bool hasCycle(ListNode *head) {
-		ListNode* fast = head;
-		ListNode* slow = head;
-
-		while (fast&&fast->next) {
-			fast = fast->next->next;
-			slow = slow->next;
-			if (fast == slow)
-				return true;
-		}
-		return false;
-	}
-};
+//class Solution {
+//public:
+//	bool hasCycle(ListNode *head) {
+//		ListNode* fast = head;
+//		ListNode* slow = head;
+//
+//		while (fast&&fast->next) {
+//			fast = fast->next->next;
+//			slow = slow->next;
+//			if (fast == slow)
+//				return true;
+//		}
+//		return false;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/max-consecutive-ones/submissions/
 //
