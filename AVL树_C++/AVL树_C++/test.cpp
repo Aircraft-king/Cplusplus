@@ -13,8 +13,10 @@ public:
 	AVLNode(Type d = Type(), AVLNode<Type>*left = nullptr, AVLNode<Type>*right = nullptr)
 		: data(d), leftChild(left), rightChild(right), bf(0)
 	{}
+
 	~AVLNode()
 	{}
+
 private:
 	Type data;
 	AVLNode<Type> *leftChild;
