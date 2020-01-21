@@ -39,6 +39,7 @@ protected:
 protected:
 	void RotateR(AVLNode<Type> *&ptr)
 	{
+
 		AVLNode<Type> *subR = ptr;
 		ptr = subR->leftChild;
 		subR->leftChild = ptr->rightChild;
