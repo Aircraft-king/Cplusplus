@@ -16,7 +16,6 @@ public:
 		if (n == 0) return false;
 		if (n == 1) return true;
 		long m = 1;
-
 		while (m < n) {
 			m *= 3;
 			if (m == n)
