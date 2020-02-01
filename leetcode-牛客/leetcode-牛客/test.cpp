@@ -8,22 +8,42 @@
 #include <algorithm> //sort
 using namespace std;
 
-//https://leetcode-cn.com/problems/power-of-three/submissions/
+//https://leetcode-cn.com/problems/is-subsequence/submissions/
 
 class Solution {
 public:
-	bool isPowerOfThree(int n) {
-		if (n == 0) return false;
-		if (n == 1) return true;
-		long m = 1;
-		while (m < n) {
-			m *= 3;
-			if (m == n)
+	bool isSubsequence(string s, string t) {
+		if (s.size() == 0) {
+			return true;
+		}
+		int a = 0;
+		int len = s.size();
+		for (int i = 0; i < t.size(); ++i) {
+			if (s[a] == t[i])
+				a++;
+			if (a == len)
 				return true;
 		}
 		return false;
 	}
 };
+
+//https://leetcode-cn.com/problems/power-of-three/submissions/
+
+//class Solution {
+//public:
+//	bool isPowerOfThree(int n) {
+//		if (n == 0) return false;
+//		if (n == 1) return true;
+//		long m = 1;
+//		while (m < n) {
+//			m *= 3;
+//			if (m == n)
+//				return true;
+//		}
+//		return false;
+//	}
+//};
 
 //https://leetcode-cn.com/problems/linked-list-cycle/submissions/
 
