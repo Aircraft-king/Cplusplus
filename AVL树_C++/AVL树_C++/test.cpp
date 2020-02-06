@@ -24,6 +24,7 @@ private:
 	int bf; //Æ½ºâÒò×Ó
 };
 
+
 template<typename Type>
 class AVLTree
 {
