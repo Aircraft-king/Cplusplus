@@ -23,7 +23,6 @@ public:
 				s.push(S[i]);
 			}
 		}
-
 		stack<char> s1;
 		string str;
 		int len = s.size();
