@@ -269,6 +269,7 @@ public:
 	{
 		d_data = 0;
 	}
+
 public:
 	void fun()
 	{
