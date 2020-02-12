@@ -1,6 +1,1 @@
-﻿  test.cpp
-f:\git hub\c++\课件测试\课件测试\test.cpp(24): error C2248: “Student::_stuNum”: 无法访问 protected 成员(在“Student”类中声明)
-  f:\git hub\c++\课件测试\课件测试\test.cpp(20): note: 参见“Student::_stuNum”的声明
-  f:\git hub\c++\课件测试\课件测试\test.cpp(17): note: 参见“Student”的声明
-f:\git hub\c++\课件测试\课件测试\test.cpp(1091): error C2084: 函数“void Display(const Person &,const Student &)”已有主体
-  f:\git hub\c++\课件测试\课件测试\test.cpp(22): note: 参见“Display”的前一个定义
+﻿  课件测试.vcxproj -> F:\git hub\C++\课件测试\Debug\课件测试.exe

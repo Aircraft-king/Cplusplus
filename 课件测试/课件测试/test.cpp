@@ -6,29 +6,50 @@
 #include<stdio.h>
 #include<string>
 using namespace std;
-//友元关系不能继承
-class Student; 
-class Person {
-public:    
-      friend void Display(const Person& p, const Student& s); 
-protected:   
-	string _name; // 姓名 
-}; 
-class Student : public Person
-{ 
-protected:    
-	int _stuNum; // 学号 
-};
-void Display(const Person& p, const Student& s) 
-{ 
-     cout << p._name << endl;    cout << s._stuNum << endl; 
-}
-int main() { 
-	Person p;    
-	Student s;    
-	Display(p, s); 
+
+int main() {
+	string s1, s2;
+	while (cin >> s1) {
+
+		cin >> s2;
+		int len1 = s1.size();
+		int len2 = s2.size();
+		for (int i = 0; i < len2; ++i) {
+			for (int j = 0; j < s1.size(); ++j) {
+				if (s1[j] == s2[i]) {
+					s1.erase(s1.begin() + j);
+					--j;
+				}
+			}
+		}
+		cout << s1 << endl;
+	}
 	return 0;
 }
+
+//友元关系不能继承
+//class Student; 
+//class Person {
+//public:    
+//      friend void Display(const Person& p, const Student& s); 
+//protected:   
+//	string _name; // 姓名 
+//}; 
+//class Student : public Person
+//{ 
+//protected:    
+//	int _stuNum; // 学号 
+//};
+//void Display(const Person& p, const Student& s) 
+//{ 
+//     cout << p._name << endl;    cout << s._stuNum << endl; 
+//}
+//int main() { 
+//	Person p;    
+//	Student s;    
+//	Display(p, s); 
+//	return 0;
+//}
 
 
 
@@ -1086,7 +1107,7 @@ int main()
 //	TestFunc(10);   // 传参时，使用指定的实参
 //}
 */
-
-void Display(const Person & p, const Student & s)
-{
-}
+//
+//void Display(const Person & p, const Student & s)
+//{
+//}
