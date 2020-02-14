@@ -8,24 +8,53 @@
 using namespace std;
 
 int main() {
-	string s1, s2;
-	while (cin >> s1) {
-
-		cin >> s2;
-		int len1 = s1.size();
-		int len2 = s2.size();
-		for (int i = 0; i < len2; ++i) {
-			for (int j = 0; j < s1.size(); ++j) {
-				if (s1[j] == s2[i]) {
-					s1.erase(s1.begin() + j);
-					--j;
-				}
+	int num = 0;
+	int arr[10] = {};
+	int n = sizeof(arr) / sizeof(int);
+	cout << "请输入10个数:>" << endl;
+	for (int i = 0; i <n ; ++i) {
+		cin >> num;
+		arr[i] = num;
+	}
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < n-1; ++i) {
+		for ( j= 0; j < n-1-i; ++j) {
+			if (arr[j] > arr[j+1]) {
+				/*int tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;*/
+				swap(arr[j], arr[j + 1]);
 			}
 		}
-		cout << s1 << endl;
 	}
+	for (int i = 0; i < n; ++i) {
+		cout << arr[i] << " ";
+	}
+
 	return 0;
 }
+
+
+//int main() {
+//	string s1, s2;
+//	while (cin >> s1) {
+//
+//		cin >> s2;
+//		int len1 = s1.size();
+//		int len2 = s2.size();
+//		for (int i = 0; i < len2; ++i) {
+//			for (int j = 0; j < s1.size(); ++j) {
+//				if (s1[j] == s2[i]) {
+//					s1.erase(s1.begin() + j);
+//					--j;
+//				}
+//			}
+//		}
+//		cout << s1 << endl;
+//	}
+//	return 0;
+//}
 
 //友元关系不能继承
 //class Student; 
