@@ -7,33 +7,43 @@
 #include<string>
 using namespace std;
 
+
 int main() {
-	int num = 0;
-	int arr[10] = {};
-	int n = sizeof(arr) / sizeof(int);
-	cout << "请输入10个数:>" << endl;
-	for (int i = 0; i <n ; ++i) {
-		cin >> num;
-		arr[i] = num;
-	}
-	int i = 0;
-	int j = 0;
-	for (i = 0; i < n-1; ++i) {
-		for ( j= 0; j < n-1-i; ++j) {
-			if (arr[j] > arr[j+1]) {
-				/*int tmp = arr[j];
-				arr[j] = arr[j+1];
-				arr[j+1] = tmp;*/
-				swap(arr[j], arr[j + 1]);
-			}
-		}
-	}
-	for (int i = 0; i < n; ++i) {
+	int arr[10] = { 2,3,5,4,1,9,6,8,7,0 };
+	sort(arr,arr+10);
+	for (int i = 0; i < 10; ++i) {
 		cout << arr[i] << " ";
 	}
-
 	return 0;
 }
+
+//int main() {
+//	int num = 0;
+//	int arr[10] = {};
+//	int n = sizeof(arr) / sizeof(int);
+//	cout << "请输入10个数:>" << endl;
+//	for (int i = 0; i <n ; ++i) {
+//		cin >> num;
+//		arr[i] = num;
+//	}
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < n-1; ++i) {
+//		for ( j= 0; j < n-1-i; ++j) {
+//			if (arr[j] > arr[j+1]) {
+//				/*int tmp = arr[j];
+//				arr[j] = arr[j+1];
+//				arr[j+1] = tmp;*/
+//				swap(arr[j], arr[j + 1]);
+//			}
+//		}
+//	}
+//	for (int i = 0; i < n; ++i) {
+//		cout << arr[i] << " ";
+//	}
+//
+//	return 0;
+//}
 
 
 //int main() {
