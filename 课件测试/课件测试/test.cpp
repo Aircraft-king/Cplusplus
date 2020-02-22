@@ -7,7 +7,6 @@
 #include<string>
 using namespace std;
 
-
 int main() {
 	int arr[10] = { 2,3,5,4,1,9,6,8,7,0 };
 	sort(arr,arr+10);
