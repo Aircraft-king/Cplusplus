@@ -6,7 +6,6 @@
 //Êı¾İ¿â·â×°
 class SqliteManager {
 public:
-
 	SqliteManager();
 	~SqliteManager();
 public:
