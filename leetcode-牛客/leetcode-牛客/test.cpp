@@ -8,6 +8,7 @@
 #include <algorithm> //sort
 using namespace std;
 
+
 //https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/submissions/
 
 class Solution {
@@ -1776,7 +1777,8 @@ int main() {
 //	return 0;
 //}
 //
-//https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions///
+//https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/submissions/
+//
 //class Solution {
 //public:
 //	int removeDuplicates(vector<int>& nums) {
