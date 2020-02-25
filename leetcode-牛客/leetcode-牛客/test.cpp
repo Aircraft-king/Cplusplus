@@ -8,7 +8,6 @@
 #include <algorithm> //sort
 using namespace std;
 
-
 //https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/submissions/
 
 class Solution {
