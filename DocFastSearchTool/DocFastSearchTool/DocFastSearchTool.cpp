@@ -8,6 +8,7 @@ char *title = a;
 
 int main()
 {
+	
 	//创建扫描实例
 	const string path = "E:\\桌面\\作业";
 	/*ScanManager sm;*/
