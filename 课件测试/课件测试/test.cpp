@@ -8,13 +8,33 @@
 using namespace std;
 
 int main() {
-	int arr[10] = { 2,3,5,4,1,9,6,8,7,0 };
-	sort(arr,arr+10);
-	for (int i = 0; i < 10; ++i) {
-		cout << arr[i] << " ";
+	int n = 0;
+
+	while (cin >> n) {
+		vector<int> v(3 * n, 0);
+		for (int i = 0; i < 3 * n; ++i) {
+			cin >> v[i];
+		}
+		int max = 0;
+		while (v.size() != 0) {
+			sort(v.begin(), v.begin() + 3);
+			max += v[1];
+			v.erase(v.begin(), v.begin() + 3);
+		}
+		cout << max << endl;
 	}
+
 	return 0;
 }
+
+//int main() {
+//	int arr[10] = { 2,3,5,4,1,9,6,8,7,0 };
+//	sort(arr,arr+10);
+//	for (int i = 0; i < 10; ++i) {
+//		cout << arr[i] << " ";
+//	}
+//	return 0;
+//}
 
 
 //int main() {
