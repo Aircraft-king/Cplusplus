@@ -9,28 +9,55 @@
 using namespace std;
 
 
-//牛客  删除公共字符
+
+//牛客---排序子序列
 int main() {
-	string s1;
-	string s2;
-    while (getline(cin, s1)) {
-	getline(cin, s2);
-	int i = 0;
-	int j = 0;
-	for (i = 0; i < s2.size(); ++i) {
-		int size = s1.size();
-			for (j = 0; j < size; ++j) {
-				if (s1[j] == s2[i]) {
-					s1.erase(s1.begin() + j);
-				}
+	int n = 0;
+	while (cin >> n) {
+		vector<int> v(n + 1, 0);
+		int count = 0;
+		for (int i = 0; i < n; ++i) {
+			cin >> v[i];
+		}
+		for (int i = 0; i < n; ++i) {
+			if (v[i] < v[i + 1]) {
+				while (i < n&&v[i] <= v[i + 1])
+					i++;
+				count++;
+			}
+			else if (v[i] > v[i + 1]) {
+				while (i < n&&v[i] >= v[i + 1])
+					i++;
+				count++;
 			}
 		}
-		cout << s1 << endl;
-
+		cout << count << endl;
 	}
-
 	return 0;
 }
+
+////牛客  删除公共字符
+//int main() {
+//	string s1;
+//	string s2;
+//    while (getline(cin, s1)) {
+//	getline(cin, s2);
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < s2.size(); ++i) {
+//		int size = s1.size();
+//			for (j = 0; j < size; ++j) {
+//				if (s1[j] == s2[i]) {
+//					s1.erase(s1.begin() + j);
+//				}
+//			}
+//		}
+//		cout << s1 << endl;
+//
+//	}
+//
+//	return 0;
+//}
 
 
 //牛客组队竞速
