@@ -8,33 +8,74 @@
 #include <algorithm> //sort
 using namespace std;
 
+//Å£¿Í---µ¹ÖÃ×Ö·û´®
+void my_reverse(char* begin, char* end) {
+	while (begin < end) {
+		char tmp = *begin;
+		*begin = *end;
+		*end = tmp;
+		begin++;
+		end--;
+	}
+}
 
-
-//Å£¿Í---ÅÅÐò×ÓÐòÁÐ
 int main() {
-	int n = 0;
-	while (cin >> n) {
-		vector<int> v(n + 1, 0);
-		int count = 0;
-		for (int i = 0; i < n; ++i) {
-			cin >> v[i];
-		}
-		for (int i = 0; i < n; ++i) {
-			if (v[i] < v[i + 1]) {
-				while (i < n&&v[i] <= v[i + 1])
-					i++;
-				count++;
+	string s;
+	while (getline(cin, s)) {
+		reverse(s.begin(), s.end());
+		int first = 0;
+		int last = 0;
+		while (last != s.size()) {
+			while (s[last] == ' '&&last != s.size()) {
+				first++;
+				last++;
 			}
-			else if (v[i] > v[i + 1]) {
-				while (i < n&&v[i] >= v[i + 1])
-					i++;
-				count++;
+			while (s[last] != ' '&&last != s.size()) {
+				last++;
 			}
+			if (s[last] == ' '&&last != s.size()) {
+				my_reverse(&s[first], &s[last - 1]);
+				first = last + 1;
+				last = first;
+			}
+
 		}
-		cout << count << endl;
+		int a = s.rfind(' ');
+		my_reverse(&s[a + 1], &s[s.size() - 1]);
+		while (s[s.size() - 1] == ' ') {
+			s.erase(s.end());
+		}
+		cout << s << endl;
 	}
 	return 0;
 }
+
+
+//Å£¿Í---ÅÅÐò×ÓÐòÁÐ
+//int main() {
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<int> v(n + 1, 0);
+//		int count = 0;
+//		for (int i = 0; i < n; ++i) {
+//			cin >> v[i];
+//		}
+//		for (int i = 0; i < n; ++i) {
+//			if (v[i] < v[i + 1]) {
+//				while (i < n&&v[i] <= v[i + 1])
+//					i++;
+//				count++;
+//			}
+//			else if (v[i] > v[i + 1]) {
+//				while (i < n&&v[i] >= v[i + 1])
+//					i++;
+//				count++;
+//			}
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 ////Å£¿Í  É¾³ý¹«¹²×Ö·û
 //int main() {
