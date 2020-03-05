@@ -8,47 +8,76 @@
 #include <algorithm> //sort
 using namespace std;
 
-//Å£¿Í---µ¹ÖÃ×Ö·û´®
-void my_reverse(char* begin, char* end) {
-	while (begin < end) {
-		char tmp = *begin;
-		*begin = *end;
-		*end = tmp;
-		begin++;
-		end--;
-	}
-}
 
+//Å£¿Í---×Ö·û´®ÖÐÕÒ³öÁ¬Ðø×î³¤µÄÊý×Ö´®
 int main() {
-	string s;
-	while (getline(cin, s)) {
-		reverse(s.begin(), s.end());
-		int first = 0;
-		int last = 0;
-		while (last != s.size()) {
-			while (s[last] == ' '&&last != s.size()) {
-				first++;
-				last++;
-			}
-			while (s[last] != ' '&&last != s.size()) {
-				last++;
-			}
-			if (s[last] == ' '&&last != s.size()) {
-				my_reverse(&s[first], &s[last - 1]);
-				first = last + 1;
-				last = first;
+	string str;
+	while (getline(cin,str)) {
+		int max = 0;
+		int falg = 0;
+		for (int i = 0; i < str.size(); ++i) {
+			int count = 0;
+			while (str[i] > '9'&&str[i] < '0'&&i < str.size()) {
+				++i;
 			}
 
+			while (str[i] >= '0'&&str[i] <= '9'&&i < str.size()) {
+				count++;
+				++i;
+			}
+			if (count > max) {
+				max = count;
+				falg = i;
+			}
 		}
-		int a = s.rfind(' ');
-		my_reverse(&s[a + 1], &s[s.size() - 1]);
-		while (s[s.size() - 1] == ' ') {
-			s.erase(s.end());
-		}
+		string s(str.begin() + falg - max, str.begin() + falg);
 		cout << s << endl;
 	}
+
 	return 0;
 }
+
+////Å£¿Í---µ¹ÖÃ×Ö·û´®
+//void my_reverse(char* begin, char* end) {
+//	while (begin < end) {
+//		char tmp = *begin;
+//		*begin = *end;
+//		*end = tmp;
+//		begin++;
+//		end--;
+//	}
+//}
+//
+//int main() {
+//	string s;
+//	while (getline(cin, s)) {
+//		reverse(s.begin(), s.end());
+//		int first = 0;
+//		int last = 0;
+//		while (last != s.size()) {
+//			while (s[last] == ' '&&last != s.size()) {
+//				first++;
+//				last++;
+//			}
+//			while (s[last] != ' '&&last != s.size()) {
+//				last++;
+//			}
+//			if (s[last] == ' '&&last != s.size()) {
+//				my_reverse(&s[first], &s[last - 1]);
+//				first = last + 1;
+//				last = first;
+//			}
+//
+//		}
+//		int a = s.rfind(' ');
+//		my_reverse(&s[a + 1], &s[s.size() - 1]);
+//		while (s[s.size() - 1] == ' ') {
+//			s.erase(s.end());
+//		}
+//		cout << s << endl;
+//	}
+//	return 0;
+//}
 
 
 //Å£¿Í---ÅÅÐò×ÓÐòÁÐ
