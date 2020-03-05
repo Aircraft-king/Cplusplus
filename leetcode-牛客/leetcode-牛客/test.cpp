@@ -9,33 +9,57 @@
 using namespace std;
 
 
-//牛客---字符串中找出连续最长的数字串
-int main() {
-	string str;
-	while (getline(cin,str)) {
-		int max = 0;
-		int falg = 0;
-		for (int i = 0; i < str.size(); ++i) {
-			int count = 0;
-			while (str[i] > '9'&&str[i] < '0'&&i < str.size()) {
-				++i;
-			}
-
-			while (str[i] >= '0'&&str[i] <= '9'&&i < str.size()) {
-				count++;
-				++i;
-			}
-			if (count > max) {
-				max = count;
-				falg = i;
-			}
-		}
-		string s(str.begin() + falg - max, str.begin() + falg);
-		cout << s << endl;
+//牛客----数组中出现次数超过一半的数字
+int MoreThanHalfNum_Solution(vector<int> numbers) {
+	if (numbers.size() == 0) return 0;
+	if (numbers.size() == 1) return numbers[0];
+	sort(numbers.begin(), numbers.end());
+	vector<int> hash(numbers[numbers.size()-1]+1, 0);
+	for (int i = 0; i < numbers.size(); ++i) {
+		hash[numbers[i]]++;
 	}
-
+	for (int i = 0; i < hash.size(); ++i) {
+		if (hash[i] > (numbers.size() / 2)) {
+			return i;
+		}
+	}
 	return 0;
 }
+int main() {
+	int arr[9] = { 1,2,3,2,2,2,5,4,2 };
+	vector<int> v(arr,arr+9);
+	int a = MoreThanHalfNum_Solution(v);
+	cout << a << endl;
+	return 0;
+}
+
+////牛客---字符串中找出连续最长的数字串
+//int main() {
+//	string str;
+//	while (getline(cin,str)) {
+//		int max = 0;
+//		int falg = 0;
+//		for (int i = 0; i < str.size(); ++i) {
+//			int count = 0;
+//			while (str[i] > '9'&&str[i] < '0'&&i < str.size()) {
+//				++i;
+//			}
+//
+//			while (str[i] >= '0'&&str[i] <= '9'&&i < str.size()) {
+//				count++;
+//				++i;
+//			}
+//			if (count > max) {
+//				max = count;
+//				falg = i;
+//			}
+//		}
+//		string s(str.begin() + falg - max, str.begin() + falg);
+//		cout << s << endl;
+//	}
+//
+//	return 0;
+//}
 
 ////牛客---倒置字符串
 //void my_reverse(char* begin, char* end) {
