@@ -9,29 +9,55 @@
 using namespace std;
 
 
-//牛客----数组中出现次数超过一半的数字
-int MoreThanHalfNum_Solution(vector<int> numbers) {
-	if (numbers.size() == 0) return 0;
-	if (numbers.size() == 1) return numbers[0];
-	sort(numbers.begin(), numbers.end());
-	vector<int> hash(numbers[numbers.size()-1]+1, 0);
-	for (int i = 0; i < numbers.size(); ++i) {
-		hash[numbers[i]]++;
-	}
-	for (int i = 0; i < hash.size(); ++i) {
-		if (hash[i] > (numbers.size() / 2)) {
-			return i;
-		}
-	}
-	return 0;
-}
+//牛客---计算糖果
 int main() {
-	int arr[9] = { 1,2,3,2,2,2,5,4,2 };
-	vector<int> v(arr,arr+9);
-	int a = MoreThanHalfNum_Solution(v);
-	cout << a << endl;
+	vector<int> v(4, 0);
+	for (int i = 0; i < 4; ++i) {
+		cin >> v[i];
+	}
+	int flag = 0;
+	int a; int b; int c;
+	for (a = 0; a <= 30; a++) {
+		for (b = 0; b <= 30; b++) {
+			for (c = 0; c <= 30; c++) {
+				if (a - b == v[0] && b - c == v[1] && a + b == v[2] && b + c == v[3]) {
+					cout << a << " " << b << " " << c << endl;
+					flag = 1;
+					break;
+				}
+			}
+			if (flag == 1) break;
+		}
+		if (flag == 1) break;
+	}
+	if (a == 31 && b == 31 && c == 31)
+		cout << "No" << endl;
 	return 0;
 }
+
+//牛客----数组中出现次数超过一半的数字
+//int MoreThanHalfNum_Solution(vector<int> numbers) {
+//	if (numbers.size() == 0) return 0;
+//	if (numbers.size() == 1) return numbers[0];
+//	sort(numbers.begin(), numbers.end());
+//	vector<int> hash(numbers[numbers.size()-1]+1, 0);
+//	for (int i = 0; i < numbers.size(); ++i) {
+//		hash[numbers[i]]++;
+//	}
+//	for (int i = 0; i < hash.size(); ++i) {
+//		if (hash[i] > (numbers.size() / 2)) {
+//			return i;
+//		}
+//	}
+//	return 0;
+//}
+//int main() {
+//	int arr[9] = { 1,2,3,2,2,2,5,4,2 };
+//	vector<int> v(arr,arr+9);
+//	int a = MoreThanHalfNum_Solution(v);
+//	cout << a << endl;
+//	return 0;
+//}
 
 ////牛客---字符串中找出连续最长的数字串
 //int main() {
