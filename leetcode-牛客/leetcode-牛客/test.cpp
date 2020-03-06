@@ -8,32 +8,58 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//牛客---计算糖果
 int main() {
-	vector<int> v(4, 0);
-	for (int i = 0; i < 4; ++i) {
-		cin >> v[i];
-	}
-	int flag = 0;
-	int a; int b; int c;
-	for (a = 0; a <= 30; a++) {
-		for (b = 0; b <= 30; b++) {
-			for (c = 0; c <= 30; c++) {
-				if (a - b == v[0] && b - c == v[1] && a + b == v[2] && b + c == v[3]) {
-					cout << a << " " << b << " " << c << endl;
-					flag = 1;
-					break;
-				}
-			}
-			if (flag == 1) break;
+
+	int M;
+	int N;
+	while (cin >> M) {
+		int flag = 0;
+		if (M < 0) {
+			flag = 1;
+			M = 0 - M;
 		}
-		if (flag == 1) break;
+		cin >> N;
+		string s; 
+			char str[16] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
+			if (M == 0) cout << "0" << endl;
+			if (M == 1) cout << "1" << endl;
+		while (M > 0) {
+			int val = M % N;
+			s = str[val] + s;
+			M /= N;
+		}
+		if (flag = 1)
+			s = '-' + s;
+		cout << s << endl;
 	}
-	if (a == 31 && b == 31 && c == 31)
-		cout << "No" << endl;
 	return 0;
 }
+
+////牛客---计算糖果
+//int main() {
+//	vector<int> v(4, 0);
+//	for (int i = 0; i < 4; ++i) {
+//		cin >> v[i];
+//	}
+//	int flag = 0;
+//	int a; int b; int c;
+//	for (a = 0; a <= 30; a++) {
+//		for (b = 0; b <= 30; b++) {
+//			for (c = 0; c <= 30; c++) {
+//				if (a - b == v[0] && b - c == v[1] && a + b == v[2] && b + c == v[3]) {
+//					cout << a << " " << b << " " << c << endl;
+//					flag = 1;
+//					break;
+//				}
+//			}
+//			if (flag == 1) break;
+//		}
+//		if (flag == 1) break;
+//	}
+//	if (a == 31 && b == 31 && c == 31)
+//		cout << "No" << endl;
+//	return 0;
+//}
 
 //牛客----数组中出现次数超过一半的数字
 //int MoreThanHalfNum_Solution(vector<int> numbers) {
