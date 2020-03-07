@@ -8,32 +8,78 @@
 #include <algorithm> //sort
 using namespace std;
 
+int is_reverse(string tmp) {
+	int first = 0;
+	int last = tmp.size() - 1;
+	while (first < last) {
+		if (tmp[first] != tmp[last]) {
+			return -1;
+		}
+		first++;
+		last--;
+	}
+	return 1;
+}
+
 int main() {
 
-	int M;
-	int N;
-	while (cin >> M) {
-		int flag = 0;
-		if (M < 0) {
-			flag = 1;
-			M = 0 - M;
+	string A;
+	string B;
+	while (cin >> A) {
+		cin >> B;
+		int count = 0;
+		for (int i = 0; i < A.size(); i++) {
+			string tmp(A.begin(), A.begin() + i);
+			tmp += B;
+			string tmp1(A.begin() + i, A.end());
+			tmp += tmp1;
+			int x = is_reverse(tmp);
+			if (x == 1) {
+				count++;
+			}
 		}
-		cin >> N;
-		string s; 
-			char str[16] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
-			if (M == 0) cout << "0" << endl;
-			if (M == 1) cout << "1" << endl;
-		while (M > 0) {
-			int val = M % N;
-			s = str[val] + s;
-			M /= N;
+		if (is_reverse(A + B) == 1) {
+			count++;
 		}
-		if (flag = 1)
-			s = '-' + s;
-		cout << s << endl;
+		cout << count << endl;
 	}
 	return 0;
 }
+
+//int main() {
+//	int x = 1;
+//	do {
+//		printf("%2d", x++);
+//	} while (x--);
+//	return 0;
+//}
+
+//int main() {
+//
+//	int M;
+//	int N;
+//	while (cin >> M) {
+//		int flag = 0;
+//		if (M < 0) {
+//			flag = 1;
+//			M = 0 - M;
+//		}
+//		cin >> N;
+//		string s; 
+//			char str[16] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
+//			if (M == 0) cout << "0" << endl;
+//			if (M == 1) cout << "1" << endl;
+//		while (M > 0) {
+//			int val = M % N;
+//			s = str[val] + s;
+//			M /= N;
+//		}
+//		if (flag = 1)
+//			s = '-' + s;
+//		cout << s << endl;
+//	}
+//	return 0;
+//}
 
 ////Å£¿Í---¼ÆËãÌÇ¹û
 //int main() {
