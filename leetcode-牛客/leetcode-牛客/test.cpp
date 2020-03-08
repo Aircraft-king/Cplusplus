@@ -8,43 +8,71 @@
 #include <algorithm> //sort
 using namespace std;
 
-int is_reverse(string tmp) {
-	int first = 0;
-	int last = tmp.size() - 1;
-	while (first < last) {
-		if (tmp[first] != tmp[last]) {
-			return -1;
+//牛客---把字符串转换为整数
+int StrToInt(string str) {
+	int val = 0;
+	int flag = 0;
+	if (str.size() == 0) return 0;
+	if (str[0] == '-')
+		flag = 1;
+	if (str[0] == '-' || str[0] == '+')
+		str.erase(str.begin());
+	for (int i = 1; i < str.size(); ++i) {
+		if (str[i]<'1' || str[i]>'9') {
+			return 0;
 		}
-		first++;
-		last--;
 	}
-	return 1;
+	for (int i = str.size() - 1, j = 0; i >= 0; --i, ++j) {
+		val += ((str[i] - '0')*pow(10, j));
+	}
+	if (flag == 1)
+		val = 0 - val;
+	return val;
 }
-
 int main() {
-
-	string A;
-	string B;
-	while (cin >> A) {
-		cin >> B;
-		int count = 0;
-		for (int i = 0; i < A.size(); i++) {
-			string tmp(A.begin(), A.begin() + i);
-			tmp += B;
-			string tmp1(A.begin() + i, A.end());
-			tmp += tmp1;
-			int x = is_reverse(tmp);
-			if (x == 1) {
-				count++;
-			}
-		}
-		if (is_reverse(A + B) == 1) {
-			count++;
-		}
-		cout << count << endl;
-	}
+	string s = "+12345";
+	int a = StrToInt(s);
+	cout << a << endl;
 	return 0;
 }
+
+//int is_reverse(string tmp) {
+//	int first = 0;
+//	int last = tmp.size() - 1;
+//	while (first < last) {
+//		if (tmp[first] != tmp[last]) {
+//			return -1;
+//		}
+//		first++;
+//		last--;
+//	}
+//	return 1;
+//}
+//
+//int main() {
+//
+//	string A;
+//	string B;
+//	while (cin >> A) {
+//		cin >> B;
+//		int count = 0;
+//		for (int i = 0; i < A.size(); i++) {
+//			string tmp(A.begin(), A.begin() + i);
+//			tmp += B;
+//			string tmp1(A.begin() + i, A.end());
+//			tmp += tmp1;
+//			int x = is_reverse(tmp);
+//			if (x == 1) {
+//				count++;
+//			}
+//		}
+//		if (is_reverse(A + B) == 1) {
+//			count++;
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 //int main() {
 //	int x = 1;
