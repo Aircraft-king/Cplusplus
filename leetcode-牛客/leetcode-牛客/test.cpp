@@ -7,29 +7,53 @@
 #include<deque>
 #include <algorithm> //sort
 using namespace std;
-//斐波那契数列
-int main() {
-	vector<int> v(100, 0);
-	v[0] = 0;
-	v[1] = 1;
-	for (int i = 2; i < v.size(); ++i) {
-		v[i] = v[i - 1] + v[i - 2];
-	}
-	int val = 0;
-	while (cin >> val) {
-		int i = 0;
-		for (; i < v.size(); i++) {
-			if (val >= v[i] && val <= v[i + 1]) {
-				break;
+
+
+//合法括号序列判断
+class Parenthesis {
+public:
+	bool chkParenthesis(string A, int n) {
+		// write code here
+		stack<char> st;
+		for (int i = 0; i < n; ++i) {
+			if (st.empty()) {
+				st.push(A[i]);
+			}
+			else if (st.top() == '('&&A[i] == ')') {
+				st.pop();
+			}
+			else if (A[i] == '(') {
+				st.push(A[i]);
 			}
 		}
-		int front = val - v[i];
-		int next = v[i + 1] - val;
-		cout << (front > next ? next : front) << endl;
-
+		if (st.empty()) return true;
+		return false;
 	}
-	return 0;
-}
+};
+
+//斐波那契数列
+//int main() {
+//	vector<int> v(100, 0);
+//	v[0] = 0;
+//	v[1] = 1;
+//	for (int i = 2; i < v.size(); ++i) {
+//		v[i] = v[i - 1] + v[i - 2];
+//	}
+//	int val = 0;
+//	while (cin >> val) {
+//		int i = 0;
+//		for (; i < v.size(); i++) {
+//			if (val >= v[i] && val <= v[i + 1]) {
+//				break;
+//			}
+//		}
+//		int front = val - v[i];
+//		int next = v[i + 1] - val;
+//		cout << (front > next ? next : front) << endl;
+//
+//	}
+//	return 0;
+//}
 
 //牛客---把字符串转换为整数
 //int StrToInt(string str) {
