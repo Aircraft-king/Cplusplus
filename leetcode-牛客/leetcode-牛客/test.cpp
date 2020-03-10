@@ -9,6 +9,29 @@
 using namespace std;
 
 
+//牛客--最小公倍数
+int main() {
+
+	int a = 0;
+	int b = 0;
+	while (cin >> a) {
+		cin >> b;
+		if (a < b) {
+			int c = a;
+			a = b;
+			b = c;
+		}
+		int i = 0;
+		for (i = b; i > 1; --i) {
+			if (a%i == 0 && b%i == 0) {
+				b /= i;
+			}
+		}
+		cout << a * b << endl;
+	}
+	return 0;
+}
+
 
 //牛客--两种排序方法
 //bool is_lexord(vector<string> v) {
