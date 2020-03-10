@@ -9,27 +9,69 @@
 using namespace std;
 
 
+
+//牛客--两种排序方法
+//bool is_lexord(vector<string> v) {
+//	if (v.size() == 1 || v.size() == 0) return true;
+//	for (int i = 1; i < v.size(); ++i) {
+//
+//		if (v[i] <= v[i - 1])
+//			return false;
+//	}
+//	return true;
+//}
+//bool is_len(vector<string> v) {
+//	if (v.size() == 1 || v.size() == 0) return true;
+//	for (int i = 1; i < v.size(); ++i) {
+//		if (v[i].size() <= v[i - 1].size())
+//			return false;
+//	}
+//	return true;
+//}
+//
+//int main() {
+//
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<string> v_str;
+//		v_str.resize(n);
+//		for (int i = 0; i < n; ++i) {
+//			cin >> v_str[i];
+//		}
+//		if (is_len(v_str) && is_lexord(v_str))
+//			cout << "both" << endl;
+//		else if (is_len(v_str) && !is_lexord(v_str))
+//			cout << "lengths" << endl;
+//		else if (!is_len(v_str) && is_lexord(v_str))
+//			cout << "lexicographically" << endl;
+//		else
+//			cout << "none" << endl;
+//	}
+//
+//	return 0;
+//}
+
 //合法括号序列判断
-class Parenthesis {
-public:
-	bool chkParenthesis(string A, int n) {
-		// write code here
-		stack<char> st;
-		for (int i = 0; i < n; ++i) {
-			if (st.empty()) {
-				st.push(A[i]);
-			}
-			else if (st.top() == '('&&A[i] == ')') {
-				st.pop();
-			}
-			else if (A[i] == '(') {
-				st.push(A[i]);
-			}
-		}
-		if (st.empty()) return true;
-		return false;
-	}
-};
+//class Parenthesis {
+//public:
+//	bool chkParenthesis(string A, int n) {
+//		// write code here
+//		stack<char> st;
+//		for (int i = 0; i < n; ++i) {
+//			if (st.empty()) {
+//				st.push(A[i]);
+//			}
+//			else if (st.top() == '('&&A[i] == ')') {
+//				st.pop();
+//			}
+//			else if (A[i] == '(') {
+//				st.push(A[i]);
+//			}
+//		}
+//		if (st.empty()) return true;
+//		return false;
+//	}
+//};
 
 //斐波那契数列
 //int main() {
