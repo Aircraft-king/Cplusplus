@@ -8,23 +8,45 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客--走格子问题
+using namespace std;
+int totalMethod(int n, int m) {
+	if (n == 0 && m == 0) {
+		return 0;
+	}
+	if (n == 0 || m == 0) {
+		return 1;
+	}
+
+	return totalMethod(n - 1, m) + totalMethod(n, m - 1);
+}
+int main() {
+	int m = 0;
+	int n = 0;
+	while (cin >> n) {
+		cin >> m;
+		cout << totalMethod(n, m) << endl;
+	}
+
+	return 0;
+}
 
 
 
 //牛客---另类加法
-class UnusualAdd {
-public:
-	int addAB(int A, int B) {
-		// write code here
-		int C = A & B;
-		while (C) {
-			A = A ^ B;
-			B = C << 1;
-			C = A & B;
-		}
-		return A | B;
-	}
-};
+//class UnusualAdd {
+//public:
+//	int addAB(int A, int B) {
+//		// write code here
+//		int C = A & B;
+//		while (C) {
+//			A = A ^ B;
+//			B = C << 1;
+//			C = A & B;
+//		}
+//		return A | B;
+//	}
+//};
 
 
 //void fun(int* a)
