@@ -9,28 +9,57 @@
 using namespace std;
 
 
-//牛客--最小公倍数
-int main() {
 
-	int a = 0;
-	int b = 0;
-	while (cin >> a) {
-		cin >> b;
-		if (a < b) {
-			int c = a;
-			a = b;
-			b = c;
+
+//牛客---另类加法
+class UnusualAdd {
+public:
+	int addAB(int A, int B) {
+		// write code here
+		int C = A & B;
+		while (C) {
+			A = A ^ B;
+			B = C << 1;
+			C = A & B;
 		}
-		int i = 0;
-		for (i = b; i > 1; --i) {
-			if (a%i == 0 && b%i == 0) {
-				b /= i;
-			}
-		}
-		cout << a * b << endl;
+		return A | B;
 	}
-	return 0;
-}
+};
+
+
+//void fun(int* a)
+//{
+//	*a = 8;
+//}
+//int main()
+//{
+//	int a = 5;
+//	fun(&a);
+//	cout << a << endl;
+//	return 0;
+//}
+//牛客--最小公倍数
+//int main() {
+//
+//	int a = 0;
+//	int b = 0;
+//	while (cin >> a) {
+//		cin >> b;
+//		if (a < b) {
+//			int c = a;
+//			a = b;
+//			b = c;
+//		}
+//		int i = 0;
+//		for (i = b; i > 1; --i) {
+//			if (a%i == 0 && b%i == 0) {
+//				b /= i;
+//			}
+//		}
+//		cout << a * b << endl;
+//	}
+//	return 0;
+//}
 
 
 //牛客--两种排序方法
