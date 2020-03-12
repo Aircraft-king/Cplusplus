@@ -17,7 +17,6 @@ int totalMethod(int n, int m) {
 	if (n == 0 || m == 0) {
 		return 1;
 	}
-
 	return totalMethod(n - 1, m) + totalMethod(n, m - 1);
 }
 int main() {
