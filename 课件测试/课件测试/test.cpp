@@ -7,25 +7,44 @@
 #include<string>
 using namespace std;
 
-int main() {
-	int n = 0;
+template<class T> 
+class foo {
+	T tval;
+public:
+	foo(T t) :tval(t) {
 
-	while (cin >> n) {
-		vector<int> v(3 * n, 0);
-		for (int i = 0; i < 3 * n; ++i) {
-			cin >> v[i];
-		}
-		int max = 0;
-		while (v.size() != 0) {
-			sort(v.begin(), v.begin() + 3);
-			max += v[1];
-			v.erase(v.begin(), v.begin() + 3);
-		}
-		cout << max << endl;
 	}
+};
+template<class T>
+class fooderived :public foo<T> {
 
+};
+
+int main() {
+	fooderived<int> d(5);
 	return 0;
 }
+
+
+//int main() {
+//	int n = 0;
+//
+//	while (cin >> n) {
+//		vector<int> v(3 * n, 0);
+//		for (int i = 0; i < 3 * n; ++i) {
+//			cin >> v[i];
+//		}
+//		int max = 0;
+//		while (v.size() != 0) {
+//			sort(v.begin(), v.begin() + 3);
+//			max += v[1];
+//			v.erase(v.begin(), v.begin() + 3);
+//		}
+//		cout << max << endl;
+//	}
+//
+//	return 0;
+//}
 
 //int main() {
 //	int arr[10] = { 2,3,5,4,1,9,6,8,7,0 };
