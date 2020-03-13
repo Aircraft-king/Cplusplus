@@ -8,27 +8,150 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--走格子问题
+//牛客--密码强度
+#include<iostream>
+#include<string>
 using namespace std;
-int totalMethod(int n, int m) {
-	if (n == 0 && m == 0) {
-		return 0;
-	}
-	if (n == 0 || m == 0) {
-		return 1;
-	}
-	return totalMethod(n - 1, m) + totalMethod(n, m - 1);
-}
-int main() {
-	int m = 0;
-	int n = 0;
-	while (cin >> n) {
-		cin >> m;
-		cout << totalMethod(n, m) << endl;
-	}
 
+int main()
+{
+	string s;
+	s.resize(1000);
+	while (cin >> s)
+	{
+		int n;
+		int f[5] = { 0 };
+		int ans = 0;
+		int num = 0;
+		int letter_small = 0;
+		int capital = 0;
+		int character = 0;
+		n = s.size();
+		for (int i = 0; i < n; i++)
+		{
+			if (s[i] >= '0'&&s[i] <= '9')
+				num++;
+			else if (s[i] >= 'a'&&s[i] <= 'z')
+				letter_small++;
+			else if (s[i] >= 'A'&&s[i] <= 'Z')
+				capital++;
+			else
+				character++;
+		}
+		//判断长度
+		if (n <= 4)
+			f[0] = 5;
+		else if (n > 4 && n < 8)
+			f[0] = 10;
+		else if (n >= 8)
+			f[0] = 25;
+		//判断字母
+		if (letter_small + capital == 0)
+			f[1] = 0;
+		else if ((letter_small > 0 && capital == 0) || (letter_small == 0 && capital > 0))
+			f[1] = 10;
+		else if (letter_small > 0 && capital > 0)
+			f[1] = 20;
+		//判断数字
+		if (num == 0)
+			f[2] = 0;
+		else if (num == 1)
+			f[2] = 10;
+		else if (num > 1)
+			f[2] = 20;
+		//判断符号
+		if (character == 0)
+			f[3] = 0;
+		else if (character == 1)
+			f[3] = 10;
+		else if (character > 1)
+			f[3] = 25;
+		if (letter_small + capital > 0 && num > 0)
+			f[5] = 2;
+		else if (letter_small + capital > 0 && num > 0 && character > 0)
+			f[5] = 3;
+		else if (letter_small > 0 && capital > 0 && num > 0 && character > 0)
+			f[5] = 5;
+		ans = f[0] + f[1] + f[2] + f[3] + f[4];
+		if (ans >= 90)
+			cout << "VERY_SECURE" << endl;
+		else if (ans >= 80)
+			cout << "SECURE" << endl;
+		else if (ans >= 70)
+			cout << "VERY_STRONG" << endl;
+		else if (ans >= 60)
+			cout << "STRONG" << endl;
+		else if (ans >= 50)
+			cout << "AVERAGE" << endl;
+		else if (ans >= 25)
+			cout << "WEAK" << endl;
+		else
+			cout << "VERY_WEAK" << endl;
+	}
 	return 0;
 }
+
+
+//牛客--井字棋
+//class Board {
+//public:
+//	bool checkWon(vector<vector<int> > board) {
+//		// write code here
+//		int len = board.size();
+//		for (int i = 0; i < len; i++)
+//		{
+//			int sum = 0;
+//			for (int j = 0; j < len; j++)
+//				sum += board[i][j];
+//			if (sum == len)
+//				return true;
+//		}
+//		for (int i = 0; i < len; i++)
+//		{
+//			int sum = 0;
+//			for (int j = 0; j < len; j++)
+//				sum += board[j][i];
+//			if (sum == len)
+//				return true;
+//		}
+//		int temp = 0;
+//		for (int i = 0; i < len; i++)
+//		{
+//			temp += board[i][i];
+//		}
+//		if (temp == len) return true;
+//		temp = 0;
+//		for (int i = 0; i < len; i++)
+//		{
+//			temp += board[i][len - i - 1];
+//		}
+//		if (temp == len) return true;
+//
+//		return false;
+//	}
+//};
+
+//牛客--走格子问题
+//using namespace std;
+//int totalMethod(int n, int m) {
+//	if (n == 0 && m == 0) {
+//		return 0;
+//	}
+//	if (n == 0 || m == 0) {
+//		return 1;
+//	}
+//	return totalMethod(n - 1, m) + totalMethod(n, m - 1);
+//}
+//int main() {
+//	int m = 0;
+//	int n = 0;
+//	while (cin >> n) {
+//		cin >> m;
+//		cout << totalMethod(n, m) << endl;
+//	}
+//
+//	return 0;
+//}
 
 
 
