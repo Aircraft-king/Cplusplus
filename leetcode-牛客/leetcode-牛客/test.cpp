@@ -8,33 +8,64 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--密码强度
-#include<iostream>
-#include<string>
-using namespace std;
+//牛客--最大连续bit数
+vector<int> num_byte(int n) {
+	vector<int> v;
+	while (n) {
+		v.insert(v.begin(), n % 2);
+		n /= 2;
+	}
+	return v;
+}
 
+int main() {
+
+	int n = 0;
+	while (cin >> n) {
+		vector<int> v;
+		v = num_byte(n);
+		v.insert(v.end(), 0);
+		int count = 0;
+		int max = 0;
+		for (int i = 0; i < v.size(); ++i) {
+			if (v[i] == 0) {
+				if (max < count) {
+					max = count;
+				}
+				count = 0;
+			}
+			if (v[i] == 1) {
+				count++;
+			}
+		}
+		cout << max << endl;
+	}
+	return 0;
+}
 
 
 //牛客---最近公共祖先
 
-class LCA {
-public:
-	int getLCA(int a, int b) {
-		// write code here
-		while (a&&b) {
-			while (a > b) {
-				a /= 2;
-			}
-			while (b > a) {
-				b /= 2;
-			}
-			if (a == b) {
-				return a;
-			}
-		}
-	}
-};
+//class LCA {
+//public:
+//	int getLCA(int a, int b) {
+//		// write code here
+//		while (a&&b) {
+//			while (a > b) {
+//				a /= 2;
+//			}
+//			while (b > a) {
+//				b /= 2;
+//			}
+//			if (a == b) {
+//				return a;
+//			}
+//		}
+//	}
+//};
 
+
+//牛客--密码强度
 //int main()
 //{
 //	string s;
