@@ -8,40 +8,83 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--最大连续bit数
-vector<int> num_byte(int n) {
-	vector<int> v;
-	while (n) {
-		v.insert(v.begin(), n % 2);
-		n /= 2;
+
+//牛客---日期到天数转换
+bool isleapyear(int year) {
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+		return true;
+	return false;
+}
+
+int iConverDateToDay(int year, int month, int day) {
+	int outday = 0;
+	char s[13] = { 29,31,28,31,30,31,30,31,31,30,31,30,31 };
+	if (year < 1 || month < 1 || month>12 || day < 1) return -1;
+	if (!isleapyear(year)) {
+		if (day > s[month])
+			return -1;
 	}
-	return v;
+	else {
+		if (month == 2 && day > 29 || month != 2 && day > s[month])
+			return -1;
+	}
+	for (int i = 1; i < month; ++i) {
+		outday += s[i];
+	}
+	if (month > 2 && isleapyear(year))
+		outday += 1;
+	outday += day;
+	return outday;
 }
 
 int main() {
-
-	int n = 0;
-	while (cin >> n) {
-		vector<int> v;
-		v = num_byte(n);
-		v.insert(v.end(), 0);
+	int year = 0;
+	int month = 0;
+	int day = 0;
+	while (cin >> year) {
+		cin >> month;
+		cin >> day;
 		int count = 0;
-		int max = 0;
-		for (int i = 0; i < v.size(); ++i) {
-			if (v[i] == 0) {
-				if (max < count) {
-					max = count;
-				}
-				count = 0;
-			}
-			if (v[i] == 1) {
-				count++;
-			}
-		}
-		cout << max << endl;
+		count = iConverDateToDay(year, month, day);
+		cout << count << endl;
 	}
 	return 0;
 }
+
+//牛客--最大连续bit数
+//vector<int> num_byte(int n) {
+//	vector<int> v;
+//	while (n) {
+//		v.insert(v.begin(), n % 2);
+//		n /= 2;
+//	}
+//	return v;
+//}
+//
+//int main() {
+//
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<int> v;
+//		v = num_byte(n);
+//		v.insert(v.end(), 0);
+//		int count = 0;
+//		int max = 0;
+//		for (int i = 0; i < v.size(); ++i) {
+//			if (v[i] == 0) {
+//				if (max < count) {
+//					max = count;
+//				}
+//				count = 0;
+//			}
+//			if (v[i] == 1) {
+//				count++;
+//			}
+//		}
+//		cout << max << endl;
+//	}
+//	return 0;
+//}
 
 
 //牛客---最近公共祖先
