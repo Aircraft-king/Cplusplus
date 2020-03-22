@@ -8,25 +8,50 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--整数二进制中1的个数
-int num_count(int n) {
-	int count = 0;
-	while (n) {
-		if (n % 2 == 1)
-			count++;
-		n /= 2;
-	}
-	return count;
-}
-
 int main() {
-	int val = 0;
-	while (cin >> val) {
-		int count = num_count(val);
-		cout << count << endl;
-	}
+	char *ptr;
+	char str[] = "abcdefg";
+	ptr = str;
+	ptr += 5;
 	return 0;
-}
+ }
+
+//完美数
+//int main() {
+//	int a[4] = { 6, 28, 496, 8128 };
+//	int n = 0;
+//	while (cin >> n) {
+//		int count = 0;
+//		if (n < 6) cout << count << endl;
+//		for (int i = 0; i < 3; i++) {
+//			if (n >= a[i] && n < a[i + 1]) {
+//				cout << i + 1 << endl;
+//				break;
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//牛客--整数二进制中1的个数
+//int num_count(int n) {
+//	int count = 0;
+//	while (n) {
+//		if (n % 2 == 1)
+//			count++;
+//		n /= 2;
+//	}
+//	return count;
+//}
+//
+//int main() {
+//	int val = 0;
+//	while (cin >> val) {
+//		int count = num_count(val);
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 
 //牛客---日期到天数转换
