@@ -8,13 +8,34 @@
 #include <algorithm> //sort
 using namespace std;
 
+
+//杨辉三角的变形
 int main() {
-	char *ptr;
-	char str[] = "abcdefg";
-	ptr = str;
-	ptr += 5;
+	int n = 0;
+	while (cin >> n) {
+		int count = 1;
+		for (int i = 3; i <= n; i++) {
+			count += (i - 1);
+		}
+		if (n < 3) cout << -1 << endl;
+		else if (n % 2 != 0) cout << 2 << endl;
+		else {
+			if (count % 2 == 0)
+				cout << 3 << endl;
+			else
+				cout << 4 << endl;
+		}
+	}
 	return 0;
- }
+}
+
+//int main() {
+//	char *ptr;
+//	char str[] = "abcdefg";
+//	ptr = str;
+//	ptr += 5;
+//	return 0;
+// }
 
 //完美数
 //int main() {
