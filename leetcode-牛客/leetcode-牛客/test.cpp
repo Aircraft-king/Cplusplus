@@ -8,26 +8,56 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客--超长正整数相加
+string addlonginterger(string s1, string s2) {
 
-//杨辉三角的变形
-int main() {
-	int n = 0;
-	while (cin >> n) {
-		int count = 1;
-		for (int i = 3; i <= n; i++) {
-			count += (i - 1);
-		}
-		if (n < 3) cout << -1 << endl;
-		else if (n % 2 != 0) cout << 2 << endl;
-		else {
-			if (count % 2 == 0)
-				cout << 3 << endl;
-			else
-				cout << 4 << endl;
-		}
+	while (s1.size() < s2.size())
+		s1 = "0" + s1;
+	while (s1.size() > s2.size())
+		s2 = "0" + s2;
+	int flag = 0;
+	for (int i = s1.size() - 1; i >= 0; i--) {
+		int sum = s1[i] - '0' + s2[i] - '0' + flag;
+		s1[i] = sum % 10 + '0';
+		if (sum > 9) flag = 1;
+		else flag = 0;
 	}
+	if (flag == 1) s1 = '1' + s1;
+	return s1;
+}
+
+int main() {
+
+	string s1;
+	string s2;
+	while (cin >> s1) {
+		cin >> s2;
+		string sum = addlonginterger(s1, s2);
+		cout << sum << endl;
+	}
+
 	return 0;
 }
+
+//杨辉三角的变形
+//int main() {
+//	int n = 0;
+//	while (cin >> n) {
+//		int count = 1;
+//		for (int i = 3; i <= n; i++) {
+//			count += (i - 1);
+//		}
+//		if (n < 3) cout << -1 << endl;
+//		else if (n % 2 != 0) cout << 2 << endl;
+//		else {
+//			if (count % 2 == 0)
+//				cout << 3 << endl;
+//			else
+//				cout << 4 << endl;
+//		}
+//	}
+//	return 0;
+//}
 
 //int main() {
 //	char *ptr;
