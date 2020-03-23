@@ -8,36 +8,53 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--超长正整数相加
-string addlonginterger(string s1, string s2) {
-
-	while (s1.size() < s2.size())
-		s1 = "0" + s1;
-	while (s1.size() > s2.size())
-		s2 = "0" + s2;
-	int flag = 0;
-	for (int i = s1.size() - 1; i >= 0; i--) {
-		int sum = s1[i] - '0' + s2[i] - '0' + flag;
-		s1[i] = sum % 10 + '0';
-		if (sum > 9) flag = 1;
-		else flag = 0;
-	}
-	if (flag == 1) s1 = '1' + s1;
-	return s1;
+//牛客--统计每月兔子总数
+int fib(int m) {
+	if (m < 3)
+		return 1;
+	else
+		return fib(m - 1) + fib(m - 2);
 }
 
 int main() {
-
-	string s1;
-	string s2;
-	while (cin >> s1) {
-		cin >> s2;
-		string sum = addlonginterger(s1, s2);
-		cout << sum << endl;
+	int month = 0;
+	while (cin >> month) {
+		int count = fib(month);
+		cout << count << endl;
 	}
-
 	return 0;
 }
+
+//牛客--超长正整数相加
+//string addlonginterger(string s1, string s2) {
+//
+//	while (s1.size() < s2.size())
+//		s1 = "0" + s1;
+//	while (s1.size() > s2.size())
+//		s2 = "0" + s2;
+//	int flag = 0;
+//	for (int i = s1.size() - 1; i >= 0; i--) {
+//		int sum = s1[i] - '0' + s2[i] - '0' + flag;
+//		s1[i] = sum % 10 + '0';
+//		if (sum > 9) flag = 1;
+//		else flag = 0;
+//	}
+//	if (flag == 1) s1 = '1' + s1;
+//	return s1;
+//}
+//
+//int main() {
+//
+//	string s1;
+//	string s2;
+//	while (cin >> s1) {
+//		cin >> s2;
+//		string sum = addlonginterger(s1, s2);
+//		cout << sum << endl;
+//	}
+//
+//	return 0;
+//}
 
 //杨辉三角的变形
 //int main() {
