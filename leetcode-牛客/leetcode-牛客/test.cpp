@@ -8,22 +8,65 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--统计每月兔子总数
-int fib(int m) {
-	if (m < 3)
-		return 1;
-	else
-		return fib(m - 1) + fib(m - 2);
+//牛客---字符串通配符（80%通过  有bug）
+bool is_match(string s1, string s2) {
+	int count = 1;
+	for (int i = 0; i < s1.size() - 1; i++) {
+		if (s1[i] == '*'&&s1[i + 1] == '?') {
+			s1.erase(s1.begin() + i + 1);
+			count++;
+			i--;
+		}
+	}
+	for (int i = 0, j = 0; i < s1.size() && j < s2.size(); ++i, ++j) {
+		while (s1[i] != '?'&&s1[i] != '*'&&i < s1.size()) {
+			if (s1[i] != s2[j])
+				return false;
+			++i;
+			++j;
+		}
+		if (s1[i] == '?') { ++i; ++j; }
+
+		else if (s1[i] == '*' && (i == s1.size() - 1))
+			return true;
+		else {
+			j = s2.find(s1[i + 1], j);
+			i += count;
+		}
+	}
+	return true;
 }
 
 int main() {
-	int month = 0;
-	while (cin >> month) {
-		int count = fib(month);
-		cout << count << endl;
+
+	string s1;
+	string s2;
+	while (cin >> s1) {
+		cin >> s2;
+		bool a = is_match(s1, s2);
+		if (a) cout << "true" << endl;
+		else cout << "false" << endl;
 	}
+
 	return 0;
 }
+
+//牛客--统计每月兔子总数
+//int fib(int m) {
+//	if (m < 3)
+//		return 1;
+//	else
+//		return fib(m - 1) + fib(m - 2);
+//}
+//
+//int main() {
+//	int month = 0;
+//	while (cin >> month) {
+//		int count = fib(month);
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--超长正整数相加
 //string addlonginterger(string s1, string s2) {
