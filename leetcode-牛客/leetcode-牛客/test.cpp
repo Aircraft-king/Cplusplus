@@ -9,41 +9,55 @@
 using namespace std;
 
 
-//牛客--汽水瓶
+//牛客--字符串反转
 
-int max_drink(int a) {
-	if (a < 3)
-		return 0;
-	int count = 0;
-	while (a) {
-		if (a > 2) {
-			count += a / 3;
-			a = a % 3 + a / 3;
-		}
-		else if (a == 2) {
-			count += 1;
-			a = 0;
-		}
-		else
-			return count;
-	}
-	return count;
-}
 int main() {
-	vector<int> v(11, 0);
-	for (int i = 0; i < 11; ++i) {
-		cin >> v[i];
-		if (v[i] == 0)
-			break;
+
+	string s;
+	while (getline(cin, s)) {
+		reverse(s.begin(), s.end());
+		cout << s << endl;
 	}
-	for (int i = 0; i < 11; ++i) {
-		if (v[i] != 0)
-			cout << max_drink(v[i]) << endl;
-		else
-			break;
-	}
+
 	return 0;
 }
+
+
+//牛客--汽水瓶
+
+//int max_drink(int a) {
+//	if (a < 3)
+//		return 0;
+//	int count = 0;
+//	while (a) {
+//		if (a > 2) {
+//			count += a / 3;
+//			a = a % 3 + a / 3;
+//		}
+//		else if (a == 2) {
+//			count += 1;
+//			a = 0;
+//		}
+//		else
+//			return count;
+//	}
+//	return count;
+//}
+//int main() {
+//	vector<int> v(11, 0);
+//	for (int i = 0; i < 11; ++i) {
+//		cin >> v[i];
+//		if (v[i] == 0)
+//			break;
+//	}
+//	for (int i = 0; i < 11; ++i) {
+//		if (v[i] != 0)
+//			cout << max_drink(v[i]) << endl;
+//		else
+//			break;
+//	}
+//	return 0;
+//}
 
 
 //牛客---字符串通配符（80%通过  有bug）
