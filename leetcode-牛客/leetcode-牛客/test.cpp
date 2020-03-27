@@ -8,34 +8,54 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客---小易的升级之路
-
-int max_val(int power, int boss) {
-	if (boss == 0)
-		return power;
-	else
-		return max_val(boss, power%boss);
-}
+//找出字符串中第一次出现一次的字符
 
 int main() {
-	int n;
-	while (cin >> n) {
-		int power;
-		cin >> power;
-		vector<int> v(100000);
-		for (int i = 0; i < n; ++i) {
-			cin >> v[i];
+
+	string s;
+	while (getline(cin, s)) {
+		int i = 0;
+		for (i = 0; i < s.size(); ++i) {
+			if (s.find(s[i]) == s.rfind(s[i])) {
+				cout << s[i] << endl;
+				break;
+			}
 		}
-		for (int i = 0; i < n; ++i) {
-			if (v[i] <= power)
-				power += v[i];
-			else
-				power += max_val(power, v[i]);
-		}
-		cout << power << endl;
+		if (i == s.size())
+			cout << -1 << endl;
 	}
+
 	return 0;
 }
+
+//牛客---小易的升级之路
+
+//int max_val(int power, int boss) {
+//	if (boss == 0)
+//		return power;
+//	else
+//		return max_val(boss, power%boss);
+//}
+//
+//int main() {
+//	int n;
+//	while (cin >> n) {
+//		int power;
+//		cin >> power;
+//		vector<int> v(100000);
+//		for (int i = 0; i < n; ++i) {
+//			cin >> v[i];
+//		}
+//		for (int i = 0; i < n; ++i) {
+//			if (v[i] <= power)
+//				power += v[i];
+//			else
+//				power += max_val(power, v[i]);
+//		}
+//		cout << power << endl;
+//	}
+//	return 0;
+//}
 
 //牛客---公共子序列长度
 //int main() {
