@@ -8,25 +8,56 @@
 #include <algorithm> //sort
 using namespace std;
 
-//找出字符串中第一次出现一次的字符
 
-int main() {
-
-	string s;
-	while (getline(cin, s)) {
-		int i = 0;
-		for (i = 0; i < s.size(); ++i) {
-			if (s.find(s[i]) == s.rfind(s[i])) {
-				cout << s[i] << endl;
-				break;
+//牛客--微信红包
+class Gift {
+public:
+	static int getValue(vector<int> gifts, int n) {
+		// write code here
+		sort(gifts.begin(), gifts.end());
+		vector<int> hash(gifts[gifts.size() - 1] + 1, 0);
+		for (int i = 0; i < gifts.size(); ++i) {
+			hash[gifts[i]]++;
+		}
+		int j = 0;
+		for (j = 0; j < hash.size(); ++j) {
+			if (hash[j] > gifts.size() / 2) {
+				return j;
 			}
 		}
-		if (i == s.size())
-			cout << -1 << endl;
+		return 0;
 	}
-
+};
+int main() {
+	vector<int> gifts;
+	gifts.push_back(1);
+	gifts.push_back(2);
+	gifts.push_back(3);
+	gifts.push_back(2);
+	gifts.push_back(2);
+	int a = Gift::getValue(gifts, 5);
 	return 0;
 }
+
+//找出字符串中第一次出现一次的字符
+//
+//int main() {
+//
+//	string s;
+//	while (getline(cin, s)) {
+//		int i = 0;
+//		for (i = 0; i < s.size(); ++i) {
+//			if (s.find(s[i]) == s.rfind(s[i])) {
+//				cout << s[i] << endl;
+//				break;
+//			}
+//		}
+//		if (i == s.size())
+//			cout << -1 << endl;
+//	}
+//
+//	return 0;
+//}
 
 //牛客---小易的升级之路
 
