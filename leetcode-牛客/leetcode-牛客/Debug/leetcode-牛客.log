@@ -1,6 +1,3 @@
 ﻿  test.cpp
-f:\git hub\c++\leetcode-牛客\leetcode-牛客\test.cpp(15): warning C4018: “<”: 有符号/无符号不匹配
-f:\git hub\c++\leetcode-牛客\leetcode-牛客\test.cpp(19): warning C4018: “<”: 有符号/无符号不匹配
-f:\git hub\c++\leetcode-牛客\leetcode-牛客\test.cpp(20): warning C4018: “>”: 有符号/无符号不匹配
-f:\git hub\c++\leetcode-牛客\leetcode-牛客\test.cpp(27): warning C4715: “getValue”: 不是所有的控件路径都返回值
+f:\git hub\c++\leetcode-牛客\leetcode-牛客\test.cpp(17): warning C4018: “<”: 有符号/无符号不匹配
   leetcode-牛客.vcxproj -> F:\git hub\C++\leetcode-牛客\Debug\leetcode-牛客.exe

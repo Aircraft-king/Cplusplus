@@ -9,35 +9,73 @@
 using namespace std;
 
 
-//牛客--微信红包
-class Gift {
-public:
-	static int getValue(vector<int> gifts, int n) {
-		// write code here
-		sort(gifts.begin(), gifts.end());
-		vector<int> hash(gifts[gifts.size() - 1] + 1, 0);
-		for (int i = 0; i < gifts.size(); ++i) {
-			hash[gifts[i]]++;
-		}
-		int j = 0;
-		for (j = 0; j < hash.size(); ++j) {
-			if (hash[j] > gifts.size() / 2) {
-				return j;
-			}
-		}
-		return 0;
-	}
-};
+//牛客--数根
 int main() {
-	vector<int> gifts;
-	gifts.push_back(1);
-	gifts.push_back(2);
-	gifts.push_back(3);
-	gifts.push_back(2);
-	gifts.push_back(2);
-	int a = Gift::getValue(gifts, 5);
-	return 0;
+	string s;
+	while (cin >> s) {
+		int count = 0;
+		for (int i = 0; i < s.size(); ++i) {
+			count = (count + s[i] - '0') % 9;
+		}
+		if (count == 0)
+			count = 9;
+		cout << count << endl;
+	}
 }
+//牛客---年终奖
+//class Bonus {
+//public:
+//
+//	int getMost(vector<vector<int> > board) {
+//		// write code here
+//		for (int i = 0; i < 6; ++i) {
+//			for (int j = 0; j < 6; ++j) {
+//				if (i == 0 && j == 0)
+//					continue;
+//				else if (i == 0) {
+//					board[i][j] += board[i][j - 1];
+//				}
+//				else if (j == 0) {
+//					board[i][j] += board[i - 1][j];
+//				}
+//				else {
+//					board[i][j] += max(board[i][j - 1], board[i - 1][j]);
+//				}
+//			}
+//		}
+//		return board[5][5];
+//	}
+//};
+
+//牛客--微信红包
+//class Gift {
+//public:
+//	static int getValue(vector<int> gifts, int n) {
+//		// write code here
+//		sort(gifts.begin(), gifts.end());
+//		vector<int> hash(gifts[gifts.size() - 1] + 1, 0);
+//		for (int i = 0; i < gifts.size(); ++i) {
+//			hash[gifts[i]]++;
+//		}
+//		int j = 0;
+//		for (j = 0; j < hash.size(); ++j) {
+//			if (hash[j] > gifts.size() / 2) {
+//				return j;
+//			}
+//		}
+//		return 0;
+//	}
+//};
+//int main() {
+//	vector<int> gifts;
+//	gifts.push_back(1);
+//	gifts.push_back(2);
+//	gifts.push_back(3);
+//	gifts.push_back(2);
+//	gifts.push_back(2);
+//	int a = Gift::getValue(gifts, 5);
+//	return 0;
+//}
 
 //找出字符串中第一次出现一次的字符
 //
