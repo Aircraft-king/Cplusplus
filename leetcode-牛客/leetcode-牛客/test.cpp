@@ -9,19 +9,44 @@
 using namespace std;
 
 
-//牛客--数根
-int main() {
-	string s;
-	while (cin >> s) {
-		int count = 0;
-		for (int i = 0; i < s.size(); ++i) {
-			count = (count + s[i] - '0') % 9;
-		}
-		if (count == 0)
-			count = 9;
-		cout << count << endl;
-	}
+//牛客--变态跳台阶
+int jumpFloorII(int number) {
+	if (number == 0)
+		return number;
+	int total = 1;
+	for (int i = 1; i < number; i++)
+		total *= 2;
+	return total;
 }
+
+//int jumpFloorII(int number) {
+//	if (number <= 0)
+//		return 0;
+//	if (number == 1)
+//		return 1;
+//	if (number == 2)
+//		return 2;
+//	return jumpFloorII(number - 1) + jumpFloorII(number - 2);
+//}
+int main() {
+	cout << jumpFloorII(5) << endl;
+	return 0;
+}
+
+
+//牛客--数根
+//int main() {
+//	string s;
+//	while (cin >> s) {
+//		int count = 0;
+//		for (int i = 0; i < s.size(); ++i) {
+//			count = (count + s[i] - '0') % 9;
+//		}
+//		if (count == 0)
+//			count = 9;
+//		cout << count << endl;
+//	}
+//}
 //牛客---年终奖
 //class Bonus {
 //public:
