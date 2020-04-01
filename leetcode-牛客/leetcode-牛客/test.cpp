@@ -8,30 +8,44 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//牛客--变态跳台阶
-int jumpFloorII(int number) {
-	if (number == 0)
-		return number;
-	int total = 1;
-	for (int i = 1; i < number; i++)
-		total *= 2;
-	return total;
-}
-
-//int jumpFloorII(int number) {
-//	if (number <= 0)
-//		return 0;
-//	if (number == 1)
-//		return 1;
-//	if (number == 2)
-//		return 2;
-//	return jumpFloorII(number - 1) + jumpFloorII(number - 2);
-//}
+//牛客---快到碗里来
+#define p 3.14
 int main() {
-	cout << jumpFloorII(5) << endl;
+
+	double cat, boal;
+	while (cin >> cat >> boal) {
+		double sboal = 2 * boal*p;
+		if (cat < sboal)
+			cout << "Yes" << endl;
+		else
+			cout << "No" << endl;
+	}
 	return 0;
 }
+
+//牛客--变态跳台阶
+//int jumpFloorII(int number) {
+//	if (number == 0)
+//		return number;
+//	int total = 1;
+//	for (int i = 1; i < number; i++)
+//		total *= 2;
+//	return total;
+//}
+//
+////int jumpFloorII(int number) {
+////	if (number <= 0)
+////		return 0;
+////	if (number == 1)
+////		return 1;
+////	if (number == 2)
+////		return 2;
+////	return jumpFloorII(number - 1) + jumpFloorII(number - 2);
+////}
+//int main() {
+//	cout << jumpFloorII(5) << endl;
+//	return 0;
+//}
 
 
 //牛客--数根
