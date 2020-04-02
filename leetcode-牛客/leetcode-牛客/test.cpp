@@ -9,20 +9,32 @@
 using namespace std;
 
 
+//牛客--另类加法
 
+class Solution {
+public:
+	int Add(int num1, int num2)
+	{
+		if (num2 == 0)
+			return num1;
+		int sum = num1 ^ num2;
+		int carry = (num1&num2) << 1;
+		return Add(sum, carry);
+	}
+};
 
 //牛客--三角形
-int main() {
-	double a, b, c;
-	while (cin >> a >> b >> c) {
-		if (a + b > c&&a + c > b&&b + c > a)
-			cout << "Yes" << endl;
-		else
-			cout << "No" << endl;
-	}
-
-	return 0;
-}
+//int main() {
+//	double a, b, c;
+//	while (cin >> a >> b >> c) {
+//		if (a + b > c&&a + c > b&&b + c > a)
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//	}
+//
+//	return 0;
+//}
 
 //牛客---快到碗里来
 #define p 3.14
