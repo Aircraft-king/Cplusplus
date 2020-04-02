@@ -8,20 +8,36 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客---快到碗里来
-#define p 3.14
-int main() {
 
-	double cat, boal;
-	while (cin >> cat >> boal) {
-		double sboal = 2 * boal*p;
-		if (cat < sboal)
+
+
+//牛客--三角形
+int main() {
+	double a, b, c;
+	while (cin >> a >> b >> c) {
+		if (a + b > c&&a + c > b&&b + c > a)
 			cout << "Yes" << endl;
 		else
 			cout << "No" << endl;
 	}
+
 	return 0;
 }
+
+//牛客---快到碗里来
+#define p 3.14
+//int main() {
+//
+//	double cat, boal;
+//	while (cin >> cat >> boal) {
+//		double sboal = 2 * boal*p;
+//		if (cat < sboal)
+//			cout << "Yes" << endl;
+//		else
+//			cout << "No" << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--变态跳台阶
 //int jumpFloorII(int number) {
