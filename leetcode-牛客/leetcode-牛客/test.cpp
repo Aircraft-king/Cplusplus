@@ -9,19 +9,62 @@
 using namespace std;
 
 
+//牛客--奇数位全部为奇数或偶数位全部为偶数
+void oddInOddEvenInEven(vector<int>& arr, int len) {
+	int i = 0;
+	int j = 1;
+	while (i < len&&j < len) {
+		if (arr[i] % 2 == 0) {
+			i += 2;
+			continue;
+		}
+		if (arr[j] % 2 != 0) {
+			j += 2;
+			continue;
+		}
+		swap(arr[i], arr[j]);
+		j += 2;
+		i += 2;
+	}
+}
+//void oddInOddEvenInEven(vector<int>& arr, int len) {
+//	int j = 0;
+//	for (int i = 0; i < len; i++) {
+//		if (arr[i] % 2 == 0) {
+//			swap(arr[j], arr[i]);
+//			j += 2;
+//		}
+//	}
+//}
+
+int main() {
+
+	vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(4);
+	oddInOddEvenInEven(v, 4);
+	for (auto &e : v) {
+		cout << e << endl;
+	}
+	return 0;
+}
+
+
 //牛客--另类加法
 
-class Solution {
-public:
-	int Add(int num1, int num2)
-	{
-		if (num2 == 0)
-			return num1;
-		int sum = num1 ^ num2;
-		int carry = (num1&num2) << 1;
-		return Add(sum, carry);
-	}
-};
+//class Solution {
+//public:
+//	int Add(int num1, int num2)
+//	{
+//		if (num2 == 0)
+//			return num1;
+//		int sum = num1 ^ num2;
+//		int carry = (num1&num2) << 1;
+//		return Add(sum, carry);
+//	}
+//};
 
 //牛客--三角形
 //int main() {
