@@ -8,25 +8,39 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客--分桃子
+using namespace std;
+int main() {
+
+	int n = 0;
+	while (cin >> n) {
+		if (n == 0)
+			break;
+		long count = pow(5, n) - 4;
+		long oldmonkey = pow(4, n) + n - 4;
+		cout << count << " " << oldmonkey << endl;
+	}
+	return 0;
+}
 
 //牛客--奇数位全部为奇数或偶数位全部为偶数
-void oddInOddEvenInEven(vector<int>& arr, int len) {
-	int i = 0;
-	int j = 1;
-	while (i < len&&j < len) {
-		if (arr[i] % 2 == 0) {
-			i += 2;
-			continue;
-		}
-		if (arr[j] % 2 != 0) {
-			j += 2;
-			continue;
-		}
-		swap(arr[i], arr[j]);
-		j += 2;
-		i += 2;
-	}
-}
+//void oddInOddEvenInEven(vector<int>& arr, int len) {
+//	int i = 0;
+//	int j = 1;
+//	while (i < len&&j < len) {
+//		if (arr[i] % 2 == 0) {
+//			i += 2;
+//			continue;
+//		}
+//		if (arr[j] % 2 != 0) {
+//			j += 2;
+//			continue;
+//		}
+//		swap(arr[i], arr[j]);
+//		j += 2;
+//		i += 2;
+//	}
+//}
 //void oddInOddEvenInEven(vector<int>& arr, int len) {
 //	int j = 0;
 //	for (int i = 0; i < len; i++) {
@@ -37,19 +51,19 @@ void oddInOddEvenInEven(vector<int>& arr, int len) {
 //	}
 //}
 
-int main() {
-
-	vector<int> v;
-	v.push_back(1);
-	v.push_back(2);
-	v.push_back(3);
-	v.push_back(4);
-	oddInOddEvenInEven(v, 4);
-	for (auto &e : v) {
-		cout << e << endl;
-	}
-	return 0;
-}
+//int main() {
+//
+//	vector<int> v;
+//	v.push_back(1);
+//	v.push_back(2);
+//	v.push_back(3);
+//	v.push_back(4);
+//	oddInOddEvenInEven(v, 4);
+//	for (auto &e : v) {
+//		cout << e << endl;
+//	}
+//	return 0;
+//}
 
 
 //牛客--另类加法
