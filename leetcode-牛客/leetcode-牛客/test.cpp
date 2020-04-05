@@ -9,25 +9,63 @@
 using namespace std;
 
 
-//牛客--有假币
-int main() {
-
-	long long a = 0;
-	while (cin >> a) {
-		if (a == 0)
-			break;
-		int count = 0;
-		while (a > 1) {
-			if (a % 3)
-				a = a / 3 + 1;
-			else
-				a /= 3;
-			count++;
+int is_sum(vector<int> arr, int n, int len) {
+	for (int i = 0; i < len; ++i) {
+		if (n == arr[i])
+			return 1;
+	}
+	for (int i = 0; i < len; ++i) {
+		for (int j = 0; j < len&&j != i; ++j) {
+			if (arr[i] + arr[j] == n)
+				return 1;
 		}
-		cout << count << endl;
 	}
 	return 0;
 }
+int getFirstUnFormedNum(vector<int> arr, int len) {
+	sort(arr.begin(), arr.end());
+	int min = arr[0];
+	int max = 0;
+	for (int i = 0; i < len; ++i) {
+		max += arr[i];
+	}
+	for (int i = min; i <= max; ++i) {
+		if (is_sum(arr, i, len) == 0 && i != max)
+			return i;
+	}
+	return max + 1;
+}
+
+int main() {
+
+	vector<int> v;
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(1);
+	cout << getFirstUnFormedNum(v, 3)<<endl;
+
+	return 0;
+}
+
+//牛客--有假币
+//int main() {
+//
+//	long long a = 0;
+//	while (cin >> a) {
+//		if (a == 0)
+//			break;
+//		int count = 0;
+//		while (a > 1) {
+//			if (a % 3)
+//				a = a / 3 + 1;
+//			else
+//				a /= 3;
+//			count++;
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 //牛客--分桃子
 //using namespace std;
 //int main() {
