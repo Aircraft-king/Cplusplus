@@ -8,20 +8,40 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--分桃子
-using namespace std;
+
+//牛客--有假币
 int main() {
 
-	int n = 0;
-	while (cin >> n) {
-		if (n == 0)
+	long long a = 0;
+	while (cin >> a) {
+		if (a == 0)
 			break;
-		long count = pow(5, n) - 4;
-		long oldmonkey = pow(4, n) + n - 4;
-		cout << count << " " << oldmonkey << endl;
+		int count = 0;
+		while (a > 1) {
+			if (a % 3)
+				a = a / 3 + 1;
+			else
+				a /= 3;
+			count++;
+		}
+		cout << count << endl;
 	}
 	return 0;
 }
+//牛客--分桃子
+//using namespace std;
+//int main() {
+//
+//	int n = 0;
+//	while (cin >> n) {
+//		if (n == 0)
+//			break;
+//		long count = pow(5, n) - 4;
+//		long oldmonkey = pow(4, n) + n - 4;
+//		cout << count << " " << oldmonkey << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--奇数位全部为奇数或偶数位全部为偶数
 //void oddInOddEvenInEven(vector<int>& arr, int len) {
