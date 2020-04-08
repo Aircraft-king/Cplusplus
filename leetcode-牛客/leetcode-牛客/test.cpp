@@ -8,44 +8,64 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-int is_sum(vector<int> arr, int n, int len) {
-	for (int i = 0; i < len; ++i) {
-		if (n == arr[i])
-			return 1;
-	}
-	for (int i = 0; i < len; ++i) {
-		for (int j = 0; j < len&&j != i; ++j) {
-			if (arr[i] + arr[j] == n)
-				return 1;
-		}
-	}
-	return 0;
-}
-int getFirstUnFormedNum(vector<int> arr, int len) {
-	sort(arr.begin(), arr.end());
-	int min = arr[0];
-	int max = 0;
-	for (int i = 0; i < len; ++i) {
-		max += arr[i];
-	}
-	for (int i = min; i <= max; ++i) {
-		if (is_sum(arr, i, len) == 0 && i != max)
-			return i;
-	}
-	return max + 1;
-}
-
+//Å£¿Í--ì³²¨ÄÇÆõ·ïÎ²
 int main() {
 
-	vector<int> v;
-	v.push_back(2);
-	v.push_back(3);
-	v.push_back(1);
-	cout << getFirstUnFormedNum(v, 3)<<endl;
+	int n;
+	int a[100003];
+	a[1] = 1;
+	a[2] = 2;
+	for (int i = 3; i <= 100000; ++i) {
+		a[i] = (a[i - 1] + a[i - 2])%1000000;
+	}
+	while (cin >> n) {
+		if (n >= 30)
+			printf("%06d\n", a[n]);
+		else
+			printf("%d\n", a[n]);
+	}
 
 	return 0;
 }
+
+//
+//int is_sum(vector<int> arr, int n, int len) {
+//	for (int i = 0; i < len; ++i) {
+//		if (n == arr[i])
+//			return 1;
+//	}
+//	for (int i = 0; i < len; ++i) {
+//		for (int j = 0; j < len&&j != i; ++j) {
+//			if (arr[i] + arr[j] == n)
+//				return 1;
+//		}
+//	}
+//	return 0;
+//}
+//int getFirstUnFormedNum(vector<int> arr, int len) {
+//	sort(arr.begin(), arr.end());
+//	int min = arr[0];
+//	int max = 0;
+//	for (int i = 0; i < len; ++i) {
+//		max += arr[i];
+//	}
+//	for (int i = min; i <= max; ++i) {
+//		if (is_sum(arr, i, len) == 0 && i != max)
+//			return i;
+//	}
+//	return max + 1;
+//}
+//
+//int main() {
+//
+//	vector<int> v;
+//	v.push_back(2);
+//	v.push_back(3);
+//	v.push_back(1);
+//	cout << getFirstUnFormedNum(v, 3)<<endl;
+//
+//	return 0;
+//}
 
 //Å£¿Í--ÓĞ¼Ù±Ò
 //int main() {
