@@ -8,24 +8,51 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客---客似云中来
+
+//牛客--剪布条
 int main() {
 
-	long long a[81];
-	a[1] = 1;
-	a[2] = 1;
-	for (int i = 3; i < 81; ++i)
-		a[i] = a[i - 1] + a[i - 2];
-	int from, to;
-	while (cin >> from >> to) {
-		long long count = 0;
-		for (int i = from; i <= to; ++i) {
-			count += a[i];
+	string s1;
+	string s2;
+	while (cin >> s1 >> s2) {
+		int count = 0;
+		if (s2.size() > s1.size())
+			cout << 0 << endl;
+		else {
+			while (s1.size() != 0 && s1.size() >= s2.size()) {
+				string tmp(s1.begin(), s1.begin() + s2.size());
+				if (tmp == s2) {
+					count++;
+					s1.erase(s1.begin(), s1.begin() + s2.size());
+				}
+				else
+					s1.erase(s1.begin());
+			}
 		}
 		cout << count << endl;
 	}
+
 	return 0;
 }
+
+//牛客---客似云中来
+//int main() {
+//
+//	long long a[81];
+//	a[1] = 1;
+//	a[2] = 1;
+//	for (int i = 3; i < 81; ++i)
+//		a[i] = a[i - 1] + a[i - 2];
+//	int from, to;
+//	while (cin >> from >> to) {
+//		long long count = 0;
+//		for (int i = from; i <= to; ++i) {
+//			count += a[i];
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--斐波那契凤尾
 //int main() {
