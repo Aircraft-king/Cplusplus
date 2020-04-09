@@ -8,25 +8,44 @@
 #include <algorithm> //sort
 using namespace std;
 
-//Å£¿Í--ì³²¨ÄÇÆõ·ïÎ²
+//Å£¿Í---¿ÍËÆÔÆÖÐÀ´
 int main() {
 
-	int n;
-	int a[100003];
+	long long a[81];
 	a[1] = 1;
-	a[2] = 2;
-	for (int i = 3; i <= 100000; ++i) {
-		a[i] = (a[i - 1] + a[i - 2])%1000000;
+	a[2] = 1;
+	for (int i = 3; i < 81; ++i)
+		a[i] = a[i - 1] + a[i - 2];
+	int from, to;
+	while (cin >> from >> to) {
+		long long count = 0;
+		for (int i = from; i <= to; ++i) {
+			count += a[i];
+		}
+		cout << count << endl;
 	}
-	while (cin >> n) {
-		if (n >= 30)
-			printf("%06d\n", a[n]);
-		else
-			printf("%d\n", a[n]);
-	}
-
 	return 0;
 }
+
+//Å£¿Í--ì³²¨ÄÇÆõ·ïÎ²
+//int main() {
+//
+//	int n;
+//	int a[100003];
+//	a[1] = 1;
+//	a[2] = 2;
+//	for (int i = 3; i <= 100000; ++i) {
+//		a[i] = (a[i - 1] + a[i - 2])%1000000;
+//	}
+//	while (cin >> n) {
+//		if (n >= 30)
+//			printf("%06d\n", a[n]);
+//		else
+//			printf("%d\n", a[n]);
+//	}
+//
+//	return 0;
+//}
 
 //
 //int is_sum(vector<int> arr, int n, int len) {
