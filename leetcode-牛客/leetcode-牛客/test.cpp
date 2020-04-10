@@ -9,31 +9,63 @@
 using namespace std;
 
 
-//牛客--剪布条
+//牛客--收件人列表
 int main() {
-
-	string s1;
-	string s2;
-	while (cin >> s1 >> s2) {
-		int count = 0;
-		if (s2.size() > s1.size())
-			cout << 0 << endl;
-		else {
-			while (s1.size() != 0 && s1.size() >= s2.size()) {
-				string tmp(s1.begin(), s1.begin() + s2.size());
-				if (tmp == s2) {
-					count++;
-					s1.erase(s1.begin(), s1.begin() + s2.size());
-				}
-				else
-					s1.erase(s1.begin());
-			}
+	int n = 0;
+	while (cin >> n) {
+		vector<string> v(n + 1);
+		for (int i = 0; i <= n; ++i) {
+			getline(cin, v[i]);
 		}
-		cout << count << endl;
+		for (int i = 1; i <= n; ++i) {
+			if (v[i].find(',') == -1 && v[i].find(' ') == -1)
+				cout << v[i];
+			else {
+				v[i] = "\"" + v[i];
+				v[i] += "\"";
+				cout << v[i];
+			}
+			if (i != n)
+				cout << ", ";
+		}
+		cout << endl;
 	}
 
 	return 0;
 }
+//int main() {
+//
+//	string s = "123";
+//	s="\""+s;
+//	cout << s;
+//	return 0;
+//}
+
+//牛客--剪布条
+//int main() {
+//
+//	string s1;
+//	string s2;
+//	while (cin >> s1 >> s2) {
+//		int count = 0;
+//		if (s2.size() > s1.size())
+//			cout << 0 << endl;
+//		else {
+//			while (s1.size() != 0 && s1.size() >= s2.size()) {
+//				string tmp(s1.begin(), s1.begin() + s2.size());
+//				if (tmp == s2) {
+//					count++;
+//					s1.erase(s1.begin(), s1.begin() + s2.size());
+//				}
+//				else
+//					s1.erase(s1.begin());
+//			}
+//		}
+//		cout << count << endl;
+//	}
+//
+//	return 0;
+//}
 
 //牛客---客似云中来
 //int main() {
