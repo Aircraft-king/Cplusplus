@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS 1;
 #include<iostream>
 #include<string>
 #include<vector>
@@ -9,30 +10,81 @@
 using namespace std;
 
 
-//牛客--收件人列表
+//牛客--年会抽奖
 int main() {
-	int n = 0;
-	while (cin >> n) {
-		vector<string> v(n + 1);
-		for (int i = 0; i <= n; ++i) {
-			getline(cin, v[i]);
-		}
-		for (int i = 1; i <= n; ++i) {
-			if (v[i].find(',') == -1 && v[i].find(' ') == -1)
-				cout << v[i];
-			else {
-				v[i] = "\"" + v[i];
-				v[i] += "\"";
-				cout << v[i];
-			}
-			if (i != n)
-				cout << ", ";
-		}
-		cout << endl;
+	long long a[21][2] = { {1,0}, {1,0}, {2,1}, {6,2} };
+	for (int i = 4; i < 21; ++i) {
+		a[i][0] = i * a[i - 1][0];
+		a[i][1] = (i - 1) * (a[i - 1][1] + a[i - 2][1]);
 	}
-
+	int n;
+	while (cin >> n) {
+		double ans = (double)a[n][1] / a[n][0] * 100.00;
+		printf("%02.2lf%\n", ans);
+	}
 	return 0;
 }
+
+//int main() {
+//	int n;
+//	while (cin >> n) {
+//		string s;
+//		int a = 10000/n;
+//		while (a > 0) {
+//			s.insert(s.begin(), a % 10 + '0');
+//			a /= 10;
+//		}
+//		if (n == 1)
+//			s.insert(s.begin() + 3, '.');
+//		else if (n <= 10)
+//			s.insert(s.begin() + 2, '.');
+//		else
+//			s.insert(s.begin() + 1, '.');
+//		s += "%";
+//		cout << s << endl;
+//	}
+//
+//	return 0;
+//}
+
+//牛客--养兔子
+//int main() {
+//	int n = 0;
+//	long long a[91];
+//	a[1] = 1;
+//	a[2] = 2;
+//	for (int i = 3; i < sizeof(a) / sizeof(a[0]); ++i)
+//		a[i] = a[i - 1] + a[i - 2];
+//	while (cin >> n) {
+//		cout << a[n] << endl;
+//	}
+//	return 0;
+//}
+
+//牛客--收件人列表
+//int main() {
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<string> v(n + 1);
+//		for (int i = 0; i <= n; ++i) {
+//			getline(cin, v[i]);
+//		}
+//		for (int i = 1; i <= n; ++i) {
+//			if (v[i].find(',') == -1 && v[i].find(' ') == -1)
+//				cout << v[i];
+//			else {
+//				v[i] = "\"" + v[i];
+//				v[i] += "\"";
+//				cout << v[i];
+//			}
+//			if (i != n)
+//				cout << ", ";
+//		}
+//		cout << endl;
+//	}
+//
+//	return 0;
+//}
 //int main() {
 //
 //	string s = "123";
