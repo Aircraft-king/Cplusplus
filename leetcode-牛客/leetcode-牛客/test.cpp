@@ -9,21 +9,54 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//牛客--年会抽奖
 int main() {
-	long long a[21][2] = { {1,0}, {1,0}, {2,1}, {6,2} };
-	for (int i = 4; i < 21; ++i) {
-		a[i][0] = i * a[i - 1][0];
-		a[i][1] = (i - 1) * (a[i - 1][1] + a[i - 2][1]);
-	}
-	int n;
-	while (cin >> n) {
-		double ans = (double)a[n][1] / a[n][0] * 100.00;
-		printf("%02.2lf%\n", ans);
-	}
+
+	vector<vector<int>> v(5, vector<int>(6, 1));
+
 	return 0;
 }
+
+//int main() {
+//	string s;
+//	while (getline(cin, s)) {
+//		string s1;
+//		getline(cin, s1);
+//		vector<string> v;
+//		for (int i = 0; i < s.size(); ++i) {
+//			if (s[i] == '\"') {
+//				v.push_back(s.substr(i + 1, s.find('\"', i + 1) - i - 1));
+//				i = s.find('\"', i + 1) + 1;
+//			}
+//			else {
+//				if (s.find(',', i) == s.npos) {
+//					v.push_back(s.substr(i, s.size() - i));
+//					i = s.size();
+//				}
+//				else {
+//					v.push_back(s.substr(i, s.find(',', i) - i));
+//					i = s.find(',', i);
+//				}
+//			}
+//		}
+//		cout << ((find(v.begin(), v.end(), s1) != v.end()) ? "Ignore" : "Important!") << endl;
+//	}
+//	return 0;
+//}
+
+//牛客--年会抽奖
+//int main() {
+//	long long a[21][2] = { {1,0}, {1,0}, {2,1}, {6,2} };
+//	for (int i = 4; i < 21; ++i) {
+//		a[i][0] = i * a[i - 1][0];
+//		a[i][1] = (i - 1) * (a[i - 1][1] + a[i - 2][1]);
+//	}
+//	int n;
+//	while (cin >> n) {
+//		double ans = (double)a[n][1] / a[n][0] * 100.00;
+//		printf("%02.2lf%\n", ans);
+//	}
+//	return 0;
+//}
 
 //int main() {
 //	int n;
