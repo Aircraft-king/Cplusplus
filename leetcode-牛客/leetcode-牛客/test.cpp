@@ -9,12 +9,37 @@
 #include <algorithm> //sort
 using namespace std;
 
-int main() {
 
-	vector<vector<int>> v(5, vector<int>(6, 1));
+//Å£¿Í ·¢ÓÊ¼þ
+long long Failrec(int n)
+{
+	if (n < 2)
+		return 0;
+	if (n == 2)
+		return 1;
+	if (n == 3)
+		return 2;
+	return (n - 1)*(Failrec(n - 1) + Failrec(n - 2));
+}
 
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		int count = 0;
+		cout << Failrec(n) << endl;
+	}
 	return 0;
 }
+
+
+//int main() {
+//
+//	vector<vector<int>> v(5, vector<int>(6, 1));
+//
+//	return 0;
+//}
 
 //int main() {
 //	string s;
