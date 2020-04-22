@@ -22,6 +22,7 @@ long long Failrec(int n)
 	return (n - 1)*(Failrec(n - 1) + Failrec(n - 2));
 }
 
+
 int main()
 {
 	int n;
