@@ -8,31 +8,38 @@
 #include<deque>
 #include <algorithm> //sort
 using namespace std;
-
-
-//牛客 发邮件
-long long Failrec(int n)
-{
-	if (n < 2)
-		return 0;
-	if (n == 2)
-		return 1;
-	if (n == 3)
-		return 2;
-	return (n - 1)*(Failrec(n - 1) + Failrec(n - 2));
+void* operator new[](size_t size) {
+	return ::operator new(size);
 }
-
-
 int main()
 {
-	int n;
-	while (cin >> n)
-	{
-		int count = 0;
-		cout << Failrec(n) << endl;
-	}
+	int *pb = new int[10];
+	delete []pb;
 	return 0;
 }
+//牛客 发邮件
+//long long Failrec(int n)
+//{
+//	if (n < 2)
+//		return 0;
+//	if (n == 2)
+//		return 1;
+//	if (n == 3)
+//		return 2;
+//	return (n - 1)*(Failrec(n - 1) + Failrec(n - 2));
+//}
+//
+//
+//int main()
+//{
+//	int n;
+//	while (cin >> n)
+//	{
+//		int count = 0;
+//		cout << Failrec(n) << endl;
+//	}
+//	return 0;
+//}
 
 
 //int main() {
