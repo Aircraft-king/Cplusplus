@@ -11,6 +11,7 @@ using namespace std;
 void* operator new[](size_t size) {
 	return ::operator new(size);
 }
+
 int main()
 {
 	int *pb = new int[10];
