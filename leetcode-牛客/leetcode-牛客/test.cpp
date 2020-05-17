@@ -11,13 +11,13 @@ using namespace std;
 void* operator new[](size_t size) {
 	return ::operator new(size);
 }
-
 int main()
 {
 	int *pb = new int[10];
 	delete []pb;
 	return 0;
 }
+
 //Å£¿Í ·¢ÓÊ¼þ
 //long long Failrec(int n)
 //{
