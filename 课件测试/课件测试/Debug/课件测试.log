@@ -1,4 +1,2 @@
 ﻿  test.cpp
-f:\git hub\c++\课件测试\课件测试\test.cpp(24): error C2664: “fooderived<int>::fooderived(fooderived<int> &&)”: 无法将参数 1 从“int”转换为“const fooderived<int> &”
-  f:\git hub\c++\课件测试\课件测试\test.cpp(24): note: 原因如下: 无法从“int”转换为“const fooderived<int>”
-  f:\git hub\c++\课件测试\课件测试\test.cpp(24): note: 无构造函数可以接受源类型，或构造函数重载决策不明确
+  课件测试.vcxproj -> F:\git hub\C++\课件测试\Debug\课件测试.exe

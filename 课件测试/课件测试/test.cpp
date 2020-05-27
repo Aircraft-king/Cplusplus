@@ -7,23 +7,67 @@
 #include<string>
 using namespace std;
 
-template<class T> 
-class foo {
-	T tval;
-public:
-	foo(T t) :tval(t) {
-
-	}
-};
-template<class T>
-class fooderived :public foo<T> {
-
-};
-
 int main() {
-	fooderived<int> d(5);
+	int arr[10] = { 0 };
+	printf("arr = %p\n", arr);
+	printf("&arr= %p\n", &arr);
+	printf("arr+1 = %p\n", arr + 1);
+	printf("&arr+1= %p\n", &arr + 1);
 	return 0;
 }
+
+//int main() {
+//	int arr[10] = { 0 };
+//	printf("%p\n", arr);
+//	printf("%p\n", &arr);
+//	return 0;
+//}
+
+//int main() {
+//	char str1[] = "hello bit."; 
+//	char str2[] = "hello bit."; 
+//	char *str3 = "hello bit."; 
+//	char *str4 = "hello bit.";
+//	if (str1 == str2)        
+//		printf("str1 and str2 are same\n");
+//	else        
+//		printf("str1 and str2 are not same\n"); 
+//	if (str3 == str4)       
+//		printf("str3 and str4 are same\n");
+//	else        
+//		printf("str3 and str4 are not same\n"); 
+//	return 0;
+//}
+//int main()
+//{
+//	char a[] = "dsad";
+//	char b[] = "dsad";
+//	cout << &a << endl;
+//	cout << &b << endl;
+//	char *c = (char *)"dsad";
+//	char *d = (char *)"dsad";
+//	cout << &c << endl;
+//	cout << &d << endl;
+//
+//	return 0;
+//}
+//template<class T> 
+//class foo {
+//	T tval;
+//public:
+//	foo(T t) :tval(t) {
+//
+//	}
+//};
+//template<class T>
+//class fooderived :public foo<T> {
+//
+//};
+//
+//int main() {
+//	fooderived<int> d(5);
+//	return 0;
+//}
 
 //int main() {
 //	int n = 0;
