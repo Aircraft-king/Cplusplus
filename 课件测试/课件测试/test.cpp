@@ -7,7 +7,20 @@
 #include<string>
 using namespace std;
 
+typedef struct student {
+	
+}stu_st,*stu_pst;
+
 int main() {
+	const stu_pst stu3 = 0;
+	stu_pst const stu4 = 0;
+	stu3 = (stu_pst)2;
+	stu4 = (stu_pst)2;
+	return 0;
+}
+
+
+//int main() {
 	//int a[] = { 1,2,3,4 };
 	//printf("%d\n", sizeof(a));  //16
 	//printf("%d\n", sizeof(a + 0));//4
@@ -21,7 +34,7 @@ int main() {
 	//printf("%d\n", sizeof(&a[0] + 1));//4
 
 	//×Ö·ûÊý×é 
-	char arr[] = {'a','b','c','d','e','f'}; 
+	/*char arr[] = {'a','b','c','d','e','f'}; 
 	printf("%d\n", sizeof(arr)); 
 	printf("%d\n", sizeof(arr+0)); 
 	printf("%d\n", sizeof(*arr)); 
@@ -36,7 +49,7 @@ int main() {
 	printf("%d\n", strlen(arr[1])); 
 	printf("%d\n", strlen(&arr)); 
 	printf("%d\n", strlen(&arr + 1)); 
-	printf("%d\n", strlen(&arr[0] + 1));
+	printf("%d\n", strlen(&arr[0] + 1));*/
 
 	//char arr[] = "abcdef"; 
 	//printf("%d\n", sizeof(arr)); 
@@ -84,7 +97,7 @@ int main() {
 	//printf("%d\n",sizeof(*(&a[0]+1))); 
 	//printf("%d\n",sizeof(*a)); 
 	//printf("%d\n",sizeof(a[3]));
-}
+//}
 //int main() {
 //	int arr[10] = { 0 };
 //	printf("arr = %p\n", arr);
