@@ -5,19 +5,27 @@
 #include<iostream>
 #include<stdio.h>
 #include<string>
+#include<vld.h>
 using namespace std;
 
-typedef struct student {
-	
-}stu_st,*stu_pst;
-
 int main() {
-	const stu_pst stu3 = 0;
-	stu_pst const stu4 = 0;
-	stu3 = (stu_pst)2;
-	stu4 = (stu_pst)2;
+
+	int *p = (int *)malloc(20);
+
+	free(p);
 	return 0;
 }
+//typedef struct student {
+//	
+//}stu_st,*stu_pst;
+//
+//int main() {
+//	const stu_pst stu3 = 0;
+//	stu_pst const stu4 = 0;
+//	stu3 = (stu_pst)2;
+//	stu4 = (stu_pst)2;
+//	return 0;
+//}
 
 
 //int main() {
