@@ -13,6 +13,7 @@ public:
 		cout << "°ë¾¶£º" << m_radius << "  " ;
 		cout<< "ÑÕÉ«£º" << m_color << endl;
 	}
+	
 private:
 	int m_speed;
 	bool m_on;
