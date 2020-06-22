@@ -9,7 +9,6 @@
 //#include<vld.h>
 using namespace std;
 
-
 int main() {
 	char a;
 	int nc = 0;
