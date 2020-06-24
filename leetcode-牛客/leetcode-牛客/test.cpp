@@ -9,6 +9,59 @@
 #include <algorithm> //sort
 using namespace std;
 
+
+//https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?
+//tpId=13&&tqId=11168&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+class Solution {
+public:
+	ListNode* ReverseList(ListNode* pHead) {
+		if (pHead == NULL || pHead->next == NULL) {
+			return pHead;
+		}
+		ListNode* p = NULL;
+		ListNode* q = NULL;
+		while (pHead) {
+			p = pHead->next;
+			pHead->next = q;
+			q = pHead;
+			pHead = p;
+		}
+		return q;
+		/*if(pHead==NULL||pHead->next==NULL){
+			  return pHead;
+		  }
+		  ListNode* p = NULL;
+		  ListNode* q = NULL;
+		  stack<ListNode*> s;
+		  while(p->next){
+			  s.push(p);
+			  p = p->next;
+		  }
+		  q = p;
+		  while(!s.empty()){
+			  p->next=s.top();
+			  p=p->next;
+			  s.pop();
+		  }
+		  p->next=NULL;
+		  return q;*/
+	}
+};
+
+//https://www.nowcoder.com/practice/435fb86331474282a3499955f0a41e8b?
+//tpId=13&&tqId=11191&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	int TreeDepth(TreeNode* pRoot)
+//	{
+//		if (pRoot == NULL) {
+//			return 0;
+//		}
+//		return TreeDepth(pRoot->left) > TreeDepth(pRoot->right) ? TreeDepth(pRoot->left) + 1 : TreeDepth(pRoot->right) + 1;
+//	}
+//};
+
+
 //int main() {
 //	int a = 8 & 3;
 //	cout << a << endl;
