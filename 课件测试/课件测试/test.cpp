@@ -9,27 +9,91 @@
 //#include<vld.h>
 using namespace std;
 
-int main() {
-	char a;
-	int nc = 0;
-	int bc = 0;
-	int sc = 0;
-	while ((a = getchar()) != '#') {
-		if (a >= '0' && a <= '9') {
-			nc++;
-		}
-		if (a >= 'A'&&a <= 'Z') {
-			bc++;
-		}
-		if (a >= 'a'&&a <= 'z') {
-			sc++;
-		}
+typedef int elemplate;
+typedef struct Dlist
+{
+	elemplate data;
+	struct Dlist* prev;
+	struct Dlist* next;
+}list, *listptr;
+listptr buy_nodelist(elemplate n)
+{
+	listptr newnode = (listptr)malloc(sizeof(Dlist));
+	if (newnode == NULL)
+	{
+		exit(1);
 	}
-	printf("Êý×Ö£º%d", nc);
-	printf("´óÐ´×ÖÄ¸£º%d", bc);
-	printf("Ð¡Ð´×ÖÄ¸£º%d", sc);
-	return 0;
+	newnode->data = n;
+	newnode->prev = NULL;
+	newnode->next = NULL;
+	return newnode;
 }
+listptr initlist()
+{
+	listptr head = buy_nodelist(0);
+	head->prev = head;
+	head->next = head;
+	return head;
+}
+void listpush_back(listptr node, elemplate a)
+{
+	if (node == NULL)
+	{
+		return;
+	}
+	listptr newnode = buy_nodelist(a);
+	newnode->next = node;
+	newnode->prev = node->prev;
+	node->prev->next = newnode;
+	node->prev = newnode;
+}
+void listprint(listptr node)
+{
+	if (node == NULL)
+	{
+		return;
+	}
+	listptr cur = node->next;
+	printf("node---->");
+	while (cur != node)
+	{
+		printf("%d---->", cur->data);
+		cur = cur->next;
+	}
+	printf("node");
+}
+int main()
+{
+	listptr L = NULL;
+	listpush_back(L, 1);
+	listpush_back(L, 2);
+	listpush_back(L, 3);
+	listpush_back(L, 4);
+	listprint(L);
+}
+
+
+//int main() {
+//	char a;
+//	int nc = 0;
+//	int bc = 0;
+//	int sc = 0;
+//	while ((a = getchar()) != '#') {
+//		if (a >= '0' && a <= '9') {
+//			nc++;
+//		}
+//		if (a >= 'A'&&a <= 'Z') {
+//			bc++;
+//		}
+//		if (a >= 'a'&&a <= 'z') {
+//			sc++;
+//		}
+//	}
+//	printf("Êý×Ö£º%d", nc);
+//	printf("´óÐ´×ÖÄ¸£º%d", bc);
+//	printf("Ð¡Ð´×ÖÄ¸£º%d", sc);
+//	return 0;
+//}
 
 //int main() {
 //	int i = 1;
