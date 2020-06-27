@@ -9,44 +9,94 @@
 #include <algorithm> //sort
 using namespace std;
 
+//Å£¿Í-¼ôÉþ×Ó
+//class Solution {
+//public:
+//	int cutRope(int number) {
+//		int max = 1;
+//		if (number <= 3) {
+//			return number - 1;
+//		}
+//		while (number > 4) {
+//			number -= 3;
+//			max *= 3;
+//		}
+//		return max * number;
+//	}
 
+int cutRope(int number) {
+	/*int max = 1;
+	if(number <= 3){
+		return number - 1;
+	}
+	while(number>4){
+		number-=3;
+		max*=3;
+	}
+	return max*number;*/
+	if (number == 2)
+		return 1;
+	if (number == 3)
+		return 2;
+	if (number > 3)
+	{
+		int max = 1;
+		int tmp = number % 3;
+		if (tmp == 1)
+		{
+			max = 2 * 2 * pow(3, number / 3 - 1);
+		}
+		else if (tmp == 2)
+		{
+			max = 2 * pow(3, number / 3);
+		}
+		else {
+			max = pow(3, number / 3);
+		}
+		return max;
+	}
+}
+int main() {
+	cout<<cutRope(16);
+	return 0;
+}
 //https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?
 //tpId=13&&tqId=11168&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-class Solution {
-public:
-	ListNode* ReverseList(ListNode* pHead) {
-		if (pHead == NULL || pHead->next == NULL) {
-			return pHead;
-		}
-		ListNode* p = NULL;
-		ListNode* q = NULL;
-		while (pHead) {
-			p = pHead->next;
-			pHead->next = q;
-			q = pHead;
-			pHead = p;
-		}
-		return q;
-		/*if(pHead==NULL||pHead->next==NULL){
-			  return pHead;
-		  }
-		  ListNode* p = NULL;
-		  ListNode* q = NULL;
-		  stack<ListNode*> s;
-		  while(p->next){
-			  s.push(p);
-			  p = p->next;
-		  }
-		  q = p;
-		  while(!s.empty()){
-			  p->next=s.top();
-			  p=p->next;
-			  s.pop();
-		  }
-		  p->next=NULL;
-		  return q;*/
-	}
-};
+//class Solution {
+//public:
+//	ListNode* ReverseList(ListNode* pHead) {
+//		if (pHead == NULL || pHead->next == NULL) {
+//			return pHead;
+//		}
+//		ListNode* p = NULL;
+//		ListNode* q = NULL;
+//		while (pHead) {
+//			p = pHead->next;
+//			pHead->next = q;
+//			q = pHead;
+//			pHead = p;
+//		}
+//		return q;
+//		/*if(pHead==NULL||pHead->next==NULL){
+//			  return pHead;
+//		  }
+//		  ListNode* p = NULL;
+//		  ListNode* q = NULL;
+//		  stack<ListNode*> s;
+//		  while(p->next){
+//			  s.push(p);
+//			  p = p->next;
+//		  }
+//		  q = p;
+//		  while(!s.empty()){
+//			  p->next=s.top();
+//			  p=p->next;
+//			  s.pop();
+//		  }
+//		  p->next=NULL;
+//		  return q;*/
+//	}
+//};
 
 //https://www.nowcoder.com/practice/435fb86331474282a3499955f0a41e8b?
 //tpId=13&&tqId=11191&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
