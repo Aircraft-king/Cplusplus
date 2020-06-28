@@ -9,6 +9,81 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客--矩阵查数 https://www.nowcoder.com/practice/dd5b5b2df5f84bae9b26c99a0a8f8660?tpId=182&&tqId=34869&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+bool find_k(vector<vector<int>> &v,int k , int n){
+    int j = 0;
+    for(int i = v.size()-1; i >= 0&&j < n; ){
+        if(k==v[i][j])
+            return true;
+        else if(k<v[i][j]){
+            i--;
+        }
+        else{
+            j++;
+        }
+    }
+    return false;
+}
+
+int main(){
+    int m = 0;
+    int n = 0;
+    int k =0;
+    cin>>m;
+    cin>>n;
+    vector<vector<int>> v(m,vector<int>(n,0));
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            cin>>v[i][j];
+        }
+    }
+    cin>>k;
+    if(find_k(v,k,n)){
+        cout<<"true";
+    }
+    else{
+        cout<<"false";
+    }
+    return 0;
+}
+
+bool find_k(vector<vector<int>> &v, int k, int n) {
+	int j = 0;
+	for (int i = v.size() - 1; i >= 0 && j < n; ) {
+		if (k == v[i][j])
+			return true;
+		else if (k < v[i][j]) {
+			i--;
+		}
+		else {
+			j++;
+		}
+	}
+	return false;
+}
+
+int main() {
+	int m = 0;
+	int n = 0;
+	int k = 0;
+	cin >> m;
+	cin >> n;
+	vector<vector<int>> v(m, vector<int>(n, 0));
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> v[i][j];
+		}
+	}
+	cin >> k;
+	if (find_k(v, k, n)) {
+		cout << "true";
+	}
+	else {
+		cout << "false";
+	}
+	return 0;
+}
+
 //牛客-剪绳子
 //class Solution {
 //public:
@@ -24,42 +99,42 @@ using namespace std;
 //		return max * number;
 //	}
 
-int cutRope(int number) {
-	/*int max = 1;
-	if(number <= 3){
-		return number - 1;
-	}
-	while(number>4){
-		number-=3;
-		max*=3;
-	}
-	return max*number;*/
-	if (number == 2)
-		return 1;
-	if (number == 3)
-		return 2;
-	if (number > 3)
-	{
-		int max = 1;
-		int tmp = number % 3;
-		if (tmp == 1)
-		{
-			max = 2 * 2 * pow(3, number / 3 - 1);
-		}
-		else if (tmp == 2)
-		{
-			max = 2 * pow(3, number / 3);
-		}
-		else {
-			max = pow(3, number / 3);
-		}
-		return max;
-	}
-}
-int main() {
-	cout<<cutRope(16);
-	return 0;
-}
+//int cutRope(int number) {
+//	/*int max = 1;
+//	if(number <= 3){
+//		return number - 1;
+//	}
+//	while(number>4){
+//		number-=3;
+//		max*=3;
+//	}
+//	return max*number;*/
+//	if (number == 2)
+//		return 1;
+//	if (number == 3)
+//		return 2;
+//	if (number > 3)
+//	{
+//		int max = 1;
+//		int tmp = number % 3;
+//		if (tmp == 1)
+//		{
+//			max = 2 * 2 * pow(3, number / 3 - 1);
+//		}
+//		else if (tmp == 2)
+//		{
+//			max = 2 * pow(3, number / 3);
+//		}
+//		else {
+//			max = pow(3, number / 3);
+//		}
+//		return max;
+//	}
+//}
+//int main() {
+//	cout<<cutRope(16);
+//	return 0;
+//}
 //https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?
 //tpId=13&&tqId=11168&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //class Solution {
