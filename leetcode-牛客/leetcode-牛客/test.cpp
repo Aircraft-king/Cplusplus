@@ -9,80 +9,99 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--矩阵查数 https://www.nowcoder.com/practice/dd5b5b2df5f84bae9b26c99a0a8f8660?tpId=182&&tqId=34869&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
-bool find_k(vector<vector<int>> &v,int k , int n){
-    int j = 0;
-    for(int i = v.size()-1; i >= 0&&j < n; ){
-        if(k==v[i][j])
-            return true;
-        else if(k<v[i][j]){
-            i--;
-        }
-        else{
-            j++;
-        }
-    }
-    return false;
-}
 
-int main(){
-    int m = 0;
-    int n = 0;
-    int k =0;
-    cin>>m;
-    cin>>n;
-    vector<vector<int>> v(m,vector<int>(n,0));
-    for(int i = 0; i < m; i++){
-        for(int j = 0; j < n; j++){
-            cin>>v[i][j];
-        }
-    }
-    cin>>k;
-    if(find_k(v,k,n)){
-        cout<<"true";
-    }
-    else{
-        cout<<"false";
-    }
-    return 0;
-}
-
-bool find_k(vector<vector<int>> &v, int k, int n) {
-	int j = 0;
-	for (int i = v.size() - 1; i >= 0 && j < n; ) {
-		if (k == v[i][j])
-			return true;
-		else if (k < v[i][j]) {
-			i--;
-		}
-		else {
-			j++;
-		}
-	}
-	return false;
-}
-
+//牛客--n个数里最小的k个 https://www.nowcoder.com/practice/cc727473d1e248ccb674eb31bd8683dc?tpId=182&&tqId=34786&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
-	int m = 0;
-	int n = 0;
-	int k = 0;
-	cin >> m;
-	cin >> n;
-	vector<vector<int>> v(m, vector<int>(n, 0));
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			cin >> v[i][j];
-		}
+	vector<int> v;
+	int temp;
+	while (cin >> temp && temp != '\n') {
+		v.push_back(temp);
 	}
-	cin >> k;
-	if (find_k(v, k, n)) {
-		cout << "true";
-	}
-	else {
-		cout << "false";
+	int k = v[v.size() - 1];
+	sort(v.begin(), v.end() - 1);
+	for (int i = 0; i < k; i++) {
+		if (i < k - 1)
+			cout << v[i] << " ";
+		else
+			cout << v[i] << endl;
 	}
 	return 0;
 }
+
+//牛客--矩阵查数 https://www.nowcoder.com/practice/dd5b5b2df5f84bae9b26c99a0a8f8660?tpId=182&&tqId=34869&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//bool find_k(vector<vector<int>> &v,int k , int n){
+//    int j = 0;
+//    for(int i = v.size()-1; i >= 0&&j < n; ){
+//        if(k==v[i][j])
+//            return true;
+//        else if(k<v[i][j]){
+//            i--;
+//        }
+//        else{
+//            j++;
+//        }
+//    }
+//    return false;
+//}
+//
+//int main(){
+//    int m = 0;
+//    int n = 0;
+//    int k =0;
+//    cin>>m;
+//    cin>>n;
+//    vector<vector<int>> v(m,vector<int>(n,0));
+//    for(int i = 0; i < m; i++){
+//        for(int j = 0; j < n; j++){
+//            cin>>v[i][j];
+//        }
+//    }
+//    cin>>k;
+//    if(find_k(v,k,n)){
+//        cout<<"true";
+//    }
+//    else{
+//        cout<<"false";
+//    }
+//    return 0;
+//}
+//
+//bool find_k(vector<vector<int>> &v, int k, int n) {
+//	int j = 0;
+//	for (int i = v.size() - 1; i >= 0 && j < n; ) {
+//		if (k == v[i][j])
+//			return true;
+//		else if (k < v[i][j]) {
+//			i--;
+//		}
+//		else {
+//			j++;
+//		}
+//	}
+//	return false;
+//}
+//
+//int main() {
+//	int m = 0;
+//	int n = 0;
+//	int k = 0;
+//	cin >> m;
+//	cin >> n;
+//	vector<vector<int>> v(m, vector<int>(n, 0));
+//	for (int i = 0; i < m; i++) {
+//		for (int j = 0; j < n; j++) {
+//			cin >> v[i][j];
+//		}
+//	}
+//	cin >> k;
+//	if (find_k(v, k, n)) {
+//		cout << "true";
+//	}
+//	else {
+//		cout << "false";
+//	}
+//	return 0;
+//}
 
 //牛客-剪绳子
 //class Solution {
