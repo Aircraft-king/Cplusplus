@@ -10,23 +10,93 @@
 using namespace std;
 
 
-//牛客--n个数里最小的k个 https://www.nowcoder.com/practice/cc727473d1e248ccb674eb31bd8683dc?tpId=182&&tqId=34786&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//牛客--整数的倒数 https://www.nowcoder.com/practice/dd63c30dfef04770b5813e63f5a2615a?tpId=182&&tqId=34831&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
-	vector<int> v;
-	int temp;
-	while (cin >> temp && temp != '\n') {
-		v.push_back(temp);
-	}
-	int k = v[v.size() - 1];
-	sort(v.begin(), v.end() - 1);
-	for (int i = 0; i < k; i++) {
-		if (i < k - 1)
-			cout << v[i] << " ";
-		else
-			cout << v[i] << endl;
+	string x;
+
+	while (cin >> x) {
+		int falg = 0;
+		if (x[0] == '-') {
+			falg = 1;
+			x.erase(x.begin());
+		}
+		reverse(x.begin(), x.end());
+		if (falg == 1)
+			x = "-" + x;
+		cout << x;
+
+		/*int falg = 0;
+		int out;
+		if(x<0){
+			falg = 1;
+			x = x - (2 * x);
+		}
+		stack<int> s;
+		while(x > 0){
+		s.push(x%10);
+			x /= 10;
+		}
+		int i = 0;
+		while(!s.empty()){
+			out+=s.top()*(pow(10,i));
+			s.pop();
+			i++;
+		}
+		if(falg == 1){
+			out = out - (2 * out);
+		}
+		cout<<out<<endl;*/
 	}
 	return 0;
 }
+
+//牛客--缩写 https://www.nowcoder.com/practice/45083499b8c5404fb1db44c6ea4f170a?tpId=182&&tqId=34330&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//string abbreviation(string &s) {
+//	string s1;
+//	if (s.size() == 0)
+//		return 0;
+//	s1 += s[0];
+//	for (int i = 0; i < s.size(); i++) {
+//		while (s[i] != ' '&&i < s.size()) {
+//			i++;
+//		}
+//		if (i == s.size() - 1)
+//			break;
+//		s1 += s[i + 1];
+//
+//	}
+//	return s1;
+//}
+//
+//int main() {
+//
+//	string s;
+//	while (getline(cin, s)) {
+//		string s1;
+//		s1 = abbreviation(s);
+//		cout << s1 << endl;
+//	}
+//
+//	return 0;
+//}
+
+//牛客--n个数里最小的k个 https://www.nowcoder.com/practice/cc727473d1e248ccb674eb31bd8683dc?tpId=182&&tqId=34786&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//int main() {
+//	vector<int> v;
+//	int temp;
+//	while (cin >> temp && temp != '\n') {
+//		v.push_back(temp);
+//	}
+//	int k = v[v.size() - 1];
+//	sort(v.begin(), v.end() - 1);
+//	for (int i = 0; i < k; i++) {
+//		if (i < k - 1)
+//			cout << v[i] << " ";
+//		else
+//			cout << v[i] << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--矩阵查数 https://www.nowcoder.com/practice/dd5b5b2df5f84bae9b26c99a0a8f8660?tpId=182&&tqId=34869&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //bool find_k(vector<vector<int>> &v,int k , int n){
