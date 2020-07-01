@@ -9,46 +9,78 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//牛客--整数的倒数 https://www.nowcoder.com/practice/dd63c30dfef04770b5813e63f5a2615a?tpId=182&&tqId=34831&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//牛客--括号匹配 https://www.nowcoder.com/practice/57260c08eaa44feababd05b328b897d7?tpId=182&&tqId=34830&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
-	string x;
 
-	while (cin >> x) {
-		int falg = 0;
-		if (x[0] == '-') {
-			falg = 1;
-			x.erase(x.begin());
+	string s;
+	while (cin >> s) {
+		int falg = 1;
+		stack<char> st;
+		for (int i = 0; i < s.size(); i++) {
+			if (s[i] != '('&&s[i] != ')'&&s[i] != '['&&s[i] != ']') {
+				s.erase(s.begin() + i);
+				i--;
+			}
 		}
-		reverse(x.begin(), x.end());
-		if (falg == 1)
-			x = "-" + x;
-		cout << x;
-
-		/*int falg = 0;
-		int out;
-		if(x<0){
-			falg = 1;
-			x = x - (2 * x);
+		for (int i = 0; i < s.size(); i++) {
+			if (st.empty()) {
+				st.push(s[i]);
+			}
+			else if (!st.empty()) {
+				if ((st.top() == '('&&s[i] == ')') || (st.top() == '['&&s[i] == ']')) {
+					st.pop();
+				}
+				else
+					st.push(s[i]);
+			}
 		}
-		stack<int> s;
-		while(x > 0){
-		s.push(x%10);
-			x /= 10;
-		}
-		int i = 0;
-		while(!s.empty()){
-			out+=s.top()*(pow(10,i));
-			s.pop();
-			i++;
-		}
-		if(falg == 1){
-			out = out - (2 * out);
-		}
-		cout<<out<<endl;*/
+		if (st.empty())
+			cout << "true" << endl;
+		else
+			cout << "false" << endl;
 	}
 	return 0;
 }
+
+//牛客--整数的倒数 https://www.nowcoder.com/practice/dd63c30dfef04770b5813e63f5a2615a?tpId=182&&tqId=34831&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//int main() {
+//	string x;
+//
+//	while (cin >> x) {
+//		int falg = 0;
+//		if (x[0] == '-') {
+//			falg = 1;
+//			x.erase(x.begin());
+//		}
+//		reverse(x.begin(), x.end());
+//		if (falg == 1)
+//			x = "-" + x;
+//		cout << x;
+//
+//		/*int falg = 0;
+//		int out;
+//		if(x<0){
+//			falg = 1;
+//			x = x - (2 * x);
+//		}
+//		stack<int> s;
+//		while(x > 0){
+//		s.push(x%10);
+//			x /= 10;
+//		}
+//		int i = 0;
+//		while(!s.empty()){
+//			out+=s.top()*(pow(10,i));
+//			s.pop();
+//			i++;
+//		}
+//		if(falg == 1){
+//			out = out - (2 * out);
+//		}
+//		cout<<out<<endl;*/
+//	}
+//	return 0;
+//}
 
 //牛客--缩写 https://www.nowcoder.com/practice/45083499b8c5404fb1db44c6ea4f170a?tpId=182&&tqId=34330&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //string abbreviation(string &s) {
