@@ -9,6 +9,7 @@
 #include <algorithm> //sort
 using namespace std;
 
+
 //Å£¿Í--À¨ºÅÆ¥Åä https://www.nowcoder.com/practice/57260c08eaa44feababd05b328b897d7?tpId=182&&tqId=34830&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
 
