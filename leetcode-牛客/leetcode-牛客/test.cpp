@@ -9,39 +9,57 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//Å£¿Í--À¨ºÅÆ¥Åä https://www.nowcoder.com/practice/57260c08eaa44feababd05b328b897d7?tpId=182&&tqId=34830&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//Å£¿Í--×Ö·û¸²¸Ç  https://www.nowcoder.com/practice/d7ae059c1cee491989412c4fa39d4384?tpId=143&&tqId=33934&rp=1&ru=/ta/exam-baidu&qru=/ta/exam-baidu/question-ranking
 int main() {
-
 	string s;
-	while (cin >> s) {
-		int falg = 1;
-		stack<char> st;
-		for (int i = 0; i < s.size(); i++) {
-			if (s[i] != '('&&s[i] != ')'&&s[i] != '['&&s[i] != ']') {
-				s.erase(s.begin() + i);
-				i--;
+	string t;
+	cin >> s >> t;
+	sort(t.begin(), t.end(), greater<int>());
+	for (int i = 0; i < t.size(); i++) {
+		for (int j = 0; j < s.size(); j++) {
+			if (s[j] < t[i]) {
+				s[j] = t[i];
+				break;
 			}
 		}
-		for (int i = 0; i < s.size(); i++) {
-			if (st.empty()) {
-				st.push(s[i]);
-			}
-			else if (!st.empty()) {
-				if ((st.top() == '('&&s[i] == ')') || (st.top() == '['&&s[i] == ']')) {
-					st.pop();
-				}
-				else
-					st.push(s[i]);
-			}
-		}
-		if (st.empty())
-			cout << "true" << endl;
-		else
-			cout << "false" << endl;
 	}
+	cout << s << endl;
 	return 0;
 }
+
+
+//Å£¿Í--À¨ºÅÆ¥Åä https://www.nowcoder.com/practice/57260c08eaa44feababd05b328b897d7?tpId=182&&tqId=34830&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//int main() {
+//
+//	string s;
+//	while (cin >> s) {
+//		int falg = 1;
+//		stack<char> st;
+//		for (int i = 0; i < s.size(); i++) {
+//			if (s[i] != '('&&s[i] != ')'&&s[i] != '['&&s[i] != ']') {
+//				s.erase(s.begin() + i);
+//				i--;
+//			}
+//		}
+//		for (int i = 0; i < s.size(); i++) {
+//			if (st.empty()) {
+//				st.push(s[i]);
+//			}
+//			else if (!st.empty()) {
+//				if ((st.top() == '('&&s[i] == ')') || (st.top() == '['&&s[i] == ']')) {
+//					st.pop();
+//				}
+//				else
+//					st.push(s[i]);
+//			}
+//		}
+//		if (st.empty())
+//			cout << "true" << endl;
+//		else
+//			cout << "false" << endl;
+//	}
+//	return 0;
+//}
 
 //Å£¿Í--ÕûÊýµÄµ¹Êý https://www.nowcoder.com/practice/dd63c30dfef04770b5813e63f5a2615a?tpId=182&&tqId=34831&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //int main() {
