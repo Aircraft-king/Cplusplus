@@ -9,23 +9,42 @@
 #include <algorithm> //sort
 using namespace std;
 
-//Å£¿Í--×Ö·û¸²¸Ç  https://www.nowcoder.com/practice/d7ae059c1cee491989412c4fa39d4384?tpId=143&&tqId=33934&rp=1&ru=/ta/exam-baidu&qru=/ta/exam-baidu/question-ranking
+//Å£¿Í--²»Í¬µÄbitÎ» https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-rankinghttps://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-ranking
 int main() {
-	string s;
-	string t;
-	cin >> s >> t;
-	sort(t.begin(), t.end(), greater<int>());
-	for (int i = 0; i < t.size(); i++) {
-		for (int j = 0; j < s.size(); j++) {
-			if (s[j] < t[i]) {
-				s[j] = t[i];
-				break;
-			}
+	long m = 0;
+	long n = 0;
+	while (cin >> m >> n) {
+		int count = 0;
+		while (m || n) {
+			if (m % 2 != n % 2)
+				count++;
+			m /= 2;
+			n /= 2;
 		}
+		cout << count << endl;
 	}
-	cout << s << endl;
+
+
 	return 0;
 }
+
+//Å£¿Í--×Ö·û¸²¸Ç  https://www.nowcoder.com/practice/d7ae059c1cee491989412c4fa39d4384?tpId=143&&tqId=33934&rp=1&ru=/ta/exam-baidu&qru=/ta/exam-baidu/question-ranking
+//int main() {
+//	string s;
+//	string t;
+//	cin >> s >> t;
+//	sort(t.begin(), t.end(), greater<int>());
+//	for (int i = 0; i < t.size(); i++) {
+//		for (int j = 0; j < s.size(); j++) {
+//			if (s[j] < t[i]) {
+//				s[j] = t[i];
+//				break;
+//			}
+//		}
+//	}
+//	cout << s << endl;
+//	return 0;
+//}
 
 
 //Å£¿Í--À¨ºÅÆ¥Åä https://www.nowcoder.com/practice/57260c08eaa44feababd05b328b897d7?tpId=182&&tqId=34830&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
