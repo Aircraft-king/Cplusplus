@@ -9,24 +9,69 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客--不同的bit位 https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-rankinghttps://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-ranking
+
+//牛客---链表合并 https://www.nowcoder.com/practice/27c833289e5f4f5e9ba3718ce9136759?tpId=182&&tqId=34637&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+
 int main() {
-	long m = 0;
-	long n = 0;
-	while (cin >> m >> n) {
-		int count = 0;
-		while (m || n) {
-			if (m % 2 != n % 2)
-				count++;
-			m /= 2;
-			n /= 2;
-		}
-		cout << count << endl;
+
+	vector<int> v1;
+	vector<int> v2;
+	vector<int> v;
+	int tmp;
+	while (cin >> tmp) {
+		v1.push_back(tmp);
+		if (cin.get() == '\n')
+			break;
 	}
-
-
+	while (cin >> tmp) {
+		v2.push_back(tmp);
+		if (cin.get() == '\n')
+			break;
+	}
+	int i = 0, j = 0;
+	while (i < v1.size() && j < v2.size()) {
+		if (v1[i] < v2[j]) {
+			v.push_back(v1[i]);
+			i++;
+		}
+		else {
+			v.push_back(v2[j]);
+			j++;
+		}
+	}
+	if (i < v1.size()) {
+		for (int k = i; k < v1.size(); k++)
+			v.push_back(v1[k]);
+	}
+	if (j < v2.size()) {
+		for (int k = j; k < v2.size(); k++)
+			v.push_back(v2[k]);
+	}
+	for (int k = 0; k < v.size(); k++) {
+		cout << v[k] << " ";
+	}
+	cout << endl;
 	return 0;
 }
+
+//牛客--不同的bit位 https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-rankinghttps://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-ranking
+//int main() {
+//	long m = 0;
+//	long n = 0;
+//	while (cin >> m >> n) {
+//		int count = 0;
+//		while (m || n) {
+//			if (m % 2 != n % 2)
+//				count++;
+//			m /= 2;
+//			n /= 2;
+//		}
+//		cout << count << endl;
+//	}
+//
+//
+//	return 0;
+//}
 
 //牛客--字符覆盖  https://www.nowcoder.com/practice/d7ae059c1cee491989412c4fa39d4384?tpId=143&&tqId=33934&rp=1&ru=/ta/exam-baidu&qru=/ta/exam-baidu/question-ranking
 //int main() {
