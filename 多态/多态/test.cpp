@@ -13,7 +13,6 @@ void main()
 	B b;
 }
 
-
 /*
 //
 class B
