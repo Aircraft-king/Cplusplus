@@ -10,49 +10,117 @@
 using namespace std;
 
 
-//牛客---链表合并 https://www.nowcoder.com/practice/27c833289e5f4f5e9ba3718ce9136759?tpId=182&&tqId=34637&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
-
+//牛客--时间转换 https://www.nowcoder.com/practice/1ff47ce832054d2d84fc66a70e9e1009?tpId=182&&tqId=34892&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
 
-	vector<int> v1;
-	vector<int> v2;
-	vector<int> v;
-	int tmp;
-	while (cin >> tmp) {
-		v1.push_back(tmp);
-		if (cin.get() == '\n')
-			break;
+	string s;
+	cin >> s;
+	int falg = 0;
+	if (s == "12:00:00AM")
+		cout << "00:00:00";
+	else if (s == "12:00:00PM")
+		cout << "12:00:00";
+	else if (s.find('P') != -1) {
+		if ((s[1] - '0') > 7)
+			falg = 1;
+		s[1] = (s[1] - '0' + 2) % 10 + '0';
+		s[0] = (s[0] - '0' + 1) + '0';
+		if (falg == 1)
+			s[0] = (s[0] - '0' + 1) + '0';
+		string s1(s.begin(), s.end() - 2);
+		cout << s1 << endl;
 	}
-	while (cin >> tmp) {
-		v2.push_back(tmp);
-		if (cin.get() == '\n')
-			break;
+	else {
+		string s1(s.begin(), s.end() - 2);
+		cout << s1 << endl;
 	}
-	int i = 0, j = 0;
-	while (i < v1.size() && j < v2.size()) {
-		if (v1[i] < v2[j]) {
-			v.push_back(v1[i]);
-			i++;
-		}
-		else {
-			v.push_back(v2[j]);
-			j++;
-		}
-	}
-	if (i < v1.size()) {
-		for (int k = i; k < v1.size(); k++)
-			v.push_back(v1[k]);
-	}
-	if (j < v2.size()) {
-		for (int k = j; k < v2.size(); k++)
-			v.push_back(v2[k]);
-	}
-	for (int k = 0; k < v.size(); k++) {
-		cout << v[k] << " ";
-	}
-	cout << endl;
 	return 0;
 }
+
+//牛客--密码检查 https://www.nowcoder.com/practice/f2fbd8f61c564ca0b5feaa63ab42dae5?tpId=182&&tqId=34867&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//bool is_true(string &s) {
+//	if (s.length() < 8)
+//		return false;
+//	if (s[0] <= '9'&&s[0] >= '0')
+//		return 0;
+//	int c_num = 0;
+//	int c_big = 0;
+//	int c_sma = 0;
+//	for (int i = 0; i < s.size(); i++) {
+//		if (s[i] <= '9'&&s[i] >= '0')
+//			c_num++;
+//		else if (s[i] <= 'z'&&s[i] >= 'a')
+//			c_sma++;
+//		else if (s[i] <= 'Z'&&s[i] >= 'A')
+//			c_big++;
+//		else
+//			return false;
+//	}
+//	if (c_num*c_big != 0 && c_big*c_sma == 0 && c_num*c_sma == 0)
+//		return false;
+//	return true;
+//}
+//
+//int main() {
+//	int n;
+//	while (cin >> n) {
+//		vector<string> v(n);
+//		for (int i = 0; i < n; i++) {
+//			cin >> v[i];
+//		}
+//		for (int i = 0; i < n; i++) {
+//			if (is_true(v[i]))
+//				cout << "YES" << endl;
+//			else
+//				cout << "NO" << endl;
+//		}
+//	}
+//	return 0;
+//}
+
+//牛客---链表合并 https://www.nowcoder.com/practice/27c833289e5f4f5e9ba3718ce9136759?tpId=182&&tqId=34637&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+
+//int main() {
+//
+//	vector<int> v1;
+//	vector<int> v2;
+//	vector<int> v;
+//	int tmp;
+//	while (cin >> tmp) {
+//		v1.push_back(tmp);
+//		if (cin.get() == '\n')
+//			break;
+//	}
+//	while (cin >> tmp) {
+//		v2.push_back(tmp);
+//		if (cin.get() == '\n')
+//			break;
+//	}
+//	int i = 0, j = 0;
+//	while (i < v1.size() && j < v2.size()) {
+//		if (v1[i] < v2[j]) {
+//			v.push_back(v1[i]);
+//			i++;
+//		}
+//		else {
+//			v.push_back(v2[j]);
+//			j++;
+//		}
+//	}
+//	if (i < v1.size()) {
+//		for (int k = i; k < v1.size(); k++)
+//			v.push_back(v1[k]);
+//	}
+//	if (j < v2.size()) {
+//		for (int k = j; k < v2.size(); k++)
+//			v.push_back(v2[k]);
+//	}
+//	for (int k = 0; k < v.size(); k++) {
+//		cout << v[k] << " ";
+//	}
+//	cout << endl;
+//	return 0;
+//}
 
 //牛客--不同的bit位 https://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-rankinghttps://www.nowcoder.com/practice/daf9032926614dab91ca624a7759a868?tpId=128&&tqId=33809&rp=1&ru=/ta/exam-meituan&qru=/ta/exam-meituan/question-ranking
 //int main() {
