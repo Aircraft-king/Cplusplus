@@ -10,32 +10,73 @@
 using namespace std;
 
 
-//牛客--时间转换 https://www.nowcoder.com/practice/1ff47ce832054d2d84fc66a70e9e1009?tpId=182&&tqId=34892&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//牛客 --- 回文数索引 https://www.nowcoder.com/practice/b6edb5ca15d34b1eb42e4725a3c68eba?tpId=182&&tqId=34896&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+bool is_palind(string &s) {
+	if (s.size() == 0)
+		return true;
+	int begin = 0;
+	int end = s.size() - 1;
+	while (begin < end) {
+		if (s[begin] != s[end])
+			return false;
+		begin++;
+		end--;
+	}
+	return true;
+}
+
 int main() {
 
-	string s;
-	cin >> s;
-	int falg = 0;
-	if (s == "12:00:00AM")
-		cout << "00:00:00";
-	else if (s == "12:00:00PM")
-		cout << "12:00:00";
-	else if (s.find('P') != -1) {
-		if ((s[1] - '0') > 7)
-			falg = 1;
-		s[1] = (s[1] - '0' + 2) % 10 + '0';
-		s[0] = (s[0] - '0' + 1) + '0';
-		if (falg == 1)
-			s[0] = (s[0] - '0' + 1) + '0';
-		string s1(s.begin(), s.end() - 2);
-		cout << s1 << endl;
-	}
-	else {
-		string s1(s.begin(), s.end() - 2);
-		cout << s1 << endl;
+	int n = 0;
+	while (cin >> n) {
+		vector<string> v(n);
+		for (int i = 0; i < n; i++) {
+			cin >> v[i];
+		}
+		for (int i = 0; i < n; i++) {
+			if (is_palind(v[i]))
+				cout << "-1" << endl;
+			else {
+				for (int j = 0; j < v[i].size(); j++) {
+					string s1 = v[i];
+					s1.erase(s1.begin() + j);
+					if (is_palind(s1)) {
+						cout << j << endl;
+						break;
+					}
+				}
+			}
+		}
 	}
 	return 0;
 }
+
+//牛客--时间转换 https://www.nowcoder.com/practice/1ff47ce832054d2d84fc66a70e9e1009?tpId=182&&tqId=34892&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//int main() {
+//
+//	string s;
+//	cin >> s;
+//	int falg = 0;
+//	if (s == "12:00:00AM")
+//		cout << "00:00:00";
+//	else if (s == "12:00:00PM")
+//		cout << "12:00:00";
+//	else if (s.find('P') != -1) {
+//		if ((s[1] - '0') > 7)
+//			falg = 1;
+//		s[1] = (s[1] - '0' + 2) % 10 + '0';
+//		s[0] = (s[0] - '0' + 1) + '0';
+//		if (falg == 1)
+//			s[0] = (s[0] - '0' + 1) + '0';
+//		string s1(s.begin(), s.end() - 2);
+//		cout << s1 << endl;
+//	}
+//	else {
+//		string s1(s.begin(), s.end() - 2);
+//		cout << s1 << endl;
+//	}
+//	return 0;
+//}
 
 //牛客--密码检查 https://www.nowcoder.com/practice/f2fbd8f61c564ca0b5feaa63ab42dae5?tpId=182&&tqId=34867&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //bool is_true(string &s) {
