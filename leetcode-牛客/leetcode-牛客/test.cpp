@@ -10,46 +10,73 @@
 using namespace std;
 
 
-//牛客 --- 回文数索引 https://www.nowcoder.com/practice/b6edb5ca15d34b1eb42e4725a3c68eba?tpId=182&&tqId=34896&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
-bool is_palind(string &s) {
-	if (s.size() == 0)
-		return true;
-	int begin = 0;
-	int end = s.size() - 1;
-	while (begin < end) {
-		if (s[begin] != s[end])
-			return false;
-		begin++;
-		end--;
-	}
-	return true;
-}
-
+//牛客--字符串压缩算法 https://www.nowcoder.com/practice/2ff3d36b4d4a4bfeb1a7d64f3cc55c15?tpId=182&&tqId=34875&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
-
-	int n = 0;
-	while (cin >> n) {
-		vector<string> v(n);
-		for (int i = 0; i < n; i++) {
-			cin >> v[i];
-		}
-		for (int i = 0; i < n; i++) {
-			if (is_palind(v[i]))
-				cout << "-1" << endl;
-			else {
-				for (int j = 0; j < v[i].size(); j++) {
-					string s1 = v[i];
-					s1.erase(s1.begin() + j);
-					if (is_palind(s1)) {
-						cout << j << endl;
-						break;
-					}
-				}
+	string s;
+	string s1;
+	getline(cin, s);
+	int i = 0;
+	int count = 0;
+	while (i < s.size()) {
+		int j = i;
+		for (; j < s.size(); j++) {
+			if (s[j] == s[i]) {
+				count++;
 			}
+			else
+				break;
 		}
+		if (count > 1) {
+			s1.push_back(count - 1 + '0');
+		}
+		s1.push_back(s[i]);
+		i = j;
+		count = 0;
 	}
+	cout << s1 << endl;
 	return 0;
 }
+
+//牛客 --- 回文数索引 https://www.nowcoder.com/practice/b6edb5ca15d34b1eb42e4725a3c68eba?tpId=182&&tqId=34896&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//bool is_palind(string &s) {
+//	if (s.size() == 0)
+//		return true;
+//	int begin = 0;
+//	int end = s.size() - 1;
+//	while (begin < end) {
+//		if (s[begin] != s[end])
+//			return false;
+//		begin++;
+//		end--;
+//	}
+//	return true;
+//}
+//
+//int main() {
+//
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<string> v(n);
+//		for (int i = 0; i < n; i++) {
+//			cin >> v[i];
+//		}
+//		for (int i = 0; i < n; i++) {
+//			if (is_palind(v[i]))
+//				cout << "-1" << endl;
+//			else {
+//				for (int j = 0; j < v[i].size(); j++) {
+//					string s1 = v[i];
+//					s1.erase(s1.begin() + j);
+//					if (is_palind(s1)) {
+//						cout << j << endl;
+//						break;
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
 
 //牛客--时间转换 https://www.nowcoder.com/practice/1ff47ce832054d2d84fc66a70e9e1009?tpId=182&&tqId=34892&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //int main() {
