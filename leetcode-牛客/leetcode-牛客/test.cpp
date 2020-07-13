@@ -9,23 +9,60 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客 2的N次方 https://www.nowcoder.com/practice/e9a4919b8848451d9aff81e3cdd133b1?tpId=182&&tqId=34826&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
-long double x = 2;
 
-long double power(int n) {
-	if (n == 1)
-		return x;
-	return x * power(n - 1);
-}
+//牛客--最大差值 https://www.nowcoder.com/practice/c1ad0923a49b4347bd0bf8070610d046?tpId=182&&tqId=34799&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 
 int main() {
 
 	int n;
 	cin >> n;
-	printf("%.0Lf\n", power(n));
-
+	int sum = 0;
+	vector<int> v(n);
+	for (int i = 0; i < n; i++) {
+		cin >> v[i];
+	}
+	sort(v.begin(), v.end());
+	for (int i = 0; i < v.size() - 1; ++i) {
+		sum = sum > (v[i + 1] - v[i]) ? sum : (v[i + 1] - v[i]);
+	}
+	cout << sum << endl;
 	return 0;
 }
+
+//牛客--求数列第N项 https://www.nowcoder.com/practice/d15363742fe94a0ea4030e5124713fac?tpId=125&&tqId=33748&rp=1&ru=/ta/exam-xiaomi&qru=/ta/exam-xiaomi/question-ranking
+int main() {
+	int n = 0;
+	cin >> n;
+	int a = 1;
+	int b = 1;
+	int count = 0;
+	do {
+		int c = a + b;
+		a = b;
+		b = c;
+		count++;
+	} while (b < n);
+	cout << count << endl;
+	return 0;
+}
+
+//牛客 2的N次方 https://www.nowcoder.com/practice/e9a4919b8848451d9aff81e3cdd133b1?tpId=182&&tqId=34826&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//long double x = 2;
+//
+//long double power(int n) {
+//	if (n == 1)
+//		return x;
+//	return x * power(n - 1);
+//}
+//
+//int main() {
+//
+//	int n;
+//	cin >> n;
+//	printf("%.0Lf\n", power(n));
+//
+//	return 0;
+//}
 
 //牛客--字符串压缩算法 https://www.nowcoder.com/practice/2ff3d36b4d4a4bfeb1a7d64f3cc55c15?tpId=182&&tqId=34875&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //int main() {
