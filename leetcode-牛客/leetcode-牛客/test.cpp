@@ -9,42 +9,90 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客 -- 统计字符 https://www.nowcoder.com/practice/e3f67da21c3f45bfb091cf0cabb9bb0f?tpId=182&&tqId=34716&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+
+int main() {
+	string s;
+	while (getline(cin, s)) {
+		vector<int> v(123, 0);
+		for (int i = 0; i < s.size(); ++i) {
+			if ((s[i] <= 'z'&&s[i] >= 'a') || (s[i] >= 'A'&&s[i] <= 'Z')) {
+				v[s[i]]++;
+				if (v[s[i]] == 3) {
+					cout << s[i] << endl;
+					break;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+//牛客-- 链表分割 https://www.nowcoder.com/practice/0e27e0b064de4eacac178676ef9c9d70?tpId=8&&tqId=11004&rp=2&ru=/activity/oj&qru=/ta/cracking-the-coding-interview/question-ranking
+//class Partition {
+//public:
+//	ListNode* partition(ListNode* pHead, int x) {
+//		// write code here
+//		if (pHead == NULL || pHead->next == NULL) {
+//			return pHead;
+//		}
+//		ListNode* cur = pHead;
+//		ListNode* p1head = new ListNode(0);
+//		ListNode* p2head = new ListNode(0);
+//		ListNode* p1tail = p1head;
+//		ListNode* p2tail = p2head;
+//		while (cur) {
+//			if (cur->val < x) {
+//				p1tail->next = cur;
+//				p1tail = p1tail->next;
+//			}
+//			else {
+//				p2tail->next = cur;
+//				p2tail = p2tail->next;
+//			}
+//			cur = cur->next;
+//		}
+//		p1tail->next = p2head->next;
+//		p2tail->next = NULL;
+//		return p1head->next;
+//	}
+//};
 
 //牛客--最大差值 https://www.nowcoder.com/practice/c1ad0923a49b4347bd0bf8070610d046?tpId=182&&tqId=34799&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 
-int main() {
-
-	int n;
-	cin >> n;
-	int sum = 0;
-	vector<int> v(n);
-	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-	}
-	sort(v.begin(), v.end());
-	for (int i = 0; i < v.size() - 1; ++i) {
-		sum = sum > (v[i + 1] - v[i]) ? sum : (v[i + 1] - v[i]);
-	}
-	cout << sum << endl;
-	return 0;
-}
+//int main() {
+//
+//	int n;
+//	cin >> n;
+//	int sum = 0;
+//	vector<int> v(n);
+//	for (int i = 0; i < n; i++) {
+//		cin >> v[i];
+//	}
+//	sort(v.begin(), v.end());
+//	for (int i = 0; i < v.size() - 1; ++i) {
+//		sum = sum > (v[i + 1] - v[i]) ? sum : (v[i + 1] - v[i]);
+//	}
+//	cout << sum << endl;
+//	return 0;
+//}
 
 //牛客--求数列第N项 https://www.nowcoder.com/practice/d15363742fe94a0ea4030e5124713fac?tpId=125&&tqId=33748&rp=1&ru=/ta/exam-xiaomi&qru=/ta/exam-xiaomi/question-ranking
-int main() {
-	int n = 0;
-	cin >> n;
-	int a = 1;
-	int b = 1;
-	int count = 0;
-	do {
-		int c = a + b;
-		a = b;
-		b = c;
-		count++;
-	} while (b < n);
-	cout << count << endl;
-	return 0;
-}
+//int main() {
+//	int n = 0;
+//	cin >> n;
+//	int a = 1;
+//	int b = 1;
+//	int count = 0;
+//	do {
+//		int c = a + b;
+//		a = b;
+//		b = c;
+//		count++;
+//	} while (b < n);
+//	cout << count << endl;
+//	return 0;
+//}
 
 //牛客 2的N次方 https://www.nowcoder.com/practice/e9a4919b8848451d9aff81e3cdd133b1?tpId=182&&tqId=34826&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 //long double x = 2;
