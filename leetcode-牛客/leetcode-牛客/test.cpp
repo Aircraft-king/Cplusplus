@@ -9,24 +9,54 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客 -- 统计字符 https://www.nowcoder.com/practice/e3f67da21c3f45bfb091cf0cabb9bb0f?tpId=182&&tqId=34716&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 
+// 牛客 -- 排序次数 https://www.nowcoder.com/practice/1712e1cb393b499ba52036b702990839?tpId=182&&tqId=34817&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 int main() {
-	string s;
-	while (getline(cin, s)) {
-		vector<int> v(123, 0);
-		for (int i = 0; i < s.size(); ++i) {
-			if ((s[i] <= 'z'&&s[i] >= 'a') || (s[i] >= 'A'&&s[i] <= 'Z')) {
-				v[s[i]]++;
-				if (v[s[i]] == 3) {
-					cout << s[i] << endl;
-					break;
-				}
+	int n;
+	cin >> n;
+	vector<int> v(n, 0);
+	for (int i = 0; i < v.size(); i++) {
+		cin >> v[i];
+	}
+	int count = 0;
+	vector<int> v1(v);
+	vector<int> v2;
+	sort(v1.begin(), v1.end());
+	for (int i = 0; i < v1.size(); i++) {
+		for (int j = 0; j < v.size(); j++) {
+			if (v1[i] == v[j]) {
+				v2.push_back(j);
+				break;
 			}
 		}
 	}
+	int k = 0;
+	for (; k < v2.size() - 1; k++) {
+		if (v[k] > v[k + 1])
+			break;
+	}
+	cout << n - k - 1 << endl;
 	return 0;
 }
+
+//牛客 -- 统计字符 https://www.nowcoder.com/practice/e3f67da21c3f45bfb091cf0cabb9bb0f?tpId=182&&tqId=34716&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+
+//int main() {
+//	string s;
+//	while (getline(cin, s)) {
+//		vector<int> v(123, 0);
+//		for (int i = 0; i < s.size(); ++i) {
+//			if ((s[i] <= 'z'&&s[i] >= 'a') || (s[i] >= 'A'&&s[i] <= 'Z')) {
+//				v[s[i]]++;
+//				if (v[s[i]] == 3) {
+//					cout << s[i] << endl;
+//					break;
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
 
 //牛客-- 链表分割 https://www.nowcoder.com/practice/0e27e0b064de4eacac178676ef9c9d70?tpId=8&&tqId=11004&rp=2&ru=/activity/oj&qru=/ta/cracking-the-coding-interview/question-ranking
 //class Partition {
