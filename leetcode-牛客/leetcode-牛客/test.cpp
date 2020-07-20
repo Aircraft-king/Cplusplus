@@ -9,30 +9,50 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客 -- 滑动窗口最大值 https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788?tpId=13&&tqId=11217&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//牛客 --- 数据流中的中位数 https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1?tpId=13&&tqId=11216&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 class Solution {
 public:
-	vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+	vector<int> v;
+	void Insert(int num)
 	{
-		vector<int> v;
-		if (num.size() < size) {
-			return v;
+		v.push_back(num);
+	}
+
+	double GetMedian()
+	{
+		sort(v.begin(), v.end());
+		if (v.size() % 2 == 0) {
+			return (v[v.size() / 2 - 1] + v[v.size() / 2]) / 2.0;
 		}
-		int begin = 0;
-		int end = begin + size - 1;
-		while (end < num.size()) {
-			int max = num[begin];
-			for (int i = begin; i <= end; i++) {
-				if (num[i] > max)
-					max = num[i];
-			}
-			v.push_back(max);
-			begin++;
-			end++;
-		}
-		return v;
+		else
+			return v[v.size() / 2];
 	}
 };
+
+//牛客 -- 滑动窗口最大值 https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788?tpId=13&&tqId=11217&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+//	{
+//		vector<int> v;
+//		if (num.size() < size) {
+//			return v;
+//		}
+//		int begin = 0;
+//		int end = begin + size - 1;
+//		while (end < num.size()) {
+//			int max = num[begin];
+//			for (int i = begin; i <= end; i++) {
+//				if (num[i] > max)
+//					max = num[i];
+//			}
+//			v.push_back(max);
+//			begin++;
+//			end++;
+//		}
+//		return v;
+//	}
+//};
 
 
 //牛客 -- 第一次只出现一次的字符 https://www.nowcoder.com/practice/1c82e8cf713b4bbeb2a5b31cf5b0417c?tpId=13&&tqId=11187&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
