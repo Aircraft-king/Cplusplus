@@ -9,34 +9,166 @@
 #include <algorithm> //sort
 using namespace std;
 
-// 牛客 -- 排序次数 https://www.nowcoder.com/practice/1712e1cb393b499ba52036b702990839?tpId=182&&tqId=34817&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
-int main() {
-	int n;
-	cin >> n;
-	vector<int> v(n, 0);
-	for (int i = 0; i < v.size(); i++) {
-		cin >> v[i];
-	}
-	int count = 0;
-	vector<int> v1(v);
-	vector<int> v2;
-	sort(v1.begin(), v1.end());
-	for (int i = 0; i < v1.size(); i++) {
-		for (int j = 0; j < v.size(); j++) {
-			if (v1[i] == v[j]) {
-				v2.push_back(j);
-				break;
-			}
+//牛客 -- 滑动窗口最大值 https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788?tpId=13&&tqId=11217&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+class Solution {
+public:
+	vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+	{
+		vector<int> v;
+		if (num.size() < size) {
+			return v;
 		}
+		int begin = 0;
+		int end = begin + size - 1;
+		while (end < num.size()) {
+			int max = num[begin];
+			for (int i = begin; i <= end; i++) {
+				if (num[i] > max)
+					max = num[i];
+			}
+			v.push_back(max);
+			begin++;
+			end++;
+		}
+		return v;
 	}
-	int k = 0;
-	for (; k < v2.size() - 1; k++) {
-		if (v[k] > v[k + 1])
-			break;
+};
+
+
+//牛客 -- 第一次只出现一次的字符 https://www.nowcoder.com/practice/1c82e8cf713b4bbeb2a5b31cf5b0417c?tpId=13&&tqId=11187&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+//class Solution {
+//public:
+//	int FirstNotRepeatingChar(string str) {
+//		if (str.size() == 0)
+//			return -1;
+//		if (str.size() == 1)
+//			return str[0];
+//		for (int i = 0; i < str.size() - 1; ++i) {
+//			int falg = 0;
+//			for (int j = 0; j < str.size(); ++j) {
+//				if (str[i] == str[j] && i != j) {
+//					falg = 1;
+//					break;
+//				}
+//			}
+//			if (falg == 0)
+//				return i;
+//		}
+//		return -1;
+//	}
+//};
+
+
+//牛客 --- 链表环的入口节点 https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&&tqId=11208&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+		val(x), next(NULL) {
 	}
-	cout << n - k - 1 << endl;
-	return 0;
-}
+};
+*/
+//class Solution {
+//public:
+//	ListNode* EntryNodeOfLoop(ListNode* pHead)
+//	{
+//		if (pHead == NULL)
+//			return pHead;
+//		ListNode* p = pHead;
+//		vector<ListNode*> v;
+//		while (p) {
+//			if (v.size() != 0) {
+//				for (int i = 0; i < v.size(); ++i) {
+//					if (p == v[i])
+//						return p;
+//				}
+//			}
+//			v.push_back(p);
+//			p = p->next;
+//		}
+//		return NULL;
+//	}
+//};
+//
+////牛客 --- 二叉树第K个节点 https://www.nowcoder.com/practice/ef068f602dde4d28aab2b210e859150a?tpId=13&&tqId=11215&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+///*
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//			val(x), left(NULL), right(NULL) {
+//	}
+//};
+//*/
+//class Solution {
+//public:
+//	void push_v(TreeNode* pRoot, vector<TreeNode*> &v) {
+//		if (pRoot == NULL)
+//			return;
+//		push_v(pRoot->left, v);
+//		v.push_back(pRoot);
+//		push_v(pRoot->right, v);
+//	}
+//	TreeNode* KthNode(TreeNode* pRoot, int k)
+//	{
+//		if (pRoot == NULL || k <= 0)
+//			return NULL;
+//		vector<TreeNode*> v;
+//		push_v(pRoot, v);
+//		if (k > v.size())
+//			return NULL;
+//		return v[k - 1];
+//	}
+//	/*int count = 0;
+//	TreeNode* KthNode(TreeNode* pRoot, int k)
+//	{
+//		if(pRoot!=NULL){
+//			TreeNode* a = KthNode(pRoot->left,k);
+//			if(a!=NULL)
+//				return a;
+//			count++;
+//			if(count==k)
+//				return pRoot;
+//			a = KthNode(pRoot->right,k);
+//			if(a!=NULL)
+//				return a;
+//		}
+//		return NULL;
+//	}*/
+//};
+
+// 牛客 -- 排序次数 https://www.nowcoder.com/practice/1712e1cb393b499ba52036b702990839?tpId=182&&tqId=34817&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
+//int main() {
+//	int n;
+//	cin >> n;
+//	vector<int> v(n, 0);
+//	for (int i = 0; i < v.size(); i++) {
+//		cin >> v[i];
+//	}
+//	int count = 0;
+//	vector<int> v1(v);
+//	vector<int> v2;
+//	sort(v1.begin(), v1.end());
+//	for (int i = 0; i < v1.size(); i++) {
+//		for (int j = 0; j < v.size(); j++) {
+//			if (v1[i] == v[j]) {
+//				v2.push_back(j);
+//				break;
+//			}
+//		}
+//	}
+//	int k = 0;
+//	for (; k < v2.size() - 1; k++) {
+//		if (v[k] > v[k + 1])
+//			break;
+//	}
+//	cout << n - k - 1 << endl;
+//	return 0;
+//}
 
 //牛客 -- 统计字符 https://www.nowcoder.com/practice/e3f67da21c3f45bfb091cf0cabb9bb0f?tpId=182&&tqId=34716&rp=1&ru=/activity/oj&qru=/ta/exam-all/question-ranking
 
