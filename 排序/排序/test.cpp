@@ -107,32 +107,54 @@ using namespace std;
 //	return 0;
 //}
 
-void quicksort(int* arr, int first, int last)
-{
-	if (first >= last)
+//void quicksort(int* arr, int first, int last)
+//{
+//	if (first >= last)
+//		return;
+//	int low = first;
+//	int high = last;
+//	int tmp = arr[first];
+//	
+//	while (low < high)
+//	{
+//		while (arr[high] > tmp&&low < high)
+//		{
+//			high--;
+//		}
+//		if (arr[high] < arr[low])
+//		{
+//			arr[low] = arr[high];
+//		}
+//		while (arr[low] < tmp&& low < high)
+//		{
+//			low++;
+//		}
+//		if (arr[low] > arr[high])
+//		{
+//			arr[high] = arr[low];
+//		}
+//	}
+//	arr[low] = tmp;
+//	quicksort(arr, first, low - 1);
+//	quicksort(arr, low + 1, last);
+//}
+
+
+void quicksort(int *arr,int first,int last) {
+	if (first>=last)
 		return;
 	int low = first;
 	int high = last;
 	int tmp = arr[first];
-	
-	while (low < high)
-	{
+	while (low < high) {
 		while (arr[high] > tmp&&low < high)
-		{
 			high--;
-		}
 		if (arr[high] < arr[low])
-		{
 			arr[low] = arr[high];
-		}
-		while (arr[low] < tmp&& low < high)
-		{
+		while (arr[low] < tmp&&low < high)
 			low++;
-		}
 		if (arr[low] > arr[high])
-		{
-			arr[high] = arr[low];;
-		}
+			arr[high] = arr[low];
 	}
 	arr[low] = tmp;
 	quicksort(arr, first, low - 1);
@@ -141,7 +163,7 @@ void quicksort(int* arr, int first, int last)
 int main()
 {
 	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
-	quicksort(arr, 0, sizeof(arr) / sizeof(arr[0])-1);
+	quicksort(arr, 0, 9);
 	for (int i = 0; i < 10; i++)
 	{
 		cout << arr[i]<<" ";
