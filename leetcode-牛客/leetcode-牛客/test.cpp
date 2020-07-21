@@ -9,25 +9,103 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客 --- 数据流中的中位数 https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1?tpId=13&&tqId=11216&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-class Solution {
+//牛客 --- 双栈实现队列 https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&&tqId=11158&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+class Solution
+{
 public:
-	vector<int> v;
-	void Insert(int num)
-	{
-		v.push_back(num);
+	void push(int node) {
+		stack1.push(node);
 	}
 
-	double GetMedian()
-	{
-		sort(v.begin(), v.end());
-		if (v.size() % 2 == 0) {
-			return (v[v.size() / 2 - 1] + v[v.size() / 2]) / 2.0;
+	int pop() {
+		if (stack2.size() <= 0) {
+			while (!stack1.empty()) {
+				int tmp = stack1.top();
+				stack1.pop();
+				stack2.push(tmp);
+			}
 		}
-		else
-			return v[v.size() / 2];
+		int a = stack2.top();
+		stack2.pop();
+		return a;
+	}
+
+private:
+	stack<int> stack1;
+	stack<int> stack2;
+};
+
+
+//牛客 --变态跳台阶 https://www.nowcoder.com/practice/22243d016f6b47f2a6928b4313c85387?tpId=13&&tqId=11162&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+class Solution {
+public:
+	int jumpFloorII(int number) {
+		return pow(2, number - 1);
 	}
 };
+
+//牛客 --- 二叉树的镜像 https://www.nowcoder.com/practice/564f4c26aa584921bc75623e48ca3011?tpId=13&&tqId=11171&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+/*
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+			val(x), left(NULL), right(NULL) {
+	}
+};*/
+class Solution {
+public:
+	void Mirror(TreeNode *pRoot) {
+		if (pRoot == NULL)
+			return;
+		TreeNode* tmp = pRoot->left;
+		pRoot->left = pRoot->right;
+		pRoot->right = tmp;
+		Mirror(pRoot->left);
+		Mirror(pRoot->right);
+	}
+};
+
+
+//牛客---构建乘积数组  https://www.nowcoder.com/practice/94a4d381a68b47b7a8bed86f2975db46?tpId=13&&tqId=11204&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	vector<int> multiply(const vector<int>& A) {
+//		vector<int> v(A.size());
+//		for (int i = 0; i < v.size(); i++) {
+//			int ride = 1;
+//			for (int j = 0; j < A.size(); ++j) {
+//				if (j != i)
+//					ride *= A[j];
+//			}
+//			v[i] = ride;
+//		}
+//		return v;
+//	}
+//};
+
+//牛客 --- 数据流中的中位数 https://www.nowcoder.com/practice/9be0172896bd43948f8a32fb954e1be1?tpId=13&&tqId=11216&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	vector<int> v;
+//	void Insert(int num)
+//	{
+//		v.push_back(num);
+//	}
+//
+//	double GetMedian()
+//	{
+//		sort(v.begin(), v.end());
+//		if (v.size() % 2 == 0) {
+//			return (v[v.size() / 2 - 1] + v[v.size() / 2]) / 2.0;
+//		}
+//		else
+//			return v[v.size() / 2];
+//	}
+//};
 
 //牛客 -- 滑动窗口最大值 https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788?tpId=13&&tqId=11217&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //class Solution {
