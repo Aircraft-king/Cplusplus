@@ -9,68 +9,100 @@
 //#include<vld.h>
 using namespace std;
 
-typedef int elemplate;
-typedef struct Dlist
+vector<int> maxInWindows(const vector<int>& num, unsigned int size)
 {
-	elemplate data;
-	struct Dlist* prev;
-	struct Dlist* next;
-}list, *listptr;
-listptr buy_nodelist(elemplate n)
-{
-	listptr newnode = (listptr)malloc(sizeof(Dlist));
-	if (newnode == NULL)
-	{
-		exit(1);
+	vector<int> v, v1;
+	int n_size = size;
+	if (size > num.size())
+		return v;
+
+	for (int i = 0; i < num.size() - size + 1; i++) {
+		int j = i;
+		while (n_size--) {
+			v.push_back(num[j]);
+			j++;
+		}
+		n_size = size;
+		int max = v[0];
+		for (int j = 0; j < v.size(); j++) {
+			if (v[j] > max) {
+				max = v[j];
+			}
+		}
+		v.clear();
+		v1.push_back(max);
 	}
-	newnode->data = n;
-	newnode->prev = NULL;
-	newnode->next = NULL;
-	return newnode;
+	return v1;
 }
-listptr initlist()
-{
-	listptr head = buy_nodelist(0);
-	head->prev = head;
-	head->next = head;
-	return head;
+int main() {
+	vector<int> num = { 2,3,4,2,6,2,5,1 };
+	vector<int> v;
+	v = maxInWindows(num, 3);
+	return 0;
 }
-void listpush_back(listptr node, elemplate a)
-{
-	if (node == NULL)
-	{
-		return;
-	}
-	listptr newnode = buy_nodelist(a);
-	newnode->next = node;
-	newnode->prev = node->prev;
-	node->prev->next = newnode;
-	node->prev = newnode;
-}
-void listprint(listptr node)
-{
-	if (node == NULL)
-	{
-		return;
-	}
-	listptr cur = node->next;
-	printf("node---->");
-	while (cur != node)
-	{
-		printf("%d---->", cur->data);
-		cur = cur->next;
-	}
-	printf("node");
-}
-int main()
-{
-	listptr L = NULL;
-	listpush_back(L, 1);
-	listpush_back(L, 2);
-	listpush_back(L, 3);
-	listpush_back(L, 4);
-	listprint(L);
-}
+
+//typedef int elemplate;
+//typedef struct Dlist
+//{
+//	elemplate data;
+//	struct Dlist* prev;
+//	struct Dlist* next;
+//}list, *listptr;
+//listptr buy_nodelist(elemplate n)
+//{
+//	listptr newnode = (listptr)malloc(sizeof(Dlist));
+//	if (newnode == NULL)
+//	{
+//		exit(1);
+//	}
+//	newnode->data = n;
+//	newnode->prev = NULL;
+//	newnode->next = NULL;
+//	return newnode;
+//}
+//listptr initlist()
+//{
+//	listptr head = buy_nodelist(0);
+//	head->prev = head;
+//	head->next = head;
+//	return head;
+//}
+//void listpush_back(listptr node, elemplate a)
+//{
+//	if (node == NULL)
+//	{
+//		return;
+//	}
+//	listptr newnode = buy_nodelist(a);
+//	newnode->next = node;
+//	newnode->prev = node->prev;
+//	node->prev->next = newnode;
+//	node->prev = newnode;
+//}
+//void listprint(listptr node)
+//{
+//	if (node == NULL)
+//	{
+//		return;
+//	}
+//	listptr cur = node->next;
+//	printf("node---->");
+//	while (cur != node)
+//	{
+//		printf("%d---->", cur->data);
+//		cur = cur->next;
+//	}
+//	printf("node");
+//}
+//int main()
+//{
+//	listptr L = NULL;
+//	listpush_back(L, 1);
+//	listpush_back(L, 2);
+//	listpush_back(L, 3);
+//	listpush_back(L, 4);
+//	listprint(L);
+//}
 
 
 //int main() {
