@@ -9,37 +9,50 @@
 //#include<vld.h>
 using namespace std;
 
-vector<int> maxInWindows(const vector<int>& num, unsigned int size)
-{
-	vector<int> v, v1;
-	int n_size = size;
-	if (size > num.size())
-		return v;
-
-	for (int i = 0; i < num.size() - size + 1; i++) {
-		int j = i;
-		while (n_size--) {
-			v.push_back(num[j]);
-			j++;
-		}
-		n_size = size;
-		int max = v[0];
-		for (int j = 0; j < v.size(); j++) {
-			if (v[j] > max) {
-				max = v[j];
-			}
-		}
-		v.clear();
-		v1.push_back(max);
-	}
-	return v1;
+int len(char * string) {
+	return sizeof(string);
 }
+
+
 int main() {
-	vector<int> num = { 2,3,4,2,6,2,5,1 };
-	vector<int> v;
-	v = maxInWindows(num, 3);
+	char arr[] = "asdih";
+	string s(arr);
+	int l = len(arr);
+	cout << l << endl;
 	return 0;
 }
+
+//vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+//{
+//	vector<int> v, v1;
+//	int n_size = size;
+//	if (size > num.size())
+//		return v;
+//
+//	for (int i = 0; i < num.size() - size + 1; i++) {
+//		int j = i;
+//		while (n_size--) {
+//			v.push_back(num[j]);
+//			j++;
+//		}
+//		n_size = size;
+//		int max = v[0];
+//		for (int j = 0; j < v.size(); j++) {
+//			if (v[j] > max) {
+//				max = v[j];
+//			}
+//		}
+//		v.clear();
+//		v1.push_back(max);
+//	}
+//	return v1;
+//}
+//int main() {
+//	vector<int> num = { 2,3,4,2,6,2,5,1 };
+//	vector<int> v;
+//	v = maxInWindows(num, 3);
+//	return 0;
+//}
 
 //typedef int elemplate;
 //typedef struct Dlist
