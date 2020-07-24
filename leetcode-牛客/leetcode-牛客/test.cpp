@@ -9,42 +9,85 @@
 #include <algorithm> //sort
 using namespace std;
 
+//牛客 --- 求1+2+3+...+n https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&&tqId=11200&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+class Solution {
+public:
+	int Sum_Solution(int n) {
+		if (n == 0)
+			return 0;
+		return n + Sum_Solution(n - 1);
+	}
+};
+
+//牛客 --- 把字符串转换为整数 https://www.nowcoder.com/practice/1277c681251b4372bdef344468e4f26e?tpId=13&&tqId=11202&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+int StrToInt(string str) {
+	if (str.size() == 0) {
+		return 0;
+	}
+	int falg = 0;
+	while (str[0] == ' ')
+		str.erase(str.begin());
+	if (str[0] == '-') {
+		falg == 1;
+		str.erase(str.begin());
+	}
+	if (str[0] == '+')
+		str.erase(str.begin());
+	int sum = 0;
+	for (int i = 0; i < str.size(); i++) {
+		if (str[i] <= '9' && str[i] >= '0') {
+			sum += (str[i]-'0') * (int)(pow(10, str.size() - i - 1));
+		}
+		else
+			return 0;
+	}
+	if (falg == 1)
+		sum *= -1;
+	return sum;
+}
+int main() {
+	string s("1a33");
+	int l = StrToInt(s);
+	return 0;
+}
+
 //牛客 --- 双栈实现队列 https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&&tqId=11158&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
-class Solution
-{
-public:
-	void push(int node) {
-		stack1.push(node);
-	}
-
-	int pop() {
-		if (stack2.size() <= 0) {
-			while (!stack1.empty()) {
-				int tmp = stack1.top();
-				stack1.pop();
-				stack2.push(tmp);
-			}
-		}
-		int a = stack2.top();
-		stack2.pop();
-		return a;
-	}
-
-private:
-	stack<int> stack1;
-	stack<int> stack2;
-};
+//class Solution
+//{
+//public:
+//	void push(int node) {
+//		stack1.push(node);
+//	}
+//
+//	int pop() {
+//		if (stack2.size() <= 0) {
+//			while (!stack1.empty()) {
+//				int tmp = stack1.top();
+//				stack1.pop();
+//				stack2.push(tmp);
+//			}
+//		}
+//		int a = stack2.top();
+//		stack2.pop();
+//		return a;
+//	}
+//
+//private:
+//	stack<int> stack1;
+//	stack<int> stack2;
+//};
 
 
 //牛客 --变态跳台阶 https://www.nowcoder.com/practice/22243d016f6b47f2a6928b4313c85387?tpId=13&&tqId=11162&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
-class Solution {
-public:
-	int jumpFloorII(int number) {
-		return pow(2, number - 1);
-	}
-};
+//class Solution {
+//public:
+//	int jumpFloorII(int number) {
+//		return pow(2, number - 1);
+//	}
+//};
 
 //牛客 --- 二叉树的镜像 https://www.nowcoder.com/practice/564f4c26aa584921bc75623e48ca3011?tpId=13&&tqId=11171&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 /*
@@ -56,18 +99,18 @@ struct TreeNode {
 			val(x), left(NULL), right(NULL) {
 	}
 };*/
-class Solution {
-public:
-	void Mirror(TreeNode *pRoot) {
-		if (pRoot == NULL)
-			return;
-		TreeNode* tmp = pRoot->left;
-		pRoot->left = pRoot->right;
-		pRoot->right = tmp;
-		Mirror(pRoot->left);
-		Mirror(pRoot->right);
-	}
-};
+//class Solution {
+//public:
+//	void Mirror(TreeNode *pRoot) {
+//		if (pRoot == NULL)
+//			return;
+//		TreeNode* tmp = pRoot->left;
+//		pRoot->left = pRoot->right;
+//		pRoot->right = tmp;
+//		Mirror(pRoot->left);
+//		Mirror(pRoot->right);
+//	}
+//};
 
 
 //牛客---构建乘积数组  https://www.nowcoder.com/practice/94a4d381a68b47b7a8bed86f2975db46?tpId=13&&tqId=11204&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
