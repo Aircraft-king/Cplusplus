@@ -3,6 +3,7 @@
 #include<string>
 #include<vector>
 #include<list>
+#include<map>
 #include<stack>
 #include<assert.h>
 #include<deque>
@@ -10,32 +11,37 @@
 using namespace std;
 
 int main() {
-	int n = 0;
-	cin >> n;
-	vector<int> v(n);
-	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-	}
-	vector<int> v1(v);
-	sort(v1.begin(), v1.end());
-	vector<int> v2;
-	for (int i = v1.size() - 1; i >= 0; --i) {
-		for (int j = v.size() - 1; j >= 0; --j) {
-			if (v1[i] == v[j])
-			{
-				v2.push_back(j);
-				break;
-			}
-		}
-	}
-	int k = 0;
-	for (k = 1; k < v2.size(); ++k) {
-		if (v[k] > v[k - 1])
-			break;
-	}
-	cout << n - k - 1 << endl;
-	return 0;
+	map<int, int>m;
+	
 }
+
+//int main() {
+//	int n = 0;
+//	cin >> n;
+//	vector<int> v(n);
+//	for (int i = 0; i < n; i++) {
+//		cin >> v[i];
+//	}
+//	vector<int> v1(v);
+//	sort(v1.begin(), v1.end());
+//	vector<int> v2;
+//	for (int i = v1.size() - 1; i >= 0; --i) {
+//		for (int j = v.size() - 1; j >= 0; --j) {
+//			if (v1[i] == v[j])
+//			{
+//				v2.push_back(j);
+//				break;
+//			}
+//		}
+//	}
+//	int k = 0;
+//	for (k = 1; k < v2.size(); ++k) {
+//		if (v[k] > v[k - 1])
+//			break;
+//	}
+//	cout << n - k - 1 << endl;
+//	return 0;
+//}
 
 //long long my_find(vector<long long> &v) {
 //	int i = 0;
