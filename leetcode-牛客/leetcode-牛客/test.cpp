@@ -10,6 +10,7 @@
 using namespace std;
 
 //Å£¿Í --- Çó1+2+3+...+n https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&&tqId=11200&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
 class Solution {
 public:
 	int Sum_Solution(int n) {
