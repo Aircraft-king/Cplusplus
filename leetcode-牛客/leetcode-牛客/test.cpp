@@ -20,6 +20,7 @@ public:
 	}
 };
 
+
 //牛客 --- 把字符串转换为整数 https://www.nowcoder.com/practice/1277c681251b4372bdef344468e4f26e?tpId=13&&tqId=11202&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 int StrToInt(string str) {
 	if (str.size() == 0) {
