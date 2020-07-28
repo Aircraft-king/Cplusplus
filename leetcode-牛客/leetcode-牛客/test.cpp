@@ -9,49 +9,84 @@
 #include <algorithm> //sort
 using namespace std;
 
-//牛客 --- 求1+2+3+...+n https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&&tqId=11200&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
+//牛客 --- 和为S的两个数 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&&tqId=11195&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 class Solution {
 public:
-	int Sum_Solution(int n) {
-		if (n == 0)
-			return 0;
-		return n + Sum_Solution(n - 1);
+	vector<int> FindNumbersWithSum(vector<int> array, int sum) {
+		vector<int> v1;
+		if (array.size() == 0)
+			return v1;
+		for (int i = 0; i < array.size() / 2; i++) {
+			int a = sum - array[i];
+			vector<int>::iterator it = find(array.begin(), array.end(), a);
+			if (it != array.end()) {
+				v1.push_back(array[i]);
+				v1.push_back(*it);
+				break;
+			}
+		}
+		if (v1.size() == 0)
+			return v1;
+		return v1;
+		/*vector<int> v1;
+		int min = 0;
+		for(int i=0;i<v.size();i++){
+			if(min>(v[i][0] * v[i][1]))
+				min = v[i][0] * v[i][1];
+			v1.push_back(v[i][0] * v[i][1]);
+		}
+		int j = 0;
+		for(;j<v1.size();j++){
+			if(v1[j]==min)
+				break;
+		}
+		return v[j];*/
 	}
 };
+//牛客 --- 求1+2+3+...+n https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&&tqId=11200&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+//class Solution {
+//public:
+//	int Sum_Solution(int n) {
+//		if (n == 0)
+//			return 0;
+//		return n + Sum_Solution(n - 1);
+//	}
+//};
 
 
 //牛客 --- 把字符串转换为整数 https://www.nowcoder.com/practice/1277c681251b4372bdef344468e4f26e?tpId=13&&tqId=11202&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-int StrToInt(string str) {
-	if (str.size() == 0) {
-		return 0;
-	}
-	int falg = 0;
-	while (str[0] == ' ')
-		str.erase(str.begin());
-	if (str[0] == '-') {
-		falg == 1;
-		str.erase(str.begin());
-	}
-	if (str[0] == '+')
-		str.erase(str.begin());
-	int sum = 0;
-	for (int i = 0; i < str.size(); i++) {
-		if (str[i] <= '9' && str[i] >= '0') {
-			sum += (str[i]-'0') * (int)(pow(10, str.size() - i - 1));
-		}
-		else
-			return 0;
-	}
-	if (falg == 1)
-		sum *= -1;
-	return sum;
-}
-int main() {
-	string s("1a33");
-	int l = StrToInt(s);
-	return 0;
-}
+//int StrToInt(string str) {
+//	if (str.size() == 0) {
+//		return 0;
+//	}
+//	int falg = 0;
+//	while (str[0] == ' ')
+//		str.erase(str.begin());
+//	if (str[0] == '-') {
+//		falg == 1;
+//		str.erase(str.begin());
+//	}
+//	if (str[0] == '+')
+//		str.erase(str.begin());
+//	int sum = 0;
+//	for (int i = 0; i < str.size(); i++) {
+//		if (str[i] <= '9' && str[i] >= '0') {
+//			sum += (str[i]-'0') * (int)(pow(10, str.size() - i - 1));
+//		}
+//		else
+//			return 0;
+//	}
+//	if (falg == 1)
+//		sum *= -1;
+//	return sum;
+//}
+//int main() {
+//	string s("1a33");
+//	int l = StrToInt(s);
+//	return 0;
+//}
 
 //牛客 --- 双栈实现队列 https://www.nowcoder.com/practice/54275ddae22f475981afa2244dd448c6?tpId=13&&tqId=11158&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
