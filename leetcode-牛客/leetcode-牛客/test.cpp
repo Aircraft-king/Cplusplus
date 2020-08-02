@@ -9,41 +9,187 @@
 #include <algorithm> //sort
 using namespace std;
 
-
-//牛客 --- 和为S的两个数 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&&tqId=11195&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-class Solution {
-public:
-	vector<int> FindNumbersWithSum(vector<int> array, int sum) {
-		vector<int> v1;
-		if (array.size() == 0)
-			return v1;
-		for (int i = 0; i < array.size() / 2; i++) {
-			int a = sum - array[i];
-			vector<int>::iterator it = find(array.begin(), array.end(), a);
-			if (it != array.end()) {
-				v1.push_back(array[i]);
-				v1.push_back(*it);
-				break;
+int main() {
+	int n = 0;
+	vector<int> v(n);
+	int sum = 0;
+	int x = 0;
+	int count = 0;
+	for (int i = 0; i < n; i++) {
+		cin >> v[i];
+		sum += v[i];
+	}
+	if (sum%n != 0) {
+		cout << -1 << endl;
+	}
+	else {
+		int a = sum / n;
+		for (int i = 0; i < n; i++) {
+			while (v[i] < a) {
+				v[i] += 2;
+				count++;
+			}
+			while (v[i] > a) {
+				v[i] -= 2;
 			}
 		}
-		if (v1.size() == 0)
-			return v1;
-		return v1;
-		/*vector<int> v1;
-		int min = 0;
-		for(int i=0;i<v.size();i++){
-			if(min>(v[i][0] * v[i][1]))
-				min = v[i][0] * v[i][1];
-			v1.push_back(v[i][0] * v[i][1]);
-		}
-		int j = 0;
-		for(;j<v1.size();j++){
-			if(v1[j]==min)
-				break;
-		}
-		return v[j];*/
+		cout << count << endl;
 	}
-};
+	return 0;
+}
+
+//int main() {
+//	string s1;
+//	string s2;
+//	getline(cin, s1);
+//	getline(cin, s2);
+//	int begin = 0;
+//	int end = s2.size();
+//	int count = 0;
+//	while (end <= s1.size()) {
+//		string s3(s1.begin() + begin, s1.begin() + end);
+//		if (s2 == s3)
+//			count++;
+//		begin++;
+//		end++;
+//	}
+//	cout << count << endl;
+//	return 0;
+//}
+
+////牛客 -- 扑克牌顺子 https://www.nowcoder.com/practice/762836f4d43d43ca9deb273b3de8e1f4?tpId=13&&tqId=11198&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	bool IsContinuous(vector<int> numbers) {
+//		if (numbers.size() < 5)
+//			return false;
+//		vector<int> v(14, 0);
+//		sort(numbers.begin(), numbers.end());
+//		for (int i = 0; i < numbers.size(); i++) {
+//			if (numbers[i] == 0) {
+//				numbers.erase(numbers.begin());
+//				i--;
+//			}
+//			else {
+//				if (v[numbers[i]] != 0)
+//					return false;
+//				v[numbers[i]]++;
+//			}
+//		}
+//		if (numbers[numbers.size() - 1] - numbers[0] <= 4)
+//			return true;
+//		return false;
+//	}
+//};
+//
+////牛客 --- 包含min函数的栈 https://www.nowcoder.com/practice/4c776177d2c04c2494f2555c9fcc1e49?tpId=13&&tqId=11173&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	stack<int> s;
+//	stack<int> sm;
+//	void push(int value) {
+//		s.push(value);
+//		if (sm.empty())
+//			sm.push(value);
+//		if (sm.top() > value)
+//			sm.push(value);
+//	}
+//	void pop() {
+//		if (sm.top() == s.top())
+//			sm.pop();
+//		s.pop();
+//	}
+//	int top() {
+//		return s.top();
+//	}
+//	int min() {
+//		return sm.top();
+//	}
+//};
+//
+////牛客 --- 平衡二叉树 https://www.nowcoder.com/practice/8b3b95850edb4115918ecebdf1b4d222?tpId=13&&tqId=11192&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	bool IsBalanced_Solution(TreeNode* pRoot) {
+//		if (pRoot == NULL)
+//			return true;
+//		int lefthigh = gethigh(pRoot->left);
+//		int righthigh = gethigh(pRoot->right);
+//		if (lefthigh - righthigh > 1 || lefthigh - righthigh < -1)
+//			return false;
+//		IsBalanced_Solution(pRoot->left);
+//		IsBalanced_Solution(pRoot->right);
+//		return true;
+//	}
+//	int gethigh(TreeNode* p) {
+//		if (p == NULL)
+//			return 0;
+//		return gethigh(p->left) > gethigh(p->right) ? gethigh(p->left) + 1 : gethigh(p->right) + 1;
+//	}
+//};
+//
+////牛客 --- 调整数组使奇数位于偶数之前 https://www.nowcoder.com/practice/beb5aa231adc45b2a5dcc5b62c93f593?tpId=13&&tqId=11166&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	void reOrderArray(vector<int> &array) {
+//		/*int begin = 0;
+//		int end = array.size()-1;
+//		while(begin<end){
+//			while(array[begin]%2!=0&&begin<end)
+//				begin++;
+//			while(array[end]%2==0&&begin<end)
+//				end--;
+//			int tmp = array[begin];
+//			array[begin] = array[end];
+//			array[end] = tmp;
+//		}*/
+//		vector<int> tmp;
+//		for (int i = 0; i < array.size(); i++) {
+//			if (array[i] % 2 != 0)
+//				tmp.push_back(array[i]);
+//		}
+//		for (int i = 0; i < array.size(); i++) {
+//			if (array[i] % 2 == 0)
+//				tmp.push_back(array[i]);
+//		}
+//		array = tmp;
+//	}
+//};
+
+//牛客 --- 和为S的两个数 https://www.nowcoder.com/practice/390da4f7a00f44bea7c2f3d19491311b?tpId=13&&tqId=11195&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	vector<int> FindNumbersWithSum(vector<int> array, int sum) {
+//		vector<int> v1;
+//		if (array.size() == 0)
+//			return v1;
+//		for (int i = 0; i < array.size() / 2; i++) {
+//			int a = sum - array[i];
+//			vector<int>::iterator it = find(array.begin(), array.end(), a);
+//			if (it != array.end()) {
+//				v1.push_back(array[i]);
+//				v1.push_back(*it);
+//				break;
+//			}
+//		}
+//		if (v1.size() == 0)
+//			return v1;
+//		return v1;
+//		/*vector<int> v1;
+//		int min = 0;
+//		for(int i=0;i<v.size();i++){
+//			if(min>(v[i][0] * v[i][1]))
+//				min = v[i][0] * v[i][1];
+//			v1.push_back(v[i][0] * v[i][1]);
+//		}
+//		int j = 0;
+//		for(;j<v1.size();j++){
+//			if(v1[j]==min)
+//				break;
+//		}
+//		return v[j];*/
+//	}
+//};
 //牛客 --- 求1+2+3+...+n https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId=13&&tqId=11200&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
 //class Solution {
