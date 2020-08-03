@@ -38,24 +38,24 @@ int main() {
 	return 0;
 }
 
-//int main() {
-//	string s1;
-//	string s2;
-//	getline(cin, s1);
-//	getline(cin, s2);
-//	int begin = 0;
-//	int end = s2.size();
-//	int count = 0;
-//	while (end <= s1.size()) {
-//		string s3(s1.begin() + begin, s1.begin() + end);
-//		if (s2 == s3)
-//			count++;
-//		begin++;
-//		end++;
-//	}
-//	cout << count << endl;
-//	return 0;
-//}
+int main() {
+	string s1;
+	string s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	int begin = 0;
+	int end = s2.size();
+	int count = 0;
+	while (end <= s1.size()) {
+		string s3(s1.begin() + begin, s1.begin() + end);
+		if (s2 == s3)
+			count++;
+		begin++;
+		end++;
+	}
+	cout << count << endl;
+	return 0;
+}
 
 ////Å£¿Í -- ÆË¿ËÅÆË³×Ó https://www.nowcoder.com/practice/762836f4d43d43ca9deb273b3de8e1f4?tpId=13&&tqId=11198&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //class Solution {
