@@ -9,53 +9,136 @@
 #include <algorithm> //sort
 using namespace std;
 
-int main() {
-	int n = 0;
-	vector<int> v(n);
-	int sum = 0;
-	int x = 0;
-	int count = 0;
-	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-		sum += v[i];
-	}
-	if (sum%n != 0) {
-		cout << -1 << endl;
-	}
-	else {
-		int a = sum / n;
-		for (int i = 0; i < n; i++) {
-			while (v[i] < a) {
-				v[i] += 2;
-				count++;
-			}
-			while (v[i] > a) {
-				v[i] -= 2;
-			}
-		}
-		cout << count << endl;
-	}
-	return 0;
-}
+//牛客 -- 从尾到头打印链表 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&&tqId=11156&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
-int main() {
-	string s1;
-	string s2;
-	getline(cin, s1);
-	getline(cin, s2);
-	int begin = 0;
-	int end = s2.size();
-	int count = 0;
-	while (end <= s1.size()) {
-		string s3(s1.begin() + begin, s1.begin() + end);
-		if (s2 == s3)
-			count++;
-		begin++;
-		end++;
+/**
+*  struct ListNode {
+*        int val;
+*        struct ListNode *next;
+*        ListNode(int x) :
+*              val(x), next(NULL) {
+*        }
+*  };
+*/
+class Solution {
+public:
+	vector<int> printListFromTailToHead(ListNode* head) {
+		stack<int> st;
+		vector<int> v;
+		while (head) {
+			st.push(head->val);
+			head = head->next;
+		}
+		while (!st.empty()) {
+			v.push_back(st.top());
+			st.pop();
+		}
+		return v;
+		/*vector<int> v;
+		ListNode* p = NULL;
+		ListNode* q = head;
+		ListNode* s = head;
+		while(s){
+			while(q->next!=p&&q){
+				q=q->next;
+			}
+			v.push_back(q->val);
+			p = q;
+			q = head;
+			s = s->next;
+		}
+		return v;*/
 	}
-	cout << count << endl;
-	return 0;
-}
+};
+
+//牛客 --空格替换 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&&tqId=11155&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+class Solution {
+public:
+	void replaceSpace(char *str, int length) {
+		string s;
+		int i = 0;
+		while (length--) {
+			if (str[i] != ' ')
+				s += str[i];
+			else
+				s += "%20";
+			i++;
+		}
+		for (int i = 0; i < s.size(); i++) {
+			str[i] = s[i];
+		}
+	}
+};
+
+//牛客 -- 二维数组的查找 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&&tqId=11154&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+class Solution {
+public:
+	bool Find(int target, vector<vector<int> > array) {
+		if (array.size() == 0)
+			return false;
+		int i = 0;
+		int j = array[0].size() - 1;
+		while (i < array.size() && j >= 0) {
+			if (array[i][j] == target)
+				return true;
+			if (array[i][j] > target)
+				j--;
+			if (array[i][j] < target)
+				i++;
+		}
+		return false;
+	}
+};
+
+// 模拟考试
+//int main() {
+//	int n = 0;
+//	vector<int> v(n);
+//	int sum = 0;
+//	int x = 0;
+//	int count = 0;
+//	for (int i = 0; i < n; i++) {
+//		cin >> v[i];
+//		sum += v[i];
+//	}
+//	if (sum%n != 0) {
+//		cout << -1 << endl;
+//	}
+//	else {
+//		int a = sum / n;
+//		for (int i = 0; i < n; i++) {
+//			while (v[i] < a) {
+//				v[i] += 2;
+//				count++;
+//			}
+//			while (v[i] > a) {
+//				v[i] -= 2;
+//			}
+//		}
+//		cout << count << endl;
+//	}
+//	return 0;
+//}
+//
+//int main() {
+//	string s1;
+//	string s2;
+//	getline(cin, s1);
+//	getline(cin, s2);
+//	int begin = 0;
+//	int end = s2.size();
+//	int count = 0;
+//	while (end <= s1.size()) {
+//		string s3(s1.begin() + begin, s1.begin() + end);
+//		if (s2 == s3)
+//			count++;
+//		begin++;
+//		end++;
+//	}
+//	cout << count << endl;
+//	return 0;
+//}
 
 ////牛客 -- 扑克牌顺子 https://www.nowcoder.com/practice/762836f4d43d43ca9deb273b3de8e1f4?tpId=13&&tqId=11198&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //class Solution {
