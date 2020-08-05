@@ -9,6 +9,21 @@
 #include <algorithm> //sort
 using namespace std;
 
+//矩形覆盖 -- https://www.nowcoder.com/practice/72a5a919508a4251859fb2cfb987a0e6?tpId=13&&tqId=11163&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+
+class Solution {
+public:
+	int rectCover(int number) {
+		if (number == 0)
+			return 0;
+		if (number == 1)
+			return 1;
+		if (number == 2)
+			return 2;
+		return rectCover(number - 1) + rectCover(number - 2);
+	}
+};
+
 //牛客 -- 从尾到头打印链表 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&&tqId=11156&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
 /**
@@ -20,76 +35,76 @@ using namespace std;
 *        }
 *  };
 */
-class Solution {
-public:
-	vector<int> printListFromTailToHead(ListNode* head) {
-		stack<int> st;
-		vector<int> v;
-		while (head) {
-			st.push(head->val);
-			head = head->next;
-		}
-		while (!st.empty()) {
-			v.push_back(st.top());
-			st.pop();
-		}
-		return v;
-		/*vector<int> v;
-		ListNode* p = NULL;
-		ListNode* q = head;
-		ListNode* s = head;
-		while(s){
-			while(q->next!=p&&q){
-				q=q->next;
-			}
-			v.push_back(q->val);
-			p = q;
-			q = head;
-			s = s->next;
-		}
-		return v;*/
-	}
-};
-
-//牛客 --空格替换 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&&tqId=11155&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-
-class Solution {
-public:
-	void replaceSpace(char *str, int length) {
-		string s;
-		int i = 0;
-		while (length--) {
-			if (str[i] != ' ')
-				s += str[i];
-			else
-				s += "%20";
-			i++;
-		}
-		for (int i = 0; i < s.size(); i++) {
-			str[i] = s[i];
-		}
-	}
-};
-
-//牛客 -- 二维数组的查找 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&&tqId=11154&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
-class Solution {
-public:
-	bool Find(int target, vector<vector<int> > array) {
-		if (array.size() == 0)
-			return false;
-		int i = 0;
-		int j = array[0].size() - 1;
-		while (i < array.size() && j >= 0) {
-			if (array[i][j] == target)
-				return true;
-			if (array[i][j] > target)
-				j--;
-			if (array[i][j] < target)
-				i++;
-		}
-		return false;
-	}
-};
+//class Solution {
+//public:
+//	vector<int> printListFromTailToHead(ListNode* head) {
+//		stack<int> st;
+//		vector<int> v;
+//		while (head) {
+//			st.push(head->val);
+//			head = head->next;
+//		}
+//		while (!st.empty()) {
+//			v.push_back(st.top());
+//			st.pop();
+//		}
+//		return v;
+//		/*vector<int> v;
+//		ListNode* p = NULL;
+//		ListNode* q = head;
+//		ListNode* s = head;
+//		while(s){
+//			while(q->next!=p&&q){
+//				q=q->next;
+//			}
+//			v.push_back(q->val);
+//			p = q;
+//			q = head;
+//			s = s->next;
+//		}
+//		return v;*/
+//	}
+//};
+//
+////牛客 --空格替换 https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&&tqId=11155&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//
+//class Solution {
+//public:
+//	void replaceSpace(char *str, int length) {
+//		string s;
+//		int i = 0;
+//		while (length--) {
+//			if (str[i] != ' ')
+//				s += str[i];
+//			else
+//				s += "%20";
+//			i++;
+//		}
+//		for (int i = 0; i < s.size(); i++) {
+//			str[i] = s[i];
+//		}
+//	}
+//};
+//
+////牛客 -- 二维数组的查找 https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&&tqId=11154&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
+//class Solution {
+//public:
+//	bool Find(int target, vector<vector<int> > array) {
+//		if (array.size() == 0)
+//			return false;
+//		int i = 0;
+//		int j = array[0].size() - 1;
+//		while (i < array.size() && j >= 0) {
+//			if (array[i][j] == target)
+//				return true;
+//			if (array[i][j] > target)
+//				j--;
+//			if (array[i][j] < target)
+//				i++;
+//		}
+//		return false;
+//	}
+//};
 
 // 模拟考试
 //int main() {
