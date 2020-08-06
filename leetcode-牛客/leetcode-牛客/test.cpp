@@ -9,20 +9,79 @@
 #include <algorithm> //sort
 using namespace std;
 
+
+int main() {
+	int n;
+	cin >> n;
+	double sum = 1.0000 / 5;
+	vector<double> v(n + 1);
+	v[0] = sum;
+	for (int i = 1; i <= n; i++) {
+		if (i % 2 == 1)
+			v[i] = (1.0000 / (5 * (2 * i)));
+		else
+			v[i] = (1.0000 / (5 * (2 * i - 1)));
+	}
+	for (int i = 1; i < v.size(); i++) {
+		if (i % 2 == 0)
+			sum += v[i];
+		else
+			sum -= v[i];
+	}
+	printf("%.4f", sum);
+	return 0;
+}
+
+int main() {
+	double N, M;
+	cin >> N >> M;
+	double X, Y;
+	cin >> X >> Y;
+	vector<vector<double>> v(M, vector<double>(3));
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < 2; j++) {
+			cin >> v[i][j];
+			if (j == 1) {
+				v[i][2] = sqrt((v[i][0] - X)*(v[i][0] - X) + (v[i][1] - Y)*(v[i][1] - Y));
+			}
+		}
+	}
+	double min = v[0][2];
+	for (int i = 1; i < M; i++) {
+		if (v[i][2] < min) {
+			min = v[i][2];
+		}
+	}
+	cout << min / N << endl;
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //矩形覆盖 -- https://www.nowcoder.com/practice/72a5a919508a4251859fb2cfb987a0e6?tpId=13&&tqId=11163&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
-class Solution {
-public:
-	int rectCover(int number) {
-		if (number == 0)
-			return 0;
-		if (number == 1)
-			return 1;
-		if (number == 2)
-			return 2;
-		return rectCover(number - 1) + rectCover(number - 2);
-	}
-};
+//class Solution {
+//public:
+//	int rectCover(int number) {
+//		if (number == 0)
+//			return 0;
+//		if (number == 1)
+//			return 1;
+//		if (number == 2)
+//			return 2;
+//		return rectCover(number - 1) + rectCover(number - 2);
+//	}
+//};
 
 //牛客 -- 从尾到头打印链表 https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&&tqId=11156&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 
