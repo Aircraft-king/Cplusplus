@@ -10,10 +10,83 @@
 #include <algorithm>
 using namespace std;
 
+//int main()
+//{
+//	int n = 0;
+//	while (cin >> n) {
+//		map<int, int> mp;
+//
+//	}
+//	return 0;
+//}
+
 int main() {
-	map<int, int>m;
-	
+	int n = 0;
+	cin >> n;
+	vector<vector<int>> v(n, vector<int>(2));
+	for (int i = 0; i < v.size(); i++) {
+		for (int j = 0; j < 2; j++) {
+			cin >> v[i][j];
+		}
+	}
+	while (n--) {
+		int a = v[0][1];
+		int falg = 0;
+		for (int j = 0; j < v.size(); j++) {
+			if (a >= v[j][1]) {
+				a = v[j][1];
+				falg = j;
+			}
+		}
+		printf("%d %d\n", v[falg][0], v[falg][1]);
+		v.erase(v.begin() + falg);
+	}
+	return 0;
 }
+
+
+
+
+//int main() {
+//	int n = 0;
+//	while (cin >> n) {
+//		vector<vector<int>> v(n, vector<int>(2));
+//		for (int i = 0; i < v.size(); i++) {
+//			for (int j = 0; j < 2; j++) {
+//				cin >> v[i][j];
+//			}
+//		}
+//		for (int i = 0; i < v.size()-1; i++) {
+//			for (int j = i+1; j < v.size(); j++) {
+//				if (v[i][1] > v[j][1]) {
+//					vector<int> tmp = v[i];
+//					v[i] = v[j];
+//					v[j] = tmp;
+//				}
+//			}
+//		}
+//		for (int i = 0; i < v.size(); i++) {
+//			printf("%d %d\n", v[i][0], v[i][1]);
+//		}
+//	}
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+//
+//
+//int main() {
+//	map<int, int>m;
+//	
+//}
 
 
 //int main() {
