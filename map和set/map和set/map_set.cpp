@@ -24,6 +24,7 @@ void test_set() {
 	cout << s.count(3) << endl;
 }
 
+
 void test_map() {
 	map<string, string> m;
 	m.insert(pair<string, string>("peach", "Ьвзг"));
