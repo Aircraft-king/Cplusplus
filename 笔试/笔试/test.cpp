@@ -19,7 +19,6 @@ using namespace std;
 //	}
 //	return 0;
 //}
-
 int main() {
 	int n = 0;
 	cin >> n;
