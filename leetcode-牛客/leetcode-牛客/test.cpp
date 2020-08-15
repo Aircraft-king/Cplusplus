@@ -9,51 +9,51 @@
 #include <algorithm> //sort
 using namespace std;
 
-int main() {
-	int n;
-	cin >> n;
-	double sum = 1.0000 / 5;
-	vector<double> v(n + 1);
-	v[0] = sum;
-	for (int i = 1; i <= n; i++) {
-		if (i % 2 == 1)
-			v[i] = (1.0000 / (5 * (2 * i)));
-		else
-			v[i] = (1.0000 / (5 * (2 * i - 1)));
-	}
-	for (int i = 1; i < v.size(); i++) {
-		if (i % 2 == 0)
-			sum += v[i];
-		else
-			sum -= v[i];
-	}
-	printf("%.4f", sum);
-	return 0;
-}
-
-int main() {
-	double N, M;
-	cin >> N >> M;
-	double X, Y;
-	cin >> X >> Y;
-	vector<vector<double>> v(M, vector<double>(3));
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < 2; j++) {
-			cin >> v[i][j];
-			if (j == 1) {
-				v[i][2] = sqrt((v[i][0] - X)*(v[i][0] - X) + (v[i][1] - Y)*(v[i][1] - Y));
-			}
-		}
-	}
-	double min = v[0][2];
-	for (int i = 1; i < M; i++) {
-		if (v[i][2] < min) {
-			min = v[i][2];
-		}
-	}
-	cout << min / N << endl;
-	return 0;
-}
+//int main() {
+//	int n;
+//	cin >> n;
+//	double sum = 1.0000 / 5;
+//	vector<double> v(n + 1);
+//	v[0] = sum;
+//	for (int i = 1; i <= n; i++) {
+//		if (i % 2 == 1)
+//			v[i] = (1.0000 / (5 * (2 * i)));
+//		else
+//			v[i] = (1.0000 / (5 * (2 * i - 1)));
+//	}
+//	for (int i = 1; i < v.size(); i++) {
+//		if (i % 2 == 0)
+//			sum += v[i];
+//		else
+//			sum -= v[i];
+//	}
+//	printf("%.4f", sum);
+//	return 0;
+//}
+//
+//int main() {
+//	double N, M;
+//	cin >> N >> M;
+//	double X, Y;
+//	cin >> X >> Y;
+//	vector<vector<double>> v(M, vector<double>(3));
+//	for (int i = 0; i < M; i++) {
+//		for (int j = 0; j < 2; j++) {
+//			cin >> v[i][j];
+//			if (j == 1) {
+//				v[i][2] = sqrt((v[i][0] - X)*(v[i][0] - X) + (v[i][1] - Y)*(v[i][1] - Y));
+//			}
+//		}
+//	}
+//	double min = v[0][2];
+//	for (int i = 1; i < M; i++) {
+//		if (v[i][2] < min) {
+//			min = v[i][2];
+//		}
+//	}
+//	cout << min / N << endl;
+//	return 0;
+//}
 
 
 
