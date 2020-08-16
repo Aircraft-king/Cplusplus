@@ -53,6 +53,7 @@ int main()
 	return 0;
 }
 
+
 //vector < int > divingBoard(int a, int b, int k) {
 //	vector<int> v;
 //	if (k == 0)
