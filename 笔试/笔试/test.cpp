@@ -10,48 +10,208 @@
 #include <algorithm>
 using namespace std;
 
-int main()
-{
-	int a, b, k, tmp, flag;
-	vector<int> res;
-	while (cin >> a >> b >> k) {
-		if (k == 0)
-		{
-			cout << '[' << ']' << endl;
-		}
-		else if (a == 0 && b == 0) {
-			cout << '[' << ']' << endl;
-		}
-		else {
-			res.push_back(a * k);
-			res.push_back(b * k);
 
-			for (int i = 1; i <= k; i++) {
-				tmp = a * i + b * (k - i);
-				flag = 0;
-				for (int j = 0; j < res.size(); j++) {
-					if (res[j] == tmp)
-						flag = 1;
-				}
-				if (flag == 0) {
-					res.push_back(tmp);
-				}
-			}
-			sort(res.begin(), res.end());
-			cout << '[';
-			for (int i = 0; i < res.size() - 1; i++) {
-				cout << res[i] << ',';
-			}
-			cout << res[res.size() - 1];
-			cout << ']' << endl;
-		}
-
-
-	}
-
-	system("pause");
+int main() {
+	int a = 1;
+	char b = a;
+	if (b == 1)
+		cout << "big" << endl;
+	else
+		cout << "sm" << endl;
 	return 0;
 }
+
+//vector<int> rer(vector<int> v) {
+//	int begin = 0;
+//	int end = 1;
+//	while (end < v.size()) {
+//		int tmp = v[begin];
+//		v[begin] = v[end];
+//		v[end] = tmp;
+//		begin += 2;
+//		end += 2;
+//	}
+//	return v;
+//}
+//
+//int main() {
+//	int n, m;
+//	cin >> n >> m;
+//	vector<int> v(m);
+//	for (int i = 0; i < m; i++) {
+//		cin >> v[i];
+//	}
+//	vector<int> v1(n);
+//	for (int i = 0; i < v1.size(); i++) {
+//		v1[i] = i + 1;
+//	}
+//	for (int i = 0; i < v.size(); i++) {
+//		if (v[i] == 1) {
+//			int tmp = v1[0];
+//			v1.erase(v1.begin());
+//			v1.push_back(tmp);
+//		}
+//		else {
+//			v1 = rer(v1);
+//		}
+//	}
+//	for (int i = 0; i < v1.size(); i++) {
+//		if (i != v1.size() - 1)
+//			cout << v1[i] << " ";
+//		else
+//			cout << v1[i] << endl;
+//	}
+//	return 0;
+//}
+
+//bool trre(string s) {
+//	if (s.size() > 10)
+//		return false;
+//	int falg = 1;
+//	int a = 0;
+//	for (int i = 0; i < s.size(); i++) {
+//		if ((s[i] >= 'a'&&s[i] <= 'z') || (s[i] >= 'A'&&s[i] <= 'Z'))
+//			a++;
+//		else
+//			falg = 0;
+//	}
+//	if (falg == 1)
+//		return true;
+//	return false;
+//}
+//
+//int main() {
+//	int n = 0;
+//	cin >> n;
+//	int count = 0;
+//	vector<string> v(n);
+//	for (int i = 0; i < n; i++) {
+//		cin >> v[i];
+//	}
+//	for (int i = 0; i < n; i++) {
+//		if (trre(v[i])) {
+//			count++;
+//		}
+//	}
+//	cout << count << endl;
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//int sneak(int n) {
+//	if (n == 0)
+//		return 0;
+//	if (n == 1)
+//		return 1;
+//	if (n == 2)
+//		return 1;
+//	return sneak(n - 1) + sneak(n - 2);
+//}
+//
+//int main() {
+//	int n;
+//	cin >> n;
+//	if (n == 1)
+//		cout << 1 << endl;
+//	else {
+//		vector<vector<long long>> v(n, vector<long long>(n));
+//		int a = n * n;
+//		int left = 0;
+//		int right = n - 1;
+//		int up = 0;
+//		int down = n - 1;
+//		while (left <= right && up <= down) {
+//			for (int i = left; i <= right; i++) {
+//				v[up][i] = sneak(a);
+//				a--;
+//			}
+//			for (int i = up + 1; i <= down; i++) {
+//				v[i][right] = sneak(a);
+//				a--;
+//			}
+//			if (left < right&&up < down) {
+//				for (int i = right - 1; i >= left; i--) {
+//					v[down][i] = sneak(a);
+//					a--;
+//				}
+//				for (int i = down - 1; i > up; i--) {
+//					v[i][left] = sneak(a);
+//					a--;
+//				}
+//			}
+//			left++;
+//			right--;
+//			up++;
+//			down--;
+//		}
+//		for (int i = 0; i < n; i++) {
+//			for (int j = 0; j < n; j++) {
+//				if (j != n - 1)
+//					cout << v[i][j] << " ";
+//				else
+//					cout << v[i][j] << endl;
+//			}
+//		}
+//	}
+//
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	int a, b, k, tmp, flag;
+//	vector<int> res;
+//	while (cin >> a >> b >> k) {
+//		if (k == 0)
+//		{
+//			cout << '[' << ']' << endl;
+//		}
+//		else if (a == 0 && b == 0) {
+//			cout << '[' << ']' << endl;
+//		}
+//		else {
+//			res.push_back(a * k);
+//			res.push_back(b * k);
+//
+//			for (int i = 1; i <= k; i++) {
+//				tmp = a * i + b * (k - i);
+//				flag = 0;
+//				for (int j = 0; j < res.size(); j++) {
+//					if (res[j] == tmp)
+//						flag = 1;
+//				}
+//				if (flag == 0) {
+//					res.push_back(tmp);
+//				}
+//			}
+//			sort(res.begin(), res.end());
+//			cout << '[';
+//			for (int i = 0; i < res.size() - 1; i++) {
+//				cout << res[i] << ',';
+//			}
+//			cout << res[res.size() - 1];
+//			cout << ']' << endl;
+//		}
+//
+//
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
 
 //vector < int > divingBoard(int a, int b, int k) {
 //	vector<int> v;
