@@ -10,16 +10,99 @@
 #include <algorithm>
 using namespace std;
 
+int main()
+{
+	string s, res;
+	while (cin >> s)
+	{
+		int begin = 0, end;
+		for (int i = 0; i < s.length(); i++) {
+			res = s[begin] - 32;
+			if (s[i] == 'n' && i != 0) {
+				end = i - 1;
+				res += s.substr(begin + 1, end - begin);
+				cout << res << endl;
+				res = "";
+				begin = end + 1;
+			}
+			else if (s[i] == 'n' && i == s.length() - 1) {
+				res = s[begin] - 32;
+				cout << res << endl;
+				res = "";
+				begin++;
+				end = begin;
+			}
+		}
 
-int main() {
-	int a = 1;
-	char b = a;
-	if (b == 1)
-		cout << "big" << endl;
-	else
-		cout << "sm" << endl;
+		if (end != s.length() - 1 && end < s.length()) {
+			res += s.substr(begin + 1, s.length() - begin + 1);
+			cout << res << endl;
+			res = "";
+		}
+	}
+	system("pause");
 	return 0;
 }
+
+//int main() {
+//	int m, n;
+//	cin >> m >> n;
+//	int count = 0;
+//	vector<vector<int> > v(m, vector<int>(n));
+//	for (int i = 0; i < v.size(); i++) {
+//		for (int j = 0; j < v[i].size(); j++) {
+//			cin >> v[i][j];
+//		}
+//	}
+//	sort(v.begin(), v.end(),greater<vector<int>>());
+//	return 0;
+//}
+
+//int main() {
+//	string s;
+//	cin >> s;
+//	vector<string> v;
+//	int begin = 0;
+//	int end = 1;
+//	while (end < s.size()) {
+//		while (s[end] != 'n'&&end != 0 && end < s.size())
+//			end++;
+//		if (s[end] == 'n') {
+//			string tmp(s.begin() + begin, s.begin() + end);
+//			begin = end;
+//			v.push_back(tmp);
+//		}
+//		end++;
+//	}
+//	string s1(s.begin() + begin, s.end());
+//	v.push_back(s1);
+//	for (int i = 1; i < v.size(); i++) {
+//		v[i][0] -= 32;
+//	}
+//	for (int i = 0; i < v.size(); i++)
+//		cout << v[i] << endl;
+//	return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+//int main() {
+//	int a = 1;
+//	char b = a;
+//	if (b == 1)
+//		cout << "big" << endl;
+//	else
+//		cout << "sm" << endl;
+//	return 0;
+//}
 
 //vector<int> rer(vector<int> v) {
 //	int begin = 0;
