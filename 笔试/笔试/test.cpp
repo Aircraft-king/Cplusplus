@@ -10,39 +10,103 @@
 #include <algorithm>
 using namespace std;
 
+class MyClass {
+public:
+	// ERROR  **********found**********
+	MyClass(int i):value(i)
+
+	{ count++; }
+		void Print()
+	{
+		cout << "There are " << count << " object(s)." << endl;
+	}
+private:
+	const int value;
+	static int count;
+};
+// ERROR  **********found**********
+int MyClass::count = 0;
 int main()
 {
-	string s, res;
-	while (cin >> s)
-	{
-		int begin = 0, end;
-		for (int i = 0; i < s.length(); i++) {
-			res = s[begin] - 32;
-			if (s[i] == 'n' && i != 0) {
-				end = i - 1;
-				res += s.substr(begin + 1, end - begin);
-				cout << res << endl;
-				res = "";
-				begin = end + 1;
-			}
-			else if (s[i] == 'n' && i == s.length() - 1) {
-				res = s[begin] - 32;
-				cout << res << endl;
-				res = "";
-				begin++;
-				end = begin;
-			}
-		}
-
-		if (end != s.length() - 1 && end < s.length()) {
-			res += s.substr(begin + 1, s.length() - begin + 1);
-			cout << res << endl;
-			res = "";
-		}
-	}
-	system("pause");
+	MyClass obj1, obj2;
+	// ERROR  **********found**********
+	obj2.Print();
 	return 0;
 }
+
+//int main() {
+//	string s;
+//	cin >> s;
+//	int n;
+//	cin >> n;
+//	for (int i = 0; i < n; i++) {
+//		int a, b;
+//		cin >> a >> b;
+//		char x = a + '0';
+//		char y = b + '0';
+//		for (int j = 0; j < s.size(); ++j) {
+//			if (s[j] == x) {
+//				s[j] = y;
+//			}
+//		}
+//	}
+//	cout << s << endl;
+//	cin.get();
+//	return 0;
+//}
+
+//ListNode* ReverseList(ListNode* pHead) {
+//	if (pHead == NULL || pHead->next == NULL) {
+//		return pHead;
+//	}
+//	stack<ListNode*> st;
+//	while (pHead) {
+//		st.push(pHead);
+//		pHead = pHead->next;
+//	}
+//	st.pop();
+//	ListNode * p = pHead;
+//	while (!st.empty()) {
+//		p->next = st.top();
+//		p = p->next;
+//		st.pop();
+//	}
+//	return pHead;
+//}
+
+//int main()
+//{
+//	string s, res;
+//	while (cin >> s)
+//	{
+//		int begin = 0, end;
+//		for (int i = 0; i < s.length(); i++) {
+//			res = s[begin] - 32;
+//			if (s[i] == 'n' && i != 0) {
+//				end = i - 1;
+//				res += s.substr(begin + 1, end - begin);
+//				cout << res << endl;
+//				res = "";
+//				begin = end + 1;
+//			}
+//			else if (s[i] == 'n' && i == s.length() - 1) {
+//				res = s[begin] - 32;
+//				cout << res << endl;
+//				res = "";
+//				begin++;
+//				end = begin;
+//			}
+//		}
+//
+//		if (end != s.length() - 1 && end < s.length()) {
+//			res += s.substr(begin + 1, s.length() - begin + 1);
+//			cout << res << endl;
+//			res = "";
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//}
 
 //int main() {
 //	int m, n;
