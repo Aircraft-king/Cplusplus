@@ -1,2 +1,4 @@
 ﻿  test.cpp
+f:\git hub\c++\排序\排序\test.cpp(13): warning C4018: “<”: 有符号/无符号不匹配
+f:\git hub\c++\排序\排序\test.cpp(14): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
   排序.vcxproj -> F:\git hub\C++\排序\Debug\排序.exe

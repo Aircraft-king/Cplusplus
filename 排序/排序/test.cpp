@@ -1,6 +1,55 @@
 #include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
 
+//int resve(int n) {
+//	vector<int> v;
+//	while (n>0) {
+//		v.push_back(n % 10);
+//		n /= 10;
+//	}
+//	int sum = 0;
+//	for (int i = 0; i<v.size(); i++) {
+//		sum += v[i]*pow(10, v.size()-1-i);
+//	}
+//	return sum;
+//}
+//
+//string five(int n) {
+//	string s;
+//	while (n) {
+//		s.insert(s.begin(), n % 5 + '0');
+//		n /= 5;
+//	}
+//	return s;
+//}
+//
+//int main() {
+//	int n;
+//	cin >> n;	
+//	int a = resve(n);
+//	string s = five(a);
+//	cout << s << endl;
+//	return 0;
+//}
+
+
+//class A {
+//public:
+//	A() {
+//		cout << 1 << endl;
+//	}
+//	~A() {
+//		cout << 2 << endl;
+//	}
+//};
+//int main() {
+//	A *a = new A[5];
+//	delete a;
+//	return 0;
+//
+//}
 
 //int main() {
 //
@@ -140,33 +189,33 @@ using namespace std;
 //}
 
 
-void quicksort(int *arr,int first,int last) {
-	if (first>=last)
-		return;
-	int low = first;
-	int high = last;
-	int tmp = arr[first];
-	while (low < high) {
-		while (arr[high] > tmp&&low < high)
-			high--;
-		if (arr[high] < arr[low])
-			arr[low] = arr[high];
-		while (arr[low] < tmp&&low < high)
-			low++;
-		if (arr[low] > arr[high])
-			arr[high] = arr[low];
-	}
-	arr[low] = tmp;
-	quicksort(arr, first, low - 1);
-	quicksort(arr, low + 1, last);
-}
-int main()
-{
-	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
-	quicksort(arr, 0, 9);
-	for (int i = 0; i < 10; i++)
-	{
-		cout << arr[i]<<" ";
-	}
-	return 0;
-}
+//void quicksort(int *arr,int first,int last) {
+//	if (first>=last)
+//		return;
+//	int low = first;
+//	int high = last;
+//	int tmp = arr[first];
+//	while (low < high) {
+//		while (arr[high] > tmp&&low < high)
+//			high--;
+//		if (arr[high] < arr[low])
+//			arr[low] = arr[high];
+//		while (arr[low] < tmp&&low < high)
+//			low++;
+//		if (arr[low] > arr[high])
+//			arr[high] = arr[low];
+//	}
+//	arr[low] = tmp;
+//	quicksort(arr, first, low - 1);
+//	quicksort(arr, low + 1, last);
+//}
+//int main()
+//{
+//	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+//	quicksort(arr, 0, 9);
+//	for (int i = 0; i < 10; i++)
+//	{
+//		cout << arr[i]<<" ";
+//	}
+//	return 0;
+//}
