@@ -8,31 +8,118 @@
 #include<assert.h>
 #include<deque>
 #include <algorithm>
+#include<unordered_map>
 using namespace std;
 
-class MyClass {
-public:
-	// ERROR  **********found**********
-	MyClass(int i):value(i)
+vector<string> findCommonString(string** values, int valuesRowLen, int* valuesColLen) {
+	// write code here
+	vector<string> v;
+	unordered_map<string, int> mp;
+	for (int i = 0; i < valuesRowLen; i++) {
+		for (int j = 0; j < valuesColLen[i]; j++) {
+			if (mp.find(values[i][j])==mp.end()) 
+			{
+				mp.insert(make_pair(values[i][j], 1));
+			}
+			else
+			{
+				mp[values[i][j]]++;
 
-	{ count++; }
-		void Print()
-	{
-		cout << "There are " << count << " object(s)." << endl;
+			}
+		}
 	}
-private:
-	const int value;
-	static int count;
-};
-// ERROR  **********found**********
-int MyClass::count = 0;
-int main()
-{
-	MyClass obj1, obj2;
-	// ERROR  **********found**********
-	obj2.Print();
+	auto it = mp.begin();
+	while (it != mp.end()) {
+		i
+	}
+	return v;
+}
+
+int main() {
+	int  v1[3] = { 2,2,2 };
+	vector<string> v[] = { {"aaa","bbb"},{"aba","bbb"},{"caa","bbb"} };
+	
+	findCommonString(v, 3, v1);
+
+
 	return 0;
 }
+
+
+int my_count(int num) {
+	if (num == 0 || num == 1) {
+		return num;
+	}
+	return my_count(num - 1) + my_count(num - 2);
+}
+int translateNum(int num) {
+	// write code here
+	int count = 0;
+	int i = 0;
+	while (num > 0) {
+		if (num % 10 > 4 && (num / 10 % 10) > 1) {
+			i++;
+		}
+		num /= 10;
+		count++;
+	}
+	int a = my_count(count);
+	return a - i;
+}
+
+int main()
+{
+	int a = 12158;
+	cout << translateNum(a);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//int main() {
+//	long a;
+//	//int a = ss(1);
+//	switch (a) 
+//	case 1:
+//
+//	return 0;
+//}
+//class MyClass {
+//public:
+//	// ERROR  **********found**********
+//	MyClass(int i):value(i)
+//
+//	{ count++; }
+//		void Print()
+//	{
+//		cout << "There are " << count << " object(s)." << endl;
+//	}
+//private:
+//	const int value;
+//	static int count;
+//};
+//// ERROR  **********found**********
+//int MyClass::count = 0;
+//int main()
+//{
+//	MyClass obj1, obj2;
+//	// ERROR  **********found**********
+//	obj2.Print();
+//	return 0;
+//}
 
 //int main() {
 //	string s;
