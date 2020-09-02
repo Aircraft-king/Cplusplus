@@ -6,7 +6,6 @@ typedef enum { RED = 0, BLACK }Color_Type;
 
 template<typename Type>
 class RBTree;
-
 template<typename Type>
 class RBTreeNode
 {
