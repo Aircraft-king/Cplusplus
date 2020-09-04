@@ -11,73 +11,261 @@
 #include<unordered_map>
 using namespace std;
 
-
-vector<string> findCommonString(string** values, int valuesRowLen, int* valuesColLen) {
-	// write code here
-	vector<string> v;
-	unordered_map<string, int> mp;
-	for (int i = 0; i < valuesRowLen; i++) {
-		for (int j = 0; j < valuesColLen[i]; j++) {
-			if (mp.find(values[i][j])==mp.end()) 
-			{
-				mp.insert(make_pair(values[i][j], 1));
-			}
-			else
-			{
-				mp[values[i][j]]++;
-
-			}
+int vmax(vector<int> v,int max) {
+	if (v.size() == 1) {
+		return max;
+	}
+	if (v.size() == 2) {
+		if (v[0] >= 0) {
+			return max;
+		}
+		if (v[0] < 0) {
+			return v[1];
 		}
 	}
-	auto it = mp.begin();
-	while (it != mp.end()) {
-		i
+	else {
+		if (v[0] >= 0) {
+			return max;
+		}
+		if (v[0] < 0 && v[1] >= 0) {
+			return max - v[0];
+		}
+		else {
+			return max - v[0] - v[1];
+		}
 	}
-	return v;
 }
 
 int main() {
-	int  v1[3] = { 2,2,2 };
-	vector<string> v[] = { {"aaa","bbb"},{"aba","bbb"},{"caa","bbb"} };
-	
-	findCommonString(v, 3, v1);
-
-
-	return 0;
-}
-
-
-int my_count(int num) {
-	if (num == 0 || num == 1) {
-		return num;
+	vector<int> v;
+	int a;
+	while (cin >> a) {
+		v.push_back(a);
 	}
-	return my_count(num - 1) + my_count(num - 2);
-}
-int translateNum(int num) {
-	// write code here
-	int count = 0;
 	int i = 0;
-	while (num > 0) {
-		if (num % 10 > 4 && (num / 10 % 10) > 1) {
-			i++;
+	int begin = 0;
+	int end = 0;
+	int p = 0;
+	int q = 0;
+	int max = v[0];
+	int tmp = v[0];
+	for (i = 1; i < v.size(); i++) {
+		if (tmp<0 && v[i]>tmp) {
+			tmp = v[i];
+			p = q = i;
 		}
-		num /= 10;
-		count++;
+		else {
+			tmp += v[i];
+			q = i;
+		}
+		if (tmp >= max) {
+			max = tmp;
+			begin = p;
+			end = p;
+		}
 	}
-	int a = my_count(count);
-	return a - i;
-}
-
-int main()
-{
-	int a = 12158;
-	cout << translateNum(a);
+	vector<int> v1(v.begin() + begin, v.begin() + end + 1);
+	sort(v1.begin(), v1.end());
+	int max_v1 = vmax(v1,max);
+	cout << max_v1 << endl;
 	return 0;
 }
 
+//bool is_WM(string &s) {
+//	for (int i = 0; i < s.size(); i++) {
+//		if (s[i] == 'm' || s[i] == 'w') {
+//			return false;
+//		}
+//	}
+//	return true;
+//}
+//
+//int my_count(int n) {
+//	if (n == 1)
+//		return 1;
+//	if (n == 2)
+//		return 2;
+//	return my_count(n - 1) + my_count(n - 2);
+//}
+//
+//int main() {
+//	string s;
+//	cin >> s;
+//	if (!is_WM(s))
+//		cout << 0;
+//	else {
+//		int a = 1;
+//		int begin = 0;
+//		int end = 0;
+//		while(end < s.size()) {
+//			while (s[end] != 'n'&&end<s.size()) {
+//				begin++;
+//				end++;
+//			}
+//			while (s[end]=='n'&&end<s.size())
+//			{
+//				end++;
+//			}
+//			if (end - begin > 1) {
+//				a *= my_count(end - begin);				
+//			}
+//			begin = end;
+//		}
+//		begin = 0;
+//		end = 0;
+//		while (end < s.size()) {
+//			while (s[end] != 'u'&&end < s.size()) {
+//				begin++;
+//				end++;
+//			}
+//			while (s[end] == 'u')
+//			{
+//				end++;
+//			}
+//			if (end - begin > 1) {
+//				a *= my_count(end - begin);	
+//			}
+//			begin = end;
+//		}
+//		cout << a << endl;
+//	}
+//	return 0;
+//}
+
+//int pos_max(vector<int> v, int begin) {
+//	int n = 1;
+//	int sum = 0;
+//	for (int i = begin; i < v.size(); i++) {
+//		sum += v[i] * n;
+//		n++;
+//	}
+//	return sum;
+//}
+//
+//int main() {
+//	vector<int> v;
+//	int a = 0;
+//	while (cin>>a) {
+//		v.push_back(a);
+//	}
+//	sort(v.begin(),v.end());
+//	vector<int> v1;
+//	for (int i = 0; i < v.size()-1; i++) {
+//		int x = pos_max(v, i);
+//		v1.push_back(x);
+//	}
+//	sort(v1.begin(), v1.end());
+//	if (v1[v1.size() - 1] > 0)
+//		cout << v1[v1.size()-1] << endl;
+//	else
+//		cout << 0 << endl;
+//
+//	return 0;
+//}
 
 
-
+//int main() {
+//	list<int> ls1 = { 1,3,4 };
+//	list<int> ls2 = { 1,2,5 };
+//	list<int> ls;
+//	auto it1 = ls1.begin();
+//	auto it2 = ls2.begin();
+//	if (*it1 > *it2) {
+//		list<int> tmp = ls1;
+//		ls1 = ls2;
+//		ls2 = tmp;
+//	}
+//	it1 = ls1.begin();
+//	it2 = ls2.begin();
+//	while (it1 != ls1.end() && it2 != ls2.end()) {
+//		if (*it1 < *it2) {
+//			ls.push_back(*it1);
+//			it1++;
+//		}
+//		else {
+//			ls.push_back(*it2);
+//			it2++;
+//		}
+//	}
+//	while (it1 != ls1.end()) {
+//		ls.push_back(*it1);
+//			it1++;
+//	}
+//	while (it2 != ls2.end()) {
+//		ls.push_back(*it2);
+//			it2++;
+//	}
+//	for (auto &e : ls) {
+//		cout << e << endl;
+//	}
+//	return 0;
+//}
+//vector<string> findCommonString(string** values, int valuesRowLen, int* valuesColLen) {
+//	// write code here
+//	vector<string> v;
+//	unordered_map<string, int> mp;
+//	for (int i = 0; i < valuesRowLen; i++) {
+//		for (int j = 0; j < valuesColLen[i]; j++) {
+//			if (mp.find(values[i][j])==mp.end()) 
+//			{
+//				mp.insert(make_pair(values[i][j], 1));
+//			}
+//			else
+//			{
+//				mp[values[i][j]]++;
+//
+//			}
+//		}
+//	}
+//	auto it = mp.begin();
+//	while (it != mp.end()) {
+//		i
+//	}
+//	return v;
+//}
+//
+//int main() {
+//	int  v1[3] = { 2,2,2 };
+//	vector<string> v[] = { {"aaa","bbb"},{"aba","bbb"},{"caa","bbb"} };
+//	
+//	findCommonString(v, 3, v1);
+//
+//
+//	return 0;
+//}
+//
+//
+//int my_count(int num) {
+//	if (num == 0 || num == 1) {
+//		return num;
+//	}
+//	return my_count(num - 1) + my_count(num - 2);
+//}
+//int translateNum(int num) {
+//	// write code here
+//	int count = 0;
+//	int i = 0;
+//	while (num > 0) {
+//		if (num % 10 > 4 && (num / 10 % 10) > 1) {
+//			i++;
+//		}
+//		num /= 10;
+//		count++;
+//	}
+//	int a = my_count(count);
+//	return a - i;
+//}
+//
+//int main()
+//{
+//	int a = 12158;
+//	cout << translateNum(a);
+//	return 0;
+//}
+//
+//
+//
+//
 
 
 
