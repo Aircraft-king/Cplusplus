@@ -10,66 +10,157 @@
 #include <algorithm>
 #include<unordered_map>
 using namespace std;
+#include<stdio.h>
+#define FUN(x,y) x+y
+int main() {
+	int y = 2;
+	int cont = 0;
+	while (y<=16)
+	{
+		y = FUN(y, FUN(y, y));
+		cont++;
 
-int vmax(vector<int> v,int max) {
-	if (v.size() == 1) {
-		return max;
 	}
-	if (v.size() == 2) {
-		if (v[0] >= 0) {
-			return max;
-		}
-		if (v[0] < 0) {
-			return v[1];
-		}
-	}
-	else {
-		if (v[0] >= 0) {
-			return max;
-		}
-		if (v[0] < 0 && v[1] >= 0) {
-			return max - v[0];
-		}
-		else {
-			return max - v[0] - v[1];
-		}
-	}
+	cout << cont;
+	return (0);
 }
 
+/*
+class A {
+
+};
+class B {
+public:
+	B() {
+	}
+	~B(){}
+};
+class C {
+public:
+	C(){}
+	virtual ~C(){}
+};
 int main() {
-	vector<int> v;
-	int a;
-	while (cin >> a) {
-		v.push_back(a);
-	}
-	int i = 0;
-	int begin = 0;
-	int end = 0;
-	int p = 0;
-	int q = 0;
-	int max = v[0];
-	int tmp = v[0];
-	for (i = 1; i < v.size(); i++) {
-		if (tmp<0 && v[i]>tmp) {
-			tmp = v[i];
-			p = q = i;
-		}
-		else {
-			tmp += v[i];
-			q = i;
-		}
-		if (tmp >= max) {
-			max = tmp;
-			begin = p;
-			end = p;
-		}
-	}
-	vector<int> v1(v.begin() + begin, v.begin() + end + 1);
-	sort(v1.begin(), v1.end());
-	int max_v1 = vmax(v1,max);
-	cout << max_v1 << endl;
+	printf("%d, %d, %d\n", sizeof(A), sizeof(B), sizeof(C));
 	return 0;
 }
+*/
+/*
+int square(volatile int* ptr)
+	{
+		return *ptr * *ptr;
+	}
+int main()
+{
+	int n = 10;
+	int* a = &n;
+	int x = square(a);
+	cout << x << endl;
+	return 0;
+}
+*/
+//vector<int> my_print(vector<int> &v,int n) {
+//	int a = pow(10, n);
+//	for (int i = 1; i < a; i++) {
+//		v.push_back(i);
+//	}
+//	return v;
+//}
+//
+//int main() {
+//	int n;
+//	cin >> n;
+//	vector<int> v;
+//	v = my_print(v,n);
+//	for (auto &e : v) {
+//		cout << e << " ";
+//	}
+//	return 0;
+//}
+
+//int main() {
+//	vector<int> v;
+//	int a;
+//	while (cin >> a) {
+//		v.push_back(a);
+//	}
+//	int count = 0;
+//	for (int i = 0; i < v.size(); i++) {
+//		if (v[i] == 0) {
+//			v.erase(v.begin() + i);
+//			count++;
+//			i--;
+//		}
+//	}
+//	for (int i = 0; i < count; i++) {
+//		v.push_back(0);
+//	}
+//	for (int i = 0; i < v.size(); i++) {
+//		cout << v[i] << " ";
+//	}
+//	cout << endl;
+//	return 0;
+//}
+
+//int vmax(vector<int> v,int max) {
+//	if (v.size() == 1) {
+//		return max;
+//	}
+//	if (v.size() == 2) {
+//		if (v[0] >= 0) {
+//			return max;
+//		}
+//		if (v[0] < 0) {
+//			return v[1];
+//		}
+//	}
+//	else {
+//		if (v[0] >= 0) {
+//			return max;
+//		}
+//		if (v[0] < 0 && v[1] >= 0) {
+//			return max - v[0];
+//		}
+//		else {
+//			return max - v[0] - v[1];
+//		}
+//	}
+//}
+//
+//int main() {
+//	vector<int> v;
+//	int a;
+//	while (cin >> a) {
+//		v.push_back(a);
+//	}
+//	int i = 0;
+//	int begin = 0;
+//	int end = 0;
+//	int p = 0;
+//	int q = 0;
+//	int max = v[0];
+//	int tmp = v[0];
+//	for (i = 1; i < v.size(); i++) {
+//		if (tmp<0 && v[i]>tmp) {
+//			tmp = v[i];
+//			p = q = i;
+//		}
+//		else {
+//			tmp += v[i];
+//			q = i;
+//		}
+//		if (tmp >= max) {
+//			max = tmp;
+//			begin = p;
+//			end = p;
+//		}
+//	}
+//	vector<int> v1(v.begin() + begin, v.begin() + end + 1);
+//	sort(v1.begin(), v1.end());
+//	int max_v1 = vmax(v1,max);
+//	cout << max_v1 << endl;
+//	return 0;
+//}
 
 //bool is_WM(string &s) {
 //	for (int i = 0; i < s.size(); i++) {
