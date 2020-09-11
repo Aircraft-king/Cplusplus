@@ -11,49 +11,76 @@
 #include<unordered_map>
 using namespace std;
 
-bool is_yes(int begin, int end, string &s, string &s1) {
-	vector<int> v1(123, 0);
-	vector<int> v2(123, 0);
-	for (int i = begin; i <= end; i++) {
-		v1[s1[i]]++;
+string complement(int a) {
+	// write code here
+	size_t b = a;
+	string s(32, '0');
+	int i = 31;
+	while (b > 0) {
+		s[i] = b % 2 + '0';
+		b /= 2;
+		i--;
 	}
-	for (int i = 0; i < s.size(); i++) {
-		v2[s[i]]++;
-	}
-	for (int i = 0; i < 123; i++) {
-		if (v1[i] != v2[i])
-			return false;
-	}
-	return true;
+	return s;
 }
-
 int main() {
-	string s;
-	string s1;
-	string s2;
-	getline(cin, s);
-	getline(cin, s1);
-	getline(cin, s2);
-	int begin = 0;
-	int end = s.size() - 1;
-	while (end < s1.size()) {
-		if (is_yes(begin, end, s, s1)) {
-			string t1(s1.begin(), s1.begin() + begin);
-			string t2(s1.begin() + end+1, s1.end());
-			s1 = t1;
-			s1 += s2;
-			s1 += t2;
-			begin += s2.size();
-			end += s2.size();
-		}
-		else {
-			begin++;
-			end++;
-		}
+	string s = complement(1000000000);
+	for (auto &e : s) {
+		cout << e << " ";
 	}
-	cout << s1 << endl;
 	return 0;
 }
+
+
+
+
+
+
+
+
+//bool is_yes(int begin, int end, string &s, string &s1) {
+//	vector<int> v1(123, 0);
+//	vector<int> v2(123, 0);
+//	for (int i = begin; i <= end; i++) {
+//		v1[s1[i]]++;
+//	}
+//	for (int i = 0; i < s.size(); i++) {
+//		v2[s[i]]++;
+//	}
+//	for (int i = 0; i < 123; i++) {
+//		if (v1[i] != v2[i])
+//			return false;
+//	}
+//	return true;
+//}
+//
+//int main() {
+//	string s;
+//	string s1;
+//	string s2;
+//	getline(cin, s);
+//	getline(cin, s1);
+//	getline(cin, s2);
+//	int begin = 0;
+//	int end = s.size() - 1;
+//	while (end < s1.size()) {
+//		if (is_yes(begin, end, s, s1)) {
+//			string t1(s1.begin(), s1.begin() + begin);
+//			string t2(s1.begin() + end+1, s1.end());
+//			s1 = t1;
+//			s1 += s2;
+//			s1 += t2;
+//			begin += s2.size();
+//			end += s2.size();
+//		}
+//		else {
+//			begin++;
+//			end++;
+//		}
+//	}
+//	cout << s1 << endl;
+//	return 0;
+//}
 
 //#include<stdio.h>
 //#define FUN(x,y) x+y
