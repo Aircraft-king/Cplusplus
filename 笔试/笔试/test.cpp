@@ -10,7 +10,7 @@
 #include <algorithm>
 #include<unordered_map>
 using namespace std;
-
+/*
 string complement(int a) {
 	// write code here
 	size_t b = a;
@@ -33,10 +33,93 @@ int main() {
 
 
 
+*/
+/*
+struct TreeNode {
+	int val;
+	TreeNode *left;
+	TreeNode *right;
+	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 
+TreeNode* reConstructBinaryTreeCore(string next, int nextStart, int nextEnd, string vin, int vinStart, int vinEnd) {
+	if (nextStart > nextEnd || vinStart > vinEnd) {
+		return nullptr;
+	}
+	TreeNode *root = new TreeNode(next[nextEnd]);
+	for (auto i = vinStart; i <= vinEnd; i++) {
+		if (next[nextEnd] == vin[i]) {
+			root->left = reConstructBinaryTreeCore(next, nextStart, vinStart + i - 1, vin, vinStart, i - 1);
+			root->right = reConstructBinaryTreeCore(next, vinStart + i, nextEnd - 1, vin, i + 1, vinEnd);
+			break;
+		}
+	}
+	return root;
+}
+TreeNode* reConstructBinaryTree(string next, string vin) {
+	if (next.empty() || vin.empty()) {
+		return nullptr;
+	}
+	return reConstructBinaryTreeCore(vin, 0, vin.size() - 1, next, 0, next.size() - 1);
+}
 
+void print(TreeNode* p) {
+	if (p == NULL) {
+		return;
+	}
+	cout << (char)p->val<<" ";
+	print(p->left);
+	print(p->right);
+}
 
+int main() {
+	string s1;
+	string s2;
+	cin >> s1 >> s2;
+	TreeNode* p = reConstructBinaryTree(s1,s2);
+	print(p);
+	return 0;
+}
+*/
 
+string removeKdigits(string num, int k) {
+	if (num.size() == k)   return "0";
+	stack<char> stk;//µ¥µ÷Õ»
+	string res;
+	for (int i = 0; i < num.size(); ++i) {
+		while (!stk.empty() && stk.top() > num[i] && k > 0) {
+			stk.pop();
+			--k;
+		}
+		stk.push(num[i]);
+	}
+	while (k > 0) {
+		stk.pop();
+		--k;
+	}
+	while (!stk.empty()) {
+		res += stk.top();
+		stk.pop();
+	}
+	while (!res.empty() && res.back() == '0') {
+		res.pop_back();
+	}
+	reverse(res.begin(), res.end());
+	if (res.empty()) {
+		res = "0";
+	}
+	return res;
+}
+
+int main() {
+	string s;
+	cin >> s;
+	int k;
+	cin >> k;
+	cout<<removeKdigits(s, k)<<endl;
+
+	return 0;
+}
 
 //bool is_yes(int begin, int end, string &s, string &s1) {
 //	vector<int> v1(123, 0);
