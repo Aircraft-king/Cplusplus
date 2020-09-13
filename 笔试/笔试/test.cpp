@@ -10,6 +10,49 @@
 #include <algorithm>
 #include<unordered_map>
 using namespace std;
+
+
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+		int n;
+		int m;
+		int k;
+		cin >> n >> m >> k;
+		vector<int> v1;
+		vector<vector<int>> v(m, vector<int>(3));
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < 3; j++) {
+				cin >> v[i][j];
+			}
+		}
+		for (int i = 0; i < m; i++) {
+			if (v[i][2] <= k) {
+				v1.push_back(v[i][0]);
+				v1.push_back(v[i][1]);
+			}
+		}
+		sort(v1.begin(), v1.end());
+		if (v1.size() > 1) {
+			for (int i = 0; i < v1.size() - 1; i++) {
+				if (v1[i] == v1[i + 1]) {
+					v1.erase(v1.begin() + i + 1);
+					i--;
+				}
+			}
+		}
+		
+		if (v1.size() != n) {
+			cout << "NO" << endl;
+		}
+		else {
+			cout << "YES" << endl;
+		}
+	}
+
+	return 0;
+}
 /*
 string complement(int a) {
 	// write code here
@@ -82,44 +125,44 @@ int main() {
 }
 */
 
-string removeKdigits(string num, int k) {
-	if (num.size() == k)   return "0";
-	stack<char> stk;//单调栈
-	string res;
-	for (int i = 0; i < num.size(); ++i) {
-		while (!stk.empty() && stk.top() > num[i] && k > 0) {
-			stk.pop();
-			--k;
-		}
-		stk.push(num[i]);
-	}
-	while (k > 0) {
-		stk.pop();
-		--k;
-	}
-	while (!stk.empty()) {
-		res += stk.top();
-		stk.pop();
-	}
-	while (!res.empty() && res.back() == '0') {
-		res.pop_back();
-	}
-	reverse(res.begin(), res.end());
-	if (res.empty()) {
-		res = "0";
-	}
-	return res;
-}
-
-int main() {
-	string s;
-	cin >> s;
-	int k;
-	cin >> k;
-	cout<<removeKdigits(s, k)<<endl;
-
-	return 0;
-}
+//string removeKdigits(string num, int k) {
+//	if (num.size() == k)   return "0";
+//	stack<char> stk;//单调栈
+//	string res;
+//	for (int i = 0; i < num.size(); ++i) {
+//		while (!stk.empty() && stk.top() > num[i] && k > 0) {
+//			stk.pop();
+//			--k;
+//		}
+//		stk.push(num[i]);
+//	}
+//	while (k > 0) {
+//		stk.pop();
+//		--k;
+//	}
+//	while (!stk.empty()) {
+//		res += stk.top();
+//		stk.pop();
+//	}
+//	while (!res.empty() && res.back() == '0') {
+//		res.pop_back();
+//	}
+//	reverse(res.begin(), res.end());
+//	if (res.empty()) {
+//		res = "0";
+//	}
+//	return res;
+//}
+//
+//int main() {
+//	string s;
+//	cin >> s;
+//	int k;
+//	cin >> k;
+//	cout<<removeKdigits(s, k)<<endl;
+//
+//	return 0;
+//}
 
 //bool is_yes(int begin, int end, string &s, string &s1) {
 //	vector<int> v1(123, 0);
