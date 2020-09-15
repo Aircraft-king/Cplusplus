@@ -12,47 +12,162 @@
 using namespace std;
 
 
-int main() {
-	int t;
-	cin >> t;
-	while (t--) {
-		int n;
-		int m;
-		int k;
-		cin >> n >> m >> k;
-		vector<int> v1;
-		vector<vector<int>> v(m, vector<int>(3));
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < 3; j++) {
-				cin >> v[i][j];
+int main()
+{
+	string a, b;
+	while (cin >> a >> b)
+	{
+		if (a.size() > b.size())
+			swap(a, b);
+		string str_m;//存储最长公共子串
+		for (int i = 0; i < a.size(); i++)
+		{
+			for (int j = i; j < a.size(); j++)
+			{
+				string temp = a.substr(i, j - i + 1);
+				if (int(b.find(temp)) < 0)
+					break;
+				else if (str_m.size() < temp.size())
+					str_m = temp;
 			}
 		}
-		for (int i = 0; i < m; i++) {
-			if (v[i][2] <= k) {
-				v1.push_back(v[i][0]);
-				v1.push_back(v[i][1]);
-			}
-		}
-		sort(v1.begin(), v1.end());
-		if (v1.size() > 1) {
-			for (int i = 0; i < v1.size() - 1; i++) {
-				if (v1[i] == v1[i + 1]) {
-					v1.erase(v1.begin() + i + 1);
-					i--;
-				}
-			}
-		}
-		
-		if (v1.size() != n) {
-			cout << "NO" << endl;
-		}
-		else {
-			cout << "YES" << endl;
-		}
+		cout << str_m << endl;
 	}
-
 	return 0;
 }
+
+//vector<vector<int> > rotateMatrix(vector<vector<int> > mat, int n)
+//{
+//	vector<vector<int>> v(n, vector<int>(n));
+//	for (int i = 0; i < n; i++)
+//		for (int j = 0; j < n; j++)
+//			v[j][n - 1 - i] = mat[i][j];
+//	return v;
+//}
+//
+//int main() {
+//	vector<vector<int> > v(3, vector<int>());
+//
+//	return 0;
+//}
+
+//int main() {
+//	char a[6] = "abcd";
+//	char b[] = "abcdef";
+//	//char* c = "abcdef";
+//	cout << sizeof(a);
+//	cout << sizeof(b);
+//	return 0;
+//}
+
+//vector < int > findNumber(int num) {
+//	vector<int> v;
+//	vector<int> v1;
+//	v1.push_back(-1);
+//	int a = num;
+//	int count = 0;
+//	while (a) {
+//		if (a % 2 == 1)
+//			count++;
+//		a /= 2;
+//	}
+//	if (count == 31)
+//		return v1;
+//	for (long i = num + 1; i != 2147483647; i++) {
+//		long b = i;
+//		int b_count = 0;
+//		while (b) {
+//			if (b % 2 == 1)
+//				b_count++;
+//			b /= 2;
+//		}
+//		if (b_count == count) {
+//			v.push_back(i);
+//			break;
+//		}
+//	}
+//	for (long i = num - 1; i > 0; i--) {
+//		long b = i;
+//		int b_count = 0;
+//		while (b) {
+//			if (b % 2 == 1)
+//				b_count++;
+//			b /= 2;
+//		}
+//		if (b_count == count) {
+//			v.push_back(i);
+//			break;
+//		}
+//	}
+//	sort(v.begin(), v.end(), greater<int>());
+//	if (v.size() < 2) {
+//
+//		return v1;
+//	}
+//	return v;
+//}
+/******************************结束写代码******************************/
+
+
+//int main() {
+//	vector < int > res;
+//
+//	int _num;
+//	cin >> _num;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//
+//	res = findNumber(_num);
+//	for (int res_i = 0; res_i < res.size(); res_i++) {
+//		cout << res[res_i] << endl;;
+//	}
+//
+//	return 0;
+//
+//}
+
+//int main() {
+//	int t;
+//	cin >> t;
+//	while (t--) {
+//		int n;
+//		int m;
+//		int k;
+//		cin >> n >> m >> k;
+//		vector<int> v1;
+//		vector<vector<int>> v(m, vector<int>(3));
+//		for (int i = 0; i < m; i++) {
+//			for (int j = 0; j < 3; j++) {
+//				cin >> v[i][j];
+//			}
+//		}
+//		for (int i = 0; i < m; i++) {
+//			if (v[i][2] <= k) {
+//				v1.push_back(v[i][0]);
+//				v1.push_back(v[i][1]);
+//			}
+//		}
+//		sort(v1.begin(), v1.end());
+//		if (v1.size() > 1) {
+//			for (int i = 0; i < v1.size() - 1; i++) {
+//				if (v1[i] == v1[i + 1]) {
+//					v1.erase(v1.begin() + i + 1);
+//					i--;
+//				}
+//			}
+//		}
+//		
+//		if (v1.size() != n) {
+//			cout << "NO" << endl;
+//		}
+//		else {
+//			cout << "YES" << endl;
+//		}
+//	}
+//
+//	return 0;
+//}
 /*
 string complement(int a) {
 	// write code here
