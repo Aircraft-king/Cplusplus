@@ -11,30 +11,295 @@
 #include<unordered_map>
 using namespace std;
 
+bool is_true(string s, string p) {
+	int i = 0;
+	int j = 0;
 
-int main()
-{
-	string a, b;
-	while (cin >> a >> b)
-	{
-		if (a.size() > b.size())
-			swap(a, b);
-		string str_m;//存储最长公共子串
-		for (int i = 0; i < a.size(); i++)
-		{
-			for (int j = i; j < a.size(); j++)
-			{
-				string temp = a.substr(i, j - i + 1);
-				if (int(b.find(temp)) < 0)
-					break;
-				else if (str_m.size() < temp.size())
-					str_m = temp;
+	while (i < s.size() && j < p.size()) {
+		if (p[i] == '.') {
+			p[j] = s[i];
+			i++;
+			j++;
+		}
+		else if (p[j] == '*'&&i != 0 && j != 0) {
+			if (s[i] == s[i - 1]) {
+				i++;
+				while (s[i] == s[i - 1])
+					i++;
+			}
+			else if (s[i] != s[i - 1]) {
+				j++;
 			}
 		}
-		cout << str_m << endl;
+		else if (p[j] == '+'&&i != 0 && j != 0) {
+			if (s[i] != s[i - 1])
+				return false;
+			else {
+				while (s[i] == s[i - 1]) {
+					i++;
+				}
+			}
+		}
+		else {
+			if (s[i] == p[j]) {
+				i++;
+				j++;
+			}
+			else
+				return false;
+		}
 	}
+	if (i == s.size() && j == p.size())
+		return true;
+	return false;
+}
+
+int main() {
+	string s;
+	string p;
+	cin >> s;
+	cin >> p;
+	if (is_true(s, p))
+		cout << "true" << endl;
+	else
+		cout << "false" << endl;
 	return 0;
 }
+
+//int main() {
+//	int m, n;
+//	cin >> m >> n;
+//	vector<vector<char>> v(m, vector<char>(n));
+//	int left = 0;
+//	int right = n-1;
+//	int up = 0;
+//	int down = m-1;
+//	char a = 'A';
+//	while (left <= right && up <= down) {
+//		for (int i = left; i <= right; i++) {
+//			v[up][i] = a;
+//			if (a == 'Z')
+//				a = 'A';
+//			else
+//			 a++;
+//		}
+//		for (int i = up+1; i <=down; i++) {
+//			
+//			v[i][right] = a;
+//			if (a == 'Z')
+//				a = 'A';
+//			else
+//				a++;
+//		}
+//		if (left < right&&up < down) {
+//			for (int i = right-1; i >= left; i--) {
+//				
+//				v[down][i] = a;
+//				if (a == 'Z')
+//					a = 'A';
+//				else
+//					a++;
+//			}
+//			for (int i = down-1; i > up; i--) {
+//				
+//				v[i][left] = a;
+//				if (a == 'Z')
+//					a = 'A';
+//				else
+//					a++;
+//			}
+//		}
+//		up++;
+//		down--;
+//		left++;
+//		right--;
+//	}
+//
+//	for (int i = 0; i < m; i++) {
+//		for (int j = 0; j < n; j++) {
+//			cout << v[i][j] << " ";
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+//int x = 1;
+//vector<double> v(100);
+//int sss(double h, double n) {
+//	h = h - n;
+//	if (h < 0)
+//		return x;
+//	h += v[x];
+//	x++;
+//	return sss(h, n);
+//}
+//
+//int main() {
+//	double h;
+//	double n;
+//	
+//	cin >> n >> h;
+//	h *= 100;
+//	double count = 0;
+//	for (int i = 1; i < v.size(); i++) {
+//		v[i] = n / (pow(2,i)) + count;
+//		count += v[i];
+//	}
+//	double a = sss(h, n);
+//	cout << x << endl;
+//	return 0;
+//}
+
+//int main() {
+//	string s;
+//	getline(cin,s);
+//	int i = 0;
+//	int j = 0;
+//	vector<int> v;
+//	while (j < s.size()) {
+//		while ((s[j]<'0'||s[j]>'9')&&j<s.size()) {
+//			i++;
+//			j++;
+//		}
+//		while (s[j] >= '0' && s[j] <= '9' && j < s.size()) {
+//			j++;
+//		}
+//		if (j - i == 4) {
+//			string tmp(s.begin() + i, s.begin() + j);
+//			int num = atoi(tmp.c_str());
+//			if (num >= 1000 && num <= 3999) {
+//				v.push_back(num);
+//			}
+//		}
+//		j++;
+//		i = j;
+//	}
+//	for (int i = 0; i < v.size(); i++) {
+//		cout << v[i] << " ";
+//	}
+//	cout << endl;
+//	return 0;
+//}
+
+//string baseNeg2(int N) {
+//	// write code here
+//	if (N == 0)
+//		return "0";
+//	string s;
+//	while (N) {
+//		s.push_back(abs(N % 2) + '0');
+//		N = ceil(N / (-2.0));
+//	}
+//	reverse(s.begin(), s.end());
+//	return s;
+//}
+//
+//int minInsertions(string s) {
+//	// write code here
+//	int count = 0;
+//	int left = 0;
+//	int right = 0;
+//	for (int i = 0; i < s.size();) {
+//		while (s[i] == '('&&i < s.size()) {
+//			left++;
+//			i++;
+//		}
+//		while (s[i] == ')'&&i < s.size()) {
+//			right++;
+//			i++;
+//		}
+//		if (left == 0 && right != 0) {
+//			if (right % 2 == 0) {
+//				count += (right / 2);
+//			}
+//			else {
+//				count += ((right + 1) / 2);
+//			}
+//		}
+//		if (right == 0 && left != 0) {
+//			count += left * 2;
+//		}
+//		if (left != 0 && right != 0) {
+//			if (right > 2 * left) {
+//				count += (right - 2 * left) / 2;
+//			}
+//			if (right < 2 * left) {
+//				count += (left * 2 - right);
+//			}
+//		}
+//		left = 0;
+//		right = 0;
+//	}
+//	return count;
+//}
+//
+//
+//int main() {
+//	cout << minInsertions("())((())())))");
+//	return 0;
+//}
+
+
+
+//string res;
+//int tmp;
+//string baseNeg2(int N) {
+//	// write code here
+//	while (N) {
+//		tmp = abs(N % 2);
+//		res.push_back(tmp + '0');
+//		N = ceil(N / (-2.0));
+//	}
+//	reverse(res.begin(), res.end());
+//	return res == "" ? "0" : res;
+//	/*string s;
+//	while (N > 0) {
+//			s.push_back(N % 2 + '0');
+//			N /= 2;
+//
+//	}
+//	int count = 0;
+//	for (int i = 1; i < s.size(); i+=2) {
+//		if (s[i] == '1') {
+//			count += pow(2, i);
+//		}
+//	}
+//	string s1;
+//	while (count > 0) {
+//
+//	}
+//	reverse(s.begin(), s.end());
+//	return s;*/
+//}
+//
+//int main() {
+//	cout<< baseNeg2(6);
+//	return 0;
+//}
+
+//int main()
+//{
+//	string a, b;
+//	while (cin >> a >> b)
+//	{
+//		if (a.size() > b.size())
+//			swap(a, b);
+//		string str_m;//存储最长公共子串
+//		for (int i = 0; i < a.size(); i++)
+//		{
+//			for (int j = i; j < a.size(); j++)
+//			{
+//				string temp = a.substr(i, j - i + 1);
+//				if (int(b.find(temp)) < 0)
+//					break;
+//				else if (str_m.size() < temp.size())
+//					str_m = temp;
+//			}
+//		}
+//		cout << str_m << endl;
+//	}
+//	return 0;
+//}
 
 //vector<vector<int> > rotateMatrix(vector<vector<int> > mat, int n)
 //{
