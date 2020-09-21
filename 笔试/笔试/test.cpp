@@ -10,7 +10,6 @@
 #include <algorithm>
 #include<unordered_map>
 using namespace std;
-
 bool is_true(string s, string p) {
 	int i = 0;
 	int j = 0;
