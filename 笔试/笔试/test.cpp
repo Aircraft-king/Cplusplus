@@ -10,60 +10,138 @@
 #include <algorithm>
 #include<unordered_map>
 using namespace std;
-bool is_true(string s, string p) {
-	int i = 0;
-	int j = 0;
-
-	while (i < s.size() && j < p.size()) {
-		if (p[i] == '.') {
-			p[j] = s[i];
-			i++;
-			j++;
-		}
-		else if (p[j] == '*'&&i != 0 && j != 0) {
-			if (s[i] == s[i - 1]) {
-				i++;
-				while (s[i] == s[i - 1])
-					i++;
-			}
-			else if (s[i] != s[i - 1]) {
-				j++;
-			}
-		}
-		else if (p[j] == '+'&&i != 0 && j != 0) {
-			if (s[i] != s[i - 1])
-				return false;
-			else {
-				while (s[i] == s[i - 1]) {
-					i++;
-				}
-			}
-		}
-		else {
-			if (s[i] == p[j]) {
-				i++;
-				j++;
-			}
-			else
-				return false;
-		}
-	}
-	if (i == s.size() && j == p.size())
-		return true;
-	return false;
-}
 
 int main() {
-	string s;
-	string p;
-	cin >> s;
-	cin >> p;
-	if (is_true(s, p))
-		cout << "true" << endl;
-	else
-		cout << "false" << endl;
+	double m;
+	double n;
+	while (cin >> m) {
+		cin >> n;
+		double b = m;
+		double a = 1;
+		if (m <= n) {
+			cout << 1 << endl;
+			return 0;
+		}
+
+		for (int i = 0; i < n - 1; i++) {
+			m *= (b - 1);
+			m /= n;
+			n--;
+		}
+		cout << m << endl;
+	}
 	return 0;
 }
+
+
+
+
+
+
+//struct MyStruct
+//{
+//	int a;
+//	char b;
+//	short c;
+//	char d[6];
+//};
+//int main() {
+//	cout << sizeof(MyStruct);
+//
+//	return 0;
+//}
+
+//int main() {
+//	string s;
+//	cin >> s;
+//	int a = 0;
+//	if (s[0] == '-') {
+//		a = 1;
+//		s.erase(s.begin());
+//	}
+//	int falg = 0;
+//	for (int i = 0; i < s.size(); i++) {
+//		if ((s[i] >= '0'&&s[i] <= '9') || (s[i] >= 'a'&&s[i] <= 'z')) {
+//			falg = 1;
+//		}
+//		else {
+//			falg = 0;
+//		}
+//		if (falg == 0) {
+//			cout << "0" << endl;
+//			return 0;
+//		}
+//	}
+//	string tmp("0123456789abcdefghijklmnopqrstuvwxyz");
+//	long long sum = 0;
+//	int j = 0;
+//	for (int i = s.size() - 1; i >= 0; i--) {
+//		int pos = tmp.find(s[i]);
+//		sum += pos * pow(36, j);
+//		j++;
+//	}
+//	if (a == 1) {
+//		sum -= 2 * sum;
+//	}
+//	cout << sum << endl;
+//	return 0;
+//
+//}
+
+//bool is_true(string s, string p) {
+//	int i = 0;
+//	int j = 0;
+//
+//	while (i < s.size() && j < p.size()) {
+//		if (p[i] == '.') {
+//			p[j] = s[i];
+//			i++;
+//			j++;
+//		}
+//		else if (p[j] == '*'&&i != 0 && j != 0) {
+//			if (s[i] == s[i - 1]) {
+//				i++;
+//				while (s[i] == s[i - 1])
+//					i++;
+//			}
+//			else if (s[i] != s[i - 1]) {
+//				j++;
+//			}
+//		}
+//		else if (p[j] == '+'&&i != 0 && j != 0) {
+//			if (s[i] != s[i - 1])
+//				return false;
+//			else {
+//				while (s[i] == s[i - 1]) {
+//					i++;
+//				}
+//			}
+//		}
+//		else {
+//			if (s[i] == p[j]) {
+//				i++;
+//				j++;
+//			}
+//			else
+//				return false;
+//		}
+//	}
+//	if (i == s.size() && j == p.size())
+//		return true;
+//	return false;
+//}
+//
+//int main() {
+//	string s;
+//	string p;
+//	cin >> s;
+//	cin >> p;
+//	if (is_true(s, p))
+//		cout << "true" << endl;
+//	else
+//		cout << "false" << endl;
+//	return 0;
+//}
 
 //int main() {
 //	int m, n;
