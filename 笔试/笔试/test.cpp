@@ -11,31 +11,206 @@
 #include<unordered_map>
 using namespace std;
 
-int main() {
-	double m;
-	double n;
-	while (cin >> m) {
-		cin >> n;
-		double b = m;
-		double a = 1;
-		if (m <= n) {
-			cout << 1 << endl;
-			return 0;
+vector<vector<int>> creat_v(int n) {
+	vector<vector<int>> v(n, vector<int>(n));
+	int up = 0;
+	int down = n - 1;
+	int left = 0;
+	int right = n - 1;
+	int a = 1;
+	int count = 0;
+	while (up <= right && left <= right) {
+		if (count % 2 == 0) {
+			for (int i = left; i <= right; i++) {
+				v[up][i] = a;
+				a++;
+			}
+			for (int i = up + 1; i <= down; i++) {
+				v[i][right] = a;
+				a++;
+			}
+			if (up < down&&left < right) {
+				for (int i = right - 1; i >= left; i--) {
+					v[down][i] = a;
+					a++;
+				}
+				for (int i = down - 1; i > up; i--) {
+					v[i][left] = a;
+					a++;
+				}
+			}
+			left++;
+			right--;
+			up++;
+			down--;
+			count++;
 		}
+		else {
+			for (int i = up; i <= down; i++) {
+				v[i][left] = a;
+				a++;
+			}
+			for (int i = left + 1; i <= right; i++) {
+				v[down][i] = a;
+				a++;
+			}
+			if (up < down&&left < right) {
+				for (int i = down - 1; i >= up; i--) {
+					v[i][right] = a;
+					a++;
+				}
+				for (int i = right - 1; i > left; i--) {
+					v[up][i] = a;
+					a++;
+				}
+			}
+			left++;
+			right--;
+			up++;
+			down--;
+			count++;
+		}
+	}
+	return v;
+}
 
-		for (int i = 0; i < n - 1; i++) {
-			m *= (b - 1);
-			m /= n;
-			n--;
+int main() {
+	int n;
+	cin >> n;
+	while (n--) {
+		int a;
+		int b;
+		cin >> a >> b;
+		vector<vector<int>> v(a, vector<int>(a));
+		v = creat_v(a);
+		for (int i = 0; i < a; i++) {
+			for (int j = 0; j < a; j++) {
+				cout << v[i][j] << " ";
+			}
+			cout << endl;
 		}
-		cout << m << endl;
+		while (b--) {
+			int h;
+			int j;
+			cin >> h >> j;
+			cout << v[h][j] << endl;
+		}
 	}
 	return 0;
 }
 
 
 
+//int FindSubString(char* pch) {
+//	int count = 0;
+//	char* p1 = pch;
+//	while (*p1 != '\O') {
+//		if (*p1 == p1[1] - 1) {
+//			p1++;
+//			count++;
+//		}
+//
+//		else
+//		{
+//			break;
+//		}
+//	}
+//	int count2 = count;
+//	while (*p1 != '\O') {
+//		if (*p1 == p1[1] + 1) {
+//			p1++;
+//			count2--;
+//		}
+//		else
+//			break;
+//	}
+//	if (count2 == 0)
+//		return count;
+//	return 0;
+//}
+//void ModifyString(char* pText)
+//{
+//	char* p1 = pText;
+//	char* p2 = p1;
+//	while (*p1 != '\0') {
+//		int count = FindSubString(p1);
+//		if (count > 0) {
+//
+//			*p2++ = *p1;
+//			sprintf(p2, "%l", count);
+//			while (*p2 != '\0')
+//				p2++;
+//			p1 += count + count + 1;
+//		}
+//		else
+//		{
+//			*p2++ = *p1++;
+//		}
+//	}
+//}
+//
+//int main() {
+//	char text[32] = "XYBCDCBABABA";
+//	ModifyString(text);
+//	printf("%s", text);
+//	return 0;
+//}
 
+//int main() {
+//	char s[200];
+//	char a;
+//	int i = 0;
+//	while (scanf("%c",&a)) {
+//		if (a == '\n') {
+//			break;
+//		}
+//		s[i] = a;
+//		i++;
+//		
+//	}
+//	int v[100];
+//	int end = 0;
+//	int count = 0;
+//	int j = 0;
+//	while (end < i) {
+//		while (s[end] >= 'a'&&s[end] <= 'z' || s[end] >= 'A'&&s[end] <= 'Z') {
+//			end++;
+//		}
+//		if (s[end] == ','||s[end]==' ') {
+//			count++;
+//			end++;
+//		}
+//		if (s[end] == '.') {
+//			count++;
+//			j++;
+//			end++;
+//		}
+//	}
+//	printf("%d\n", count / j);
+//	return 0;
+//}
+
+//int main() {
+//	double m;
+//	double n;
+//	while (cin >> m) {
+//		cin >> n;
+//		double b = m;
+//		double a = 1;
+//		if (m <= n) {
+//			cout << 1 << endl;
+//			return 0;
+//		}
+//
+//		for (int i = 0; i < n - 1; i++) {
+//			m *= (b - 1);
+//			m /= n;
+//			n--;
+//		}
+//		cout << m << endl;
+//	}
+//	return 0;
+//}
 
 
 //struct MyStruct
