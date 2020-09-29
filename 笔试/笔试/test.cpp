@@ -11,93 +11,101 @@
 #include<unordered_map>
 using namespace std;
 
-vector<vector<int>> creat_v(int n) {
-	vector<vector<int>> v(n, vector<int>(n));
-	int up = 0;
-	int down = n - 1;
-	int left = 0;
-	int right = n - 1;
-	int a = 1;
-	int count = 0;
-	while (up <= right && left <= right) {
-		if (count % 2 == 0) {
-			for (int i = left; i <= right; i++) {
-				v[up][i] = a;
-				a++;
-			}
-			for (int i = up + 1; i <= down; i++) {
-				v[i][right] = a;
-				a++;
-			}
-			if (up < down&&left < right) {
-				for (int i = right - 1; i >= left; i--) {
-					v[down][i] = a;
-					a++;
-				}
-				for (int i = down - 1; i > up; i--) {
-					v[i][left] = a;
-					a++;
-				}
-			}
-			left++;
-			right--;
-			up++;
-			down--;
-			count++;
-		}
-		else {
-			for (int i = up; i <= down; i++) {
-				v[i][left] = a;
-				a++;
-			}
-			for (int i = left + 1; i <= right; i++) {
-				v[down][i] = a;
-				a++;
-			}
-			if (up < down&&left < right) {
-				for (int i = down - 1; i >= up; i--) {
-					v[i][right] = a;
-					a++;
-				}
-				for (int i = right - 1; i > left; i--) {
-					v[up][i] = a;
-					a++;
-				}
-			}
-			left++;
-			right--;
-			up++;
-			down--;
-			count++;
-		}
-	}
-	return v;
-}
-
 int main() {
-	int n;
-	cin >> n;
-	while (n--) {
-		int a;
-		int b;
-		cin >> a >> b;
-		vector<vector<int>> v(a, vector<int>(a));
-		v = creat_v(a);
-		for (int i = 0; i < a; i++) {
-			for (int j = 0; j < a; j++) {
-				cout << v[i][j] << " ";
-			}
-			cout << endl;
-		}
-		while (b--) {
-			int h;
-			int j;
-			cin >> h >> j;
-			cout << v[h][j] << endl;
-		}
-	}
+	char a[] = "AAA";
+	printf("%s", a);
+	a[0] = 'b';
+	printf("%s", a);
 	return 0;
 }
+
+//vector<vector<int>> creat_v(int n) {
+//	vector<vector<int>> v(n, vector<int>(n));
+//	int up = 0;
+//	int down = n - 1;
+//	int left = 0;
+//	int right = n - 1;
+//	int a = 1;
+//	int count = 0;
+//	while (up <= right && left <= right) {
+//		if (count % 2 == 0) {
+//			for (int i = left; i <= right; i++) {
+//				v[up][i] = a;
+//				a++;
+//			}
+//			for (int i = up + 1; i <= down; i++) {
+//				v[i][right] = a;
+//				a++;
+//			}
+//			if (up < down&&left < right) {
+//				for (int i = right - 1; i >= left; i--) {
+//					v[down][i] = a;
+//					a++;
+//				}
+//				for (int i = down - 1; i > up; i--) {
+//					v[i][left] = a;
+//					a++;
+//				}
+//			}
+//			left++;
+//			right--;
+//			up++;
+//			down--;
+//			count++;
+//		}
+//		else {
+//			for (int i = up; i <= down; i++) {
+//				v[i][left] = a;
+//				a++;
+//			}
+//			for (int i = left + 1; i <= right; i++) {
+//				v[down][i] = a;
+//				a++;
+//			}
+//			if (up < down&&left < right) {
+//				for (int i = down - 1; i >= up; i--) {
+//					v[i][right] = a;
+//					a++;
+//				}
+//				for (int i = right - 1; i > left; i--) {
+//					v[up][i] = a;
+//					a++;
+//				}
+//			}
+//			left++;
+//			right--;
+//			up++;
+//			down--;
+//			count++;
+//		}
+//	}
+//	return v;
+//}
+//
+//int main() {
+//	int n;
+//	cin >> n;
+//	while (n--) {
+//		int a;
+//		int b;
+//		cin >> a >> b;
+//		vector<vector<int>> v(a, vector<int>(a));
+//		v = creat_v(a);
+//		for (int i = 0; i < a; i++) {
+//			for (int j = 0; j < a; j++) {
+//				cout << v[i][j] << " ";
+//			}
+//			cout << endl;
+//		}
+//		while (b--) {
+//			int h;
+//			int j;
+//			cin >> h >> j;
+//			cout << v[h][j] << endl;
+//		}
+//	}
+//	return 0;
+//}
 
 
 
