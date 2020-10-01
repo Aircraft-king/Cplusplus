@@ -19,6 +19,7 @@ int main() {
 	return 0;
 }
 
+
 //vector<vector<int>> creat_v(int n) {
 //	vector<vector<int>> v(n, vector<int>(n));
 //	int up = 0;
