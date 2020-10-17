@@ -12,12 +12,119 @@
 using namespace std;
 
 int main() {
-	char a[] = "AAA";
-	printf("%s", a);
-	a[0] = 'b';
-	printf("%s", a);
+	int n;
+	cin >> n;
+	while (n % 2 == 0&&n>=1) {
+		n /= 2;
+	}
+	if (n == 1) {
+		cout << "yes" << endl;
+	}
 	return 0;
 }
+
+//int buyCoke(int m, int a, int b, int c, int x) {
+//	int count = 0;
+//	while (m--) {
+//		int xx = x;
+//		if (c > 0) {
+//			int i = 1;
+//			c -= 1;
+//			while (100 * i < xx&&c>0) {
+//				i++;
+//				c--;
+//			}
+//			
+//			if (100 * i >= xx) {
+//				count += i;
+//				int ff = 100 * i - xx;
+//				b += ff / 50;
+//				a += ff / 50 / 10;
+//				continue;
+//			}
+//			else {
+//				count += i;
+//				xx -= 100 * i;
+//			}
+//		}
+//		if (b > 0) {
+//			int i = 1;
+//			b -= 1;
+//			while (50 * i < xx&&b>0) {
+//				i++;
+//				b--;
+//			}
+//			if (i * 50 >= xx) {
+//				count += i;
+//				int ff = 50 * i - xx;
+//				a += ff / 10;
+//				continue;
+//			}
+//			else {
+//				count += i;
+//				xx -= 50 * i;
+//			}
+//		}
+//		if (a > 0) {
+//			int i = 1;
+//			a -= 1;
+//			while (10 * i < xx&&a>0) {
+//				i++;
+//				a--;
+//			}
+//			count += i;
+//			continue;
+//		}
+//	}
+//	return count;
+//}
+/******************************½áÊøÐ´´úÂë******************************/
+
+
+//int main() {
+//	int res;
+//
+//	int _m;
+//	cin >> _m;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//	int _a;
+//	cin >> _a;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//	int _b;
+//	cin >> _b;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//	int _c;
+//	cin >> _c;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//	int _x;
+//	cin >> _x;
+//	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//
+//
+//
+//	res = buyCoke(_m, _a, _b, _c, _x);
+//	cout << res << endl;
+//
+//	return 0;
+//
+//}
+
+
+//int main() {
+//	char a[] = "AAA";
+//	printf("%s", a);
+//	a[0] = 'b';
+//	printf("%s", a);
+//	return 0;
+//}
 
 
 //vector<vector<int>> creat_v(int n) {
