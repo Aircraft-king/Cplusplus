@@ -9,18 +9,34 @@
 //#include<vld.h>
 using namespace std;
 
-int len(char * string) {
-	return sizeof(string);
-}
-
+void fun(int a,int b){}
 
 int main() {
-	char arr[] = "asdih";
-	string s(arr);
-	int l = len(arr);
-	cout << l << endl;
+	int a=2;
+	int b=3;
+	int c=0;
+	c = a + b;
+	c = a - b;
+	c = a * b;
+	c = a / b;
+	fun(a, b);
+	for (int i = 0; i < 5; i++)
+		c++;
 	return 0;
 }
+
+//int len(char * string) {
+//	return sizeof(string);
+//}
+//
+//
+//int main() {
+//	char arr[] = "asdih";
+//	string s(arr);
+//	int l = len(arr);
+//	cout << l << endl;
+//	return 0;
+//}
 
 //vector<int> maxInWindows(const vector<int>& num, unsigned int size)
 //{
